@@ -1,0 +1,198 @@
+body {
+  background-color:aliceblue;
+  font-family:"Arial", Helvetica, sans-serif;
+  font-size:12px;
+  color:darkgreen;
+  table-align:center;
+}
+
+.content {
+  position:relative;
+  width:62%;
+  height:auto;
+  min-width:800px;
+  min-height:800px;
+  border-style:outset;
+  border-width:1px;
+  border-color:lightgreen;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:8px;
+  padding-right:8px;
+}
+
+.figure {
+
+}
+.caption {
+  font-color:black;
+  background-color:gray;
+  border-bottom:1px solid black;
+  border-left:1px solid black;
+  border-right:1px solid black;
+  position:relative;
+  top:0px;
+  margin:0px;
+}
+
+.eyecandy {
+  margin:8px;
+  position:relative;
+  max-width:600;
+}
+
+table.projectlist {
+  min-width:600px;
+  margin:50px;
+  margin-top:10px;
+}
+.projectlist p {
+  text-align:top;
+}
+
+.projectlist img {
+  float:right;
+}
+
+.navigation {
+  text-align:center;
+  font-size:18px;
+  margin-bottom:2px;
+}
+
+.navigation a {
+  color:black;
+  text-decoration:none;
+  margin-right:40px;
+  border-right:1px solid black;
+  padding-bottom:0px;
+  border-bottom:2px solid black;
+}
+.footer a {
+  color:black;
+  font-weight:bold;
+}
+.footer {
+  text-align:center;
+  text-align:top;
+  height:10px;
+  display:inline;
+  line-height:0px;
+}
+.footer table {
+  /*background-color:lightgreen;*/
+  /*border-top:1px dotted green;*/
+  width:100%;
+}
+.footer td {
+  width:33%;
+}
+#paypal {
+  float:right;
+  margin-right:0px;
+}
+#validator {
+  float:left;
+  margin-left:0px;
+}
+
+a#downloadbutton {
+  background-color:green;
+  color:white;
+  font-size:32px;
+  text-decoration:none;
+  position:absolute;
+  top:0;
+  padding:8px;
+  border-style:outset;
+  border-width:2px;
+}
+a#downloadbutton:active {
+  border-style:inset;
+  color:black;
+}
+#sharebutton {
+  position:absolute;
+  bottom:0;
+  right:0;
+  margin-right:0px;
+  margin-left:auto;
+}
+#toys {
+  width:200px;
+  height:160px;
+  position:relative;
+  float:right;
+  margin-right:0px;
+  border-width:2px;
+  border-color:black;
+}
+#section { 
+  position:absolute;
+  bottom:0;
+}
+#thanks,#notes {
+  position:relative;
+  float:left;
+}
+#btnTrain {
+  position:relative;
+  top:40;
+}
+#instructions {
+  position:relative;
+  text-align:left;
+  width:400;
+  z-index:-42;
+}
+#btnTrain {
+  position:relative;
+  left:100;
+  font-size:24px;
+}
+#main {
+  position:relative;
+  float:right;
+}
+#subform {
+  position:relative;
+}
+#stuffyouhave {
+  float:right;
+  width:200;
+}
+#statchoice {
+  float:right;
+  width:200;
+}
+
+a:hover {
+  color:#8899ff;
+  border-bottom:0px;
+}
+  
+h1,h2,h3,h4,h5,h6 {
+  color:darkred;
+}
+
+strong {
+  color:green;
+}
+
+code {
+  color:midnightblue;
+  background-color:white;
+}
+
+table {
+  table-align:center;
+}
+
+img {
+  border-style:none;
+  border-width:2px;
+  max-width:800px;
+  text-align:center;
+  margin:auto auto auto auto;
+  table-align:center;
+}
