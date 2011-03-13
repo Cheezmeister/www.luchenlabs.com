@@ -1,0 +1,8 @@
+# Hakyll-generated crap
+_cache/*
+_site/*
+
+# The crap generator in question ;)
+hakyll
+
+
