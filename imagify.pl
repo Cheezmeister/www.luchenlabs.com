@@ -57,7 +57,7 @@ for (my $i = 0; $i < @lines - 1; $i++) {
 
 
 	if ($source =~ m/droid/i) {
-		if ($file =~ m/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d).(\d\d).(\d\d).jpg/) {
+		if ($file =~ m/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d).(\d\d).(\d\d).jpg/ or $file =~ m/IMG_(\d\d\d\d)(\d\d)(\d\d)_(\d\d)(\d\d)(\d\d).jpg/) {
 			my ($year, $month, $day, $hour, $min, $sec) = ($1, $2, $3, $4, $5, $6);
 
 			my $outfile = "$outdir/$file.markdown";
@@ -80,7 +80,7 @@ for (my $i = 0; $i < @lines - 1; $i++) {
 			close OUTFILE;
 		}
 		else {
-			print "LOL, $line\n";
+			print "Skipping $line\n";
 		}
 	}
 

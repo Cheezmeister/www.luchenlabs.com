@@ -9,31 +9,31 @@ screenshot:$root/content/raytracer/m6.png
 --- downloadinfo
 Here\'s a tarball of milestone 1 as of 12/9:
 
-[src.tgz]($root/downloads/raytracer/src.tgz)
+[src.tgz]($root/downloadssrc.tgz)
 
 And milestone 2 as of 1/4(/10)
 
-[src2.tgz]($root/downloads/raytracer/src2.tgz)
+[src2.tgz]($root/downloads/src2.tgz)
 
 And milestone 3 as of 1/15(/10)
 
-[src3.tgz]($root/downloads/raytracer/src3.tgz)
+[src3.tgz]($root/downloads/src3.tgz)
 
 And milestone 4 as of 1/15(/10)
 
-[src4.tgz]($root/downloads/raytracer/src4.tgz)
+[src4.tgz]($root/downloads/src4.tgz)
 
 And milestone 5 as of 1/15(/10)
 
-[src5.tgz]($root/downloads/raytracer/src5.tgz)
+[src5.tgz]($root/downloads/src5.tgz)
 
 And milestone 6 as of 2/13(/10)
 
-[src6.tgz]($root/downloads/raytracer/src6.tgz)
+[src6.tgz]($root/downloads/src6.tgz)
 
 And milestone 7 as of 2/22(/10)
 
-[src7.tgz]($root/content/downloads/raytracer/src7.tgz)
+[src7.tgz]($root/content/downloads/src7.tgz)
 
 --- intro
 This is the only class project you\'ll find in my portfolio, and for good reason: I really like the pretty pictures! While I and a partner developed this, we had to maintain a web page as part of the assignment; since that was already done, I didn\'t even have the excuse of laziness not to show it off. The assignment was broken up into seven milestones, shown below, and you can see the images go from awful to...well, you decide.

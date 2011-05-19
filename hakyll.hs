@@ -18,7 +18,7 @@ import Data.Either (Either(..))
 theconfig :: HakyllConfiguration
 theconfig = (defaultHakyllConfiguration "http://luchenlabs.com")
 
-main = hakyll $ do
+main = hakyllWithConfiguration theconfig $ do
     -- Static directories.
     directory css "css"
     directory static "content"
@@ -32,11 +32,26 @@ main = hakyll $ do
             [
             create "spheres",
             create "chromathud",
-            create "cheezus"
+            create "nextris"
             ] []
 
             `combine` createPage "index.markdown"
 
+    -- Render blog
+    postPaths <- liftM (reverse . sort) $ getRecursiveContents "blawg/posts"
+    let postPages = map (createPage ) postPaths
+
+    let index = createListing "blawg/index.html"
+                          ["templates/postitem.html"]
+                          (postPages)
+                          [("title", Left "Blawg")]
+   
+    renderChain ["blawg/index.markdown", "templates/header.html", "templates/default.html"] index
+
+    mapM_ (renderChain [ "templates/post.html"
+                   , "templates/header.html"
+                   , "templates/default.html"
+                   ] . withFooter) postPages
 
     -- Render main project page
     renderChain [
@@ -56,8 +71,6 @@ main = hakyll $ do
 		`combine` createPage "projects/projects.markdown"
 
 
-    --directory renderOrRecurse "projects"
-
     renderProjectPage "gsoc"
     renderProjectPage "spheres"
     renderProjectPage "chromathud"
@@ -65,7 +78,6 @@ main = hakyll $ do
     renderProjectPage "cheezus"
     renderProjectPage "nextris"
 
---    renderSTD "index.markdown"
     renderSTD "bio.markdown"
     renderSTD "faq.markdown"
     renderSTD "contact.rst"
@@ -108,3 +120,7 @@ main = hakyll $ do
             ["templates/projectpage.html", "templates/header.html", "templates/default.html"] 
             . withFooter . createPage $ 
             "projects/" ++ page ++ "/index.markdown"
+
+
+
+

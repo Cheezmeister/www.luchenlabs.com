@@ -14,6 +14,8 @@ The game is deceptively simple, but twists come in the form of time
 bonuses; penalties for deselecting blocks; and clearing by traditional groups 
 of four or more touching blocks. 
 
+You can find a brief review of Chromathud [here](http://indiegameschannel.com/wp/2010/12/21/igf-2011-review-chromathud-by-luchenlabs/).
+
 --- downloadinfo
 The beta is out! This will be the last release for a while as we ready the game for the Xbox Indie Arcade and polish the final PC release to a fine sheen. 
 In the meantime, you should totally [tell us](http://twitter.com/neocheez) what you think!

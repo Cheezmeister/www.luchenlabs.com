@@ -4,5 +4,7 @@ _site/*
 
 # The crap generator in question ;)
 hakyll
+hakyll.hi
+hakyll.o
 
 
