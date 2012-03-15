@@ -1,7 +1,5 @@
- 
-
 <table class="projectlist">
-$body
+$projects$
 </table>
 
 

@@ -1,126 +1,103 @@
+{-# LANGUAGE OverloadedStrings, Arrows #-}
 module Main where
 
-import Text.Hakyll 
-import Text.Hakyll.Render
-import Text.Hakyll.Context
-import Text.Hakyll.CreateContext 
-import Text.Hakyll.File (getRecursiveContents, directory, havingExtension, sortByBaseName)
-import Text.Hakyll.CreateContext (createPage, createCustomPage, createListing)
-import Text.Hakyll.Regex (matchesRegex)
-import Data.List (sort)
-import Control.Monad (forM_, liftM)
-import Control.Monad.Reader (liftIO)
-import Data.Either (Either(..))
+import Control.Monad (forM_)
+import Control.Arrow (arr, (>>>))
+import Data.Monoid (mempty, mconcat)
+
+import Hakyll
+
+main :: IO ()
+main = hakyll $ do
+    -- Move content
+    match "content/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+    match "content/*/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    -- Compress CSS
+    match "css/*" $ do
+        route   idRoute
+        compile compressCssCompiler
+
+    -- Render normal static pages
+    forM_ ["contact.rst", "bio.markdown", "resume/index.markdown"] $ \p ->
+        match p $ do
+            route   $ setExtension ".html"
+            compile $ pageCompiler
+                >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
+                >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
+                >>> applyTemplateCompiler "templates/content.html"
+                >>> applyTemplateCompiler "templates/default.html"
+                >>> relativizeUrlsCompiler
+
+    -- Render home page
+    match "index.html" $ route setExtension ".html"
+    create "index.html" $ constA mempty 
+        >>> arr (setField "title" "Home")
+        >>> requireAllA "projects/*/index.markdown" addProj
+	>>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
+	>>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
+	>>> applyTemplateCompiler "templates/projectlist.markdown"
+	>>> applyTemplateCompiler "templates/content.html"
+	>>> applyTemplateCompiler "templates/default.html"
+	>>> relativizeUrlsCompiler
 
 
--- main = hakyll "http://luchenlabs.com" $ do
+    -- Render project main page
+    match "projects/index.html" $ route idRoute
+    create "projects/index.html" $ constA mempty
+        >>> arr (setField "title" "All Projects")
+        >>> requireAllA "projects/*/index.markdown" addProj
+        >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
+        >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
+        >>> applyTemplateCompiler "templates/projectlist.markdown"
+        >>> applyTemplateCompiler "templates/content.html"
+        >>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler
 
-theconfig :: HakyllConfiguration
-theconfig = (defaultHakyllConfiguration "http://luchenlabs.com")
-
-main = hakyllWithConfiguration theconfig $ do
-    -- Static directories.
-    directory css "css"
-    directory static "content"
-
-    -- Render index
-    renderChain [
-        "index.markdown", 
-        "templates/header.html", 
-        "templates/default.html"] . withFooter $
-            createListing "index.html" ["templates/projectrow.html"]
-            [
-            create "spheres",
-            create "chromathud",
-            create "nextris"
-            ] []
-
-            `combine` createPage "index.markdown"
-
-    -- Render blog
-    postPaths <- liftM (reverse . sort) $ getRecursiveContents "blawg/posts"
-    let postPages = map (createPage ) postPaths
-
-    let index = createListing "blawg/index.html"
-                          ["templates/postitem.html"]
-                          (postPages)
-                          [("title", Left "Blawg")]
-   
-    renderChain ["blawg/index.markdown", "templates/header.html", "templates/default.html"] index
-
-    mapM_ (renderChain [ "templates/post.html"
-                   , "templates/header.html"
-                   , "templates/default.html"
-                   ] . withFooter) postPages
-
-    -- Render main project page
-    renderChain [
-		"projects/projects.markdown", 
-		"templates/header.html", 
-		"templates/default.html"] . withFooter $ 
-
-		-- Create project list
-		createListing "projects/index.html" ["templates/projectrow.html"] 
-		[create "spheres",
-		create "gsoc",
-		create "chromathud",
-		create "raytracer",
-		create "cheezus",
-		create "nextris"] []
-
-		`combine` createPage "projects/projects.markdown"
-
-
-    renderProjectPage "gsoc"
-    renderProjectPage "spheres"
-    renderProjectPage "chromathud"
-    renderProjectPage "raytracer"
-    renderProjectPage "cheezus"
-    renderProjectPage "nextris"
-
-    renderSTD "bio.markdown"
-    renderSTD "faq.markdown"
-    renderSTD "contact.rst"
-
-    directory renderSTD "resume"
-
-    renderOrRecurse "personal"
-
-    renderOrRecurseWithFunc renderWithJS "tidbits"
-
-    where
-        renderOrRecurse = renderOrRecurseWithFunc renderSTD
-        renderOrRecurseWithFunc func path
-            | path `matchesRegex` "rst|markdown|html" = func path
-            | path `matchesRegex` "txt|perl|zip|gz|tgz|7z|js|c" = static path
-            | otherwise = directory (renderOrRecurseWithFunc func) path
-
-        renderWithJS path
-	    | path `matchesRegex` "html" = static path
-	    | otherwise = renderChain ["templates/header.html", "templates/defaultwithjs.html"]
-	    . withFooter . createPage $ path
-
-        renderSTD path
-	    | path `matchesRegex` "html|pdf" = static path
-	    | otherwise = renderChain ["templates/header.html", "templates/default.html"] 
-            . withFooter . createPage $ path
-
-        withHeader = combine $ createPage "templates/header.html"
-
-        withFooter = flip combine $ createPage "footer.markdown"
-
-        combineAll (page:[]) = create page
-        combineAll (page:rest) = combine (create page) $ combineAll rest
-
-        create page = combineWithUrl (page ++ "/index.markdown") 
-            (createPage $ "projects/" ++ page ++ "/index.markdown") 
-            (createCustomPage "temp" [])
-
-        renderProjectPage page = renderChain 
-            ["templates/projectpage.html", "templates/header.html", "templates/default.html"] 
-            . withFooter . createPage $ 
-            "projects/" ++ page ++ "/index.markdown"
+    match "blawg/index.html" $ route idRoute
+    create "blawg/index.html" $ constA mempty
+        >>> arr (setField "title" "Blawg"
+	>>> requireAllA "blawg/posts/*" addPostList
 
 
 
+    -- Render project pages
+    match "projects/*/index.markdown" $ do
+        route   $ setExtension ".html"
+	compile $ pageCompiler
+            >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
+            >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
+	    >>> applyTemplateCompiler "templates/content.html"
+	    >>> applyTemplateCompiler "templates/default.html"
+	    >>> relativizeUrlsCompiler
 
+
+    -- Compile footer/header
+    match "footer.markdown" $ compile pageCompiler
+    match "header.markdown" $ compile pageCompiler
+    match "toybox.markdown" $ compile pageCompiler
+
+    -- Read templates
+    match "templates/*" $ compile templateCompiler
+
+
+addProj :: Compiler (Page String, [Page String]) (Page String)
+addProj = setFieldA "projects" $
+    arr (reverse)
+        >>> require "templates/projectrow.html" (\p t -> map (applyTemplate t) p)
+	>>> arr mconcat
+	>>> arr pageBody
+
+-- | Auxiliary compiler: generate a post list from a list of given posts, and
+-- add it to the current page under @$posts@
+--
+addPostList :: Compiler (Page String, [Page String]) (Page String)
+addPostList = setFieldA "posts" $
+    arr (reverse . sortByBaseName)
+        >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
+        >>> arr mconcat
+        >>> arr pageBody

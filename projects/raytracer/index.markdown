@@ -1,47 +1,18 @@
 ---
-title:Raytracer
-longtitle:Raytracer
-shorttitle:raytracer
-description:The ray-tracer project traditional in Computer Graphics 2
-tech:C++, Eigen, SDL, CMake
-genre:Demo (sort of)
-screenshot:$root/content/raytracer/m6.png
---- downloadinfo
-Here\'s a tarball of milestone 1 as of 12/9:
+title: Raytracer
+longtitle: Raytracer
+shorttitle: raytracer
+description: The ray-tracer project traditional in Computer Graphics 2
+tech: C++, Eigen, SDL, CMake
+genre: Demo (sort of)
+screenshot: $root/content/raytracer/m6.png
+--- 
 
-[src.tgz]($root/downloadssrc.tgz)
-
-And milestone 2 as of 1/4(/10)
-
-[src2.tgz]($root/downloads/src2.tgz)
-
-And milestone 3 as of 1/15(/10)
-
-[src3.tgz]($root/downloads/src3.tgz)
-
-And milestone 4 as of 1/15(/10)
-
-[src4.tgz]($root/downloads/src4.tgz)
-
-And milestone 5 as of 1/15(/10)
-
-[src5.tgz]($root/downloads/src5.tgz)
-
-And milestone 6 as of 2/13(/10)
-
-[src6.tgz]($root/downloads/src6.tgz)
-
-And milestone 7 as of 2/22(/10)
-
-[src7.tgz]($root/content/downloads/src7.tgz)
-
---- intro
-This is the only class project you\'ll find in my portfolio, and for good reason: I really like the pretty pictures! While I and a partner developed this, we had to maintain a web page as part of the assignment; since that was already done, I didn\'t even have the excuse of laziness not to show it off. The assignment was broken up into seven milestones, shown below, and you can see the images go from awful to...well, you decide.
----
+This is the only school project you'll find here, and for good reason: I really like the pretty pictures! While I and a partner developed this, we had to maintain a web page as part of the assignment; since that was already done, I didn't even have the excuse of laziness not to show it off. The assignment was broken up into seven milestones, shown below, and you can see the images go from awful to...well, you decide.
 
 Here is milestone 1. It messily uses GL along with bits and pieces of former projects to recreate the Turner Whitted image, albeit with terrible lighting. Since the GL part will be thrown out the window going forward, I put more effort into carving out a solid framework to code in, and bringing in Eigen so I get vectors without having to reinvent the mathematical wheel.
 
-Here\'s a screencap:
+Here's a screencap:
 
 ![All I see is blackness!]($root/content/raytracer/m1.png)
 
@@ -86,21 +57,21 @@ Here are the screencaps ("carpet" image on the right):
 ![Bullseye?]($root/content/raytracer/m4-carpet.bmp)
 ![There's got to be a flying saucer somewhere ...]($root/content/raytracer/m4-supergoofy.bmp)
 
-Ugh. Brick wall after brick wall is no fun. First was the fuzzy static in the image that baffled us completely until it was explained to be a telltale sign of intersecting the same point twice due to floating point imprecision. Then came some really psychedelic reflections that would have been great if they weren\'t, y\'know, wrong. Evidently the reflection formula is somehow different depending on whether it\'s being used for specular lighting or ray recursion. I\'m guessing there\'s a negative sign missing somewhere in the mix, but for now I\'m finished.
+Ugh. Brick wall after brick wall is no fun. First was the fuzzy static in the image that baffled us completely until it was explained to be a telltale sign of intersecting the same point twice due to floating point imprecision. Then came some really psychedelic reflections that would have been great if they weren't, y'know, wrong. Evidently the reflection formula is somehow different depending on whether it's being used for specular lighting or ray recursion. I'm guessing there's a negative sign missing somewhere in the mix, but for now I'm finished.
 
-Here\'s all I get for my pain and suffering:
+Here's all I get for my pain and suffering:
 
 ![Look deep into my crystal ball.]($root/content/raytracer/m5.bmp)
 ![Look deep into my crystal ball.]($root/content/raytracer/m5.bmp)
 
-Implementing refraction was a bit more straightforward. No brick walls to speak of, at least. My partner Brian did most of the heavy lifting for this one, while I offered guidance. Our sphere intersection routine needed to be tweaked, and it took a couple of attempts to nail the refracted ray formula. I did some more parameter tweaking to get our image to jive with Whitted's image, and I\'ve arrived at the conclusion that it\'s not going to happen without \'cheating.\' Why? Because he cheated in the first place! For example, the shadow in the original is smaller than the sphere casting it, and the other sphere isn\'t casting any shadow at all. So instead I\'ll take the higher moral ground of a true-blue ray-traced image. Yep. Totally.
+Implementing refraction was a bit more straightforward. No brick walls to speak of, at least. My partner Brian did most of the heavy lifting for this one, while I offered guidance. Our sphere intersection routine needed to be tweaked, and it took a couple of attempts to nail the refracted ray formula. I did some more parameter tweaking to get our image to jive with Whitted's image, and I've arrived at the conclusion that it's not going to happen without 'cheating.' Why? Because he cheated in the first place! For example, the shadow in the original is smaller than the sphere casting it, and the other sphere isn't casting any shadow at all. So instead I'll take the higher moral ground of a true-blue ray-traced image. Yep. Totally.
 
-As always, here\'s the result:
+As always, here's the result:
 
 ![Look deep into my crystal balls.]($root/content/raytracer/m6.png)
 ![Look deep into my crystal balls.]($root/content/raytracer/m6.png)
 
-Tone reproduction was confusing, but no more complicated than translating the algorithms word for word into C++. Unfortunately, upon placing the images up, I realized that several graphical improvements, i.e. shadows, were lost in the bowels of shoddy source control, and hope to fix that within the next six hours. D\'oh!
+Tone reproduction was confusing, but no more complicated than translating the algorithms word for word into C++. Unfortunately, upon placing the images up, I realized that several graphical improvements, i.e. shadows, were lost in the bowels of shoddy source control, and hope to fix that within the next six hours. D'oh!
 
 Here are our results for Ward reproduction: 
 
@@ -119,4 +90,35 @@ Reinhard results follow, with modified Reinhard key-value images coming last:
 ![Wait what?]($root/content/raytracer/wtf.png)
 
 That's all, folks!
+
+## Download 
+
+Here's a tarball of milestone 1 as of 12/9: 
+
+[src.tgz]($root/downloadssrc.tgz)
+
+And milestone 2 as of 1/4(/10)
+
+[src2.tgz]($root/downloads/src2.tgz)
+
+And milestone 3 as of 1/15(/10)
+
+[src3.tgz]($root/downloads/src3.tgz)
+
+And milestone 4 as of 1/15(/10)
+
+[src4.tgz]($root/downloads/src4.tgz)
+
+And milestone 5 as of 1/15(/10)
+
+[src5.tgz]($root/downloads/src5.tgz)
+
+And milestone 6 as of 2/13(/10)
+
+[src6.tgz]($root/downloads/src6.tgz)
+
+And milestone 7 as of 2/22(/10)
+
+[src7.tgz]($root/content/downloads/src7.tgz)
+
 

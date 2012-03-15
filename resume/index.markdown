@@ -1,9 +1,14 @@
 ---
-title:R&eacute;sum&eacute;
+title: R&eacute;sum&eacute;
 ---
 
-![PDF]($root/content/icons/pdf.png "PDF")[Download](b.m.luchen.resume.pdf)
+Although I'm happily employed, I never miss an opportunity to brag about how 
+talented and awesome I am. One of these days I'll get a proper CV up as well.
 
-![HTML]($root/content/icons/html.png "HTML")[View in Browser](b.m.luchen.resume.html)
+Until then, you can...
+
+![PDF](/content/icons/pdf.png "PDF")[Download](b.m.luchen.resume.pdf)
+
+![HTML](/content/icons/html.png "HTML")[View in Browser](b.m.luchen.resume.html)
 
 
