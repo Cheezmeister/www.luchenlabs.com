@@ -21,16 +21,3 @@
     <p><a href="#download" id="downloadbutton">Download</a></p>
 </div>
 
-$intro
-<a href="$screenshot">
-  <img class="eyecandy" alt="Screenshot" src="$screenshot" width="auto" height="auto" />
-</a>
-
-<div>
-$body
-</div>
-
-<div class="trailer">
-<h2 id="download">Download</h2>
-$downloadinfo
-</div>
