@@ -6,15 +6,18 @@ genre: Platformer
 description: My first completed game 
 tech: C++, SDL
 screenshot: /content/screenshots/cheezus.png
-headhtml: 
+windownload: InstallCheezus.exe 
+windows: supported
+mac: unsupported
+nix: unsupported
 ---
 
 Cheezus is a typical platformer with a few twists in presentation and level 
 design; it's some of the worst code I've ever written, but I learned an 
 immense amount putting it together and I'm still rather partial to it. You 
-play as a piece of Swiss cheez and do some really bizarre stuff. (you'll see 
+play as a piece of Swiss cheez and do some rather bizarre things(you'll see 
 what I mean). Music's my original composition, sprites (the better ones, 
-anyway) done by my good buddy Spyke, and many thanks to the 
+anyway) done by Rich "Spyke" DeFrancisco, and many thanks to the 
 [Lazy Foo](http://lazyfooproductions.com/SDL_tutorials/index.php) for 
 teaching me everything I know about SDL. Enjoy!
 
@@ -51,7 +54,7 @@ I like cheez, so I made the player's character a piece of cheez - running,
 jumping, adventuring, transforming cheez. The rest of the design came together
 haphazardly but remarkably well for a pile of satirical nonsense. Day by day, 
 I chiseled out the engine - an awful, unmaintainable, memory-leaking mess, but 
-a complete and custom engine - hunted down bugs, tested each level relentlessly,
+a complete custom engine - hunted down bugs, tested each level relentlessly,
 and finally used some recent Music Theory knowledge to sequence background 
 music. By the end of the summer, I had a game I was proud of, and that people 
 even seemed to like!

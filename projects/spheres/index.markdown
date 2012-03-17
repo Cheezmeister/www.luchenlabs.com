@@ -5,8 +5,12 @@ shorttitle: spheres
 description: My current pet project
 genre: 3D Puzzle
 tech: C++, SDL, OpenGL, Luabind, wiiuse, CMake
-screenshot: /content/screenshots/spheres.png
+screenshot: /content/screenshots/spheres.png 
+windows: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-win32.exe/download
+mac: unsupported
+nix: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-Source.tar.gz/download
 ---
+
 
 Spheres of Influence is just what it sounds like: a bunch of spheres floating around in space and influencing each other in different ways. This includes attracting, repelling, sticking, bouncing, and so on and so forth. The objective is generally to move a unique "Focusphere" to a goal by controlling how it enters the level, placing/moving other spheres prior to launching, and/or influencing its movement after launch.
 

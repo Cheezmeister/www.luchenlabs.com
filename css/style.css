@@ -44,6 +44,23 @@ body {
   max-width:600;
 }
 
+tr.projectrow {
+  background-color:lightgreen;
+  border-radius: 6px 6px 6px 6px;
+  border-width:2px;
+  border-color:black;
+}
+
+img.supported {
+  opacity:1.0;
+}
+img.unsupported {
+  opacity:0.2;
+}
+a.unsupported {
+  cursor:default;
+}
+
 table.projectlist {
   min-width:600px;
   margin:50px;
