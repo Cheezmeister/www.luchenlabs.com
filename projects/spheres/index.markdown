@@ -9,6 +9,7 @@ screenshot: /content/screenshots/spheres.png
 windows: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-win32.exe/download
 mac: unsupported
 nix: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-Source.tar.gz/download
+sauce: http://soi.svn.sourceforge.net/svnroot/soi
 ---
 
 
@@ -28,7 +29,7 @@ After toying around with this idea for quite some time, I finally decided to mak
 
 ## News ##
 
-Well, it seems I bit off more than I could chew again. Between realizing how much I still have yet to learn about GL and C++ and simply wanting to trim some of the more low-hanging fruit off of my backlog of WIPs, I'm putting SOI officially on hiatus. I'll pick it up again at some point, and it will most likely be a rewrite, so let's call this a successful prototype rather than a fizzled effort!
+Well, it seems I bit off more than I could chew again. Between gaping in horror at the mess I'd written in my haste to get something playable out the door, realizing how much I still have yet to learn about GL and C++, and simply wanting to trim some of the more low-hanging fruit off of my backlog of WIPs, I'm putting SOI officially on hiatus. I'll pick it up again at some point, and it will most likely be a rewrite, so let's call this a successful prototype rather than a fizzled effort!
 
 ## Download
 SOI is hosted on Sourceforge, so you can either grab releases or check the code out from Subversion.

@@ -44,18 +44,30 @@ body {
   max-width:600;
 }
 
-tr.projectrow {
-  background-color:lightgreen;
-  border-radius: 6px 6px 6px 6px;
-  border-width:2px;
-  border-color:black;
+.projectrow td {
+  border-radius:16px;
 }
 
-img.supported {
+.dlsection img {
+  font-size:14px;
+  background-color:steelblue;
+  border-radius:2px;
+  padding:2px;
+  padding-left:16px;
+  padding-right:16px;
+  margin:2px;
+}
+
+.dlsection img:hover {
+  background-color:lightgreen;
+}
+
+.dlsection img.supported {
   opacity:1.0;
 }
-img.unsupported {
+.dlsection img.unsupported, .dlsection img.unsupported:hover {
   opacity:0.2;
+  background-color:gray;
 }
 a.unsupported {
   cursor:default;
@@ -63,8 +75,13 @@ a.unsupported {
 
 table.projectlist {
   min-width:600px;
-  margin:50px;
   margin-top:10px;
+  margin-bottom:10px;
+  margin-left:auto; 
+  margin-right:auto;
+
+  border:0px solid black;
+  border-radius:32px;
 }
 .projectlist p {
   text-align:top;
@@ -85,7 +102,7 @@ table.projectlist {
   text-decoration:none;
   margin-right:40px;
   border-right:1px solid black;
-  padding-bottom:0px;
+  padding-bottom:2px;
   border-bottom:2px solid black;
 }
 .footer a {

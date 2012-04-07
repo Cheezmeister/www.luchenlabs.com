@@ -6,10 +6,10 @@ description: A limited-edition addition addiction
 genre: 2D Puzzle, Educational
 tech: C#, XNA 3.1
 screenshot: /content/screenshots/chromathud.png
-windownload: Chromathud_Beta.zip
-windows: supported
+windows: /content/downloads/Chromathud\_Beta.zip
 mac: unsupported
 nix: unsupported
+sauce: unsupported
 --- 
 
 Chromathud is a loosely math-based rising block puzzle currently in development in collaboration with one Mister David Silverman with help from a certain Niels Van Hecke. The only math involved is addition, but it's the core mechanic. Blocks are numbered from 1 to 9 and they're cleared by selecting a few blocks which add up to a randomly chosen target number. 

@@ -8,7 +8,5 @@ While I mostly keep busy with small games, I sometimes dabble in other [fun](/ti
 Feel free to check stuff out and see if there's anything you like. Whee!
 
 ## Recent Projects ##
-<table class="projectlist">
-  $projects$
-</table>
+$projects$
 

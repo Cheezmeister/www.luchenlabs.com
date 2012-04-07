@@ -10,6 +10,9 @@ If you are an experienced web developer and notice something that makes you
 cringe, feel free to [tell me](contact.html).
 
 ## Top Projects ##
-$body$
+
+______________________________
+
+$projects$
 
 [Other Hackery](projects/)

@@ -6,10 +6,10 @@ genre: Platformer
 description: My first completed game 
 tech: C++, SDL
 screenshot: /content/screenshots/cheezus.png
-windownload: InstallCheezus.exe 
-windows: supported
+windows: /content/downloads/cheezus.7z
 mac: unsupported
 nix: unsupported
+sauce: unsupported
 ---
 
 Cheezus is a typical platformer with a few twists in presentation and level 
