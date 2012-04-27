@@ -1,8 +1,8 @@
 ---
-title:I'm a Follower, Not a Leader!
-date:Feb 17, 2011
-author:Cheezmeister
-tags:Ramblings
+title: I'm a Follower, Not a Leader!
+date: Feb 17, 2011
+author: Cheezmeister
+tags: Ramblings
 ---
 
 *Leadership.* Is it on your resume? Have you peppered your college applications

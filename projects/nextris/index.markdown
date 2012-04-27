@@ -7,7 +7,7 @@ description: A Tetris clone with a twist
 tech: C++, SDL, PortAudio
 screenshot: /content/screenshots/nextris.png
 windows: /content/downloads/Nextris.zip
-mac: /content/downloads/Nextris
+mac: /content/downloads/Nextris.dmg
 nix: /content/downloads/nextris
 sauce: https://github.com/Cheezmeister/Nextris
 --- 
@@ -23,6 +23,9 @@ By default, movement uses WASD and rotation uses the L and P keys (this was deve
 	
 ## Download ##
 
-[(Windows)](/downloads/Nextris-1.0.0-win32.zip)
+[(Windows)]($windows$)
+[(Mac)]($mac$)
+[(Linux binary)]($nix$)
+[(Source)]($sauce$)
 
 

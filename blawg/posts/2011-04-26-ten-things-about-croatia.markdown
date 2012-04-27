@@ -1,7 +1,7 @@
 ---
-title:10 Things About Croatia
-author:Cheezmeister
-date:April 26, 2011
+title: 10 Things About Croatia
+author: Cheezmeister
+date: April 26, 2011
 ---
 ### 10 Things I Miss From The US
 

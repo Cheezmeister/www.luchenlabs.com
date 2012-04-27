@@ -44,8 +44,8 @@ body {
   max-width:600;
 }
 
-.projectrow td {
-  border-radius:16px;
+.screenshot img {
+  border-radius:8px;
 }
 
 .dlsection img {
@@ -79,9 +79,6 @@ table.projectlist {
   margin-bottom:10px;
   margin-left:auto; 
   margin-right:auto;
-
-  border:0px solid black;
-  border-radius:32px;
 }
 .projectlist p {
   text-align:top;

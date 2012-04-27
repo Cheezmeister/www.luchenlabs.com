@@ -43,35 +43,47 @@ main = hakyll $ do
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
 
+    -- Render project pages
+    match "projects/*/index.markdown" $ do
+        route   $ setExtension ".html"
+        compile $ pageCompiler
+            >>> withHeaderAndFooter
+            >>> applyTemplateCompiler "templates/content.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+
     -- Render project main page
     match "projects/index.html" $ route idRoute
     create "projects/index.html" $ constA mempty
         >>> arr (setField "title" "All Projects")
         >>> requireAllA "projects/*/index.markdown" addProj
-        >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
-        >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
+        >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/projectlist.markdown"
         >>> applyTemplateCompiler "templates/content.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
 
+    -- Render posts
+    match "blawg/posts/*" $ do
+        route   $ setExtension ".html"
+        compile $ pageCompiler
+            >>> withHeaderAndFooter
+            >>> applyTemplateCompiler "templates/post.html"
+            >>> applyTemplateCompiler "templates/content.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+        
+    -- Render post list
     match "blawg/index.html" $ route idRoute
     create "blawg/index.html" $ constA mempty
         >>> arr (setField "title" "Blawg")
         >>> requireAllA "blawg/posts/*" addPostList
-        >>> applyTemplateCompiler "templates/postlist.markdown"
+        >>> requireA "blawgblurb.markdown" (setFieldA "blawgblurb" $ arr pageBody)
+        >>> withHeaderAndFooter
+        >>> applyTemplateCompiler "templates/postlist.html"
+        >>> applyTemplateCompiler "templates/content.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
-
-    -- Render project pages
-    match "projects/*/index.markdown" $ do
-        route   $ setExtension ".html"
-        compile $ pageCompiler
-            >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
-            >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
-            >>> applyTemplateCompiler "templates/content.html"
-            >>> applyTemplateCompiler "templates/default.html"
-            >>> relativizeUrlsCompiler
 
 
     -- Compile footer/header
@@ -79,6 +91,7 @@ main = hakyll $ do
     match "header.markdown"    $ compile pageCompiler
     match "toybox.markdown"    $ compile pageCompiler
     match "homeblurb.markdown" $ compile pageCompiler
+    match "blawgblurb.markdown" $ compile pageCompiler
 
     -- Read templates
     match "templates/*" $ compile templateCompiler
@@ -101,7 +114,7 @@ addProj = setFieldA "projects" $
 --
 addPostList :: Compiler (Page String, [Page String]) (Page String)
 addPostList = setFieldA "posts" $
-    arr (reverse . sortByBaseName)
+    arr (reverse . chronological)
         >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
         >>> arr mconcat
         >>> arr pageBody

@@ -3,7 +3,7 @@ title: Contact
 ---
 
 
-I'm generally pretty easy to get in touch with. Email is my preferred mode of communication, but I'm not terribly picky.
+I'm generally pretty easy to get in touch with. Email is our best bet, but I'm not terribly picky.
 
 ==========  ====================
 |email|      bml4633@rit.edu

@@ -1,8 +1,8 @@
 ---
-title:Procedural Audio at Last!
-date:Apr 13, 2011
-author:Cheezmeister
-tags:Coding
+title: Procedural Audio at Last!
+date: Apr 13, 2011
+author: Cheezmeister
+tags: Coding
 ---
 
 I don't usually allow myself to get consciously proud of my accomplishments, but when I do, *hoo* boy! It feels great! There's nothing more satisfying than the feeling of having created something unique, and it comes when least expected. Several nights ago, mostly out of boredom, I decided to take another crack at procedurally generated music for [Nextris]($root/projects/nextris), an endeavor that's been on the backburner for almost four years. In late 2007, I threw together this Tetris clone, but made it a challenge by avoiding the use of any resources--image files, sounds, scripts, etc. The entire game consists of the executable file. At around 500k, it's got nothing on [.kkrieger](http://www.theprodukkt.com/kkrieger), but I think it looks rather nice, even by Tetris standards. 

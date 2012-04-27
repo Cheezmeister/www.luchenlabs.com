@@ -1,8 +1,8 @@
 ---
-title:Hello, Dubrovnik
-date:March 11, 2011
-author:Cheezmeister
-tags:Croatia
+title: Hello, Dubrovnik
+date: March 11, 2011
+author: Cheezmeister
+tags: Croatia
 ---
 
 It's been a week since I arrived in Dubrovnik, and we've been getting along just fine. For the first few days I made sure to use the buddy system with other students who knew their way around the city better than I; now that I have the lay of the land, things should be a bit easier for the rest of the quarter.
