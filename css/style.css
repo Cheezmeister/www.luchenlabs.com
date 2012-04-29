@@ -69,8 +69,9 @@ body {
   opacity:0.2;
   background-color:gray;
 }
-a.unsupported {
+a.unsupported, a.unsupported:hover {
   cursor:default;
+  color:blue;
 }
 
 table.projectlist {
@@ -128,6 +129,11 @@ table.projectlist {
 #validator {
   float:left;
   margin-left:0px;
+}
+
+input#donate {
+  font-weight:bold;
+  text-decoration:none;
 }
 
 a#downloadbutton {

@@ -20,27 +20,24 @@ main = hakyll $ do
         compile compressCssCompiler
 
     -- Render normal static pages
-    forM_ ["contact.rst", "bio.markdown", "resume/index.markdown"] $ \p ->
+    forM_ ["contact.markdown", "bio.markdown", "resume/index.markdown"] $ \p ->
         match p $ do
             route   $ setExtension ".html"
             compile $ pageCompiler
-                >>> requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
-                >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
-                >>> applyTemplateCompiler "templates/content.html"
-                >>> applyTemplateCompiler "templates/default.html"
+                >>> withHeaderAndFooter
+                >>> wrapContent
                 >>> relativizeUrlsCompiler
 
     -- Render home page
     match "index.html" $ route $ idRoute
     create "index.html" $ constA mempty 
         >>> arr (setField "title" "Home")
-        >>> requireAllA (regex "projects/(nextris|chromathud|spheres)/index.markdown") addProj
+        >>> requireAllA (regex "projects/(nextris|chromathud|cheezus)/index.markdown") addProj
         >>> requireA "homeblurb.markdown" (setFieldA "homeblurb" $ arr pageBody)
         >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/projectlist.markdown"
         >>> applyTemplateCompiler "templates/index.markdown"
-        >>> applyTemplateCompiler "templates/content.html"
-        >>> applyTemplateCompiler "templates/default.html"
+        >>> wrapContent
         >>> relativizeUrlsCompiler
 
     -- Render project pages
@@ -48,8 +45,7 @@ main = hakyll $ do
         route   $ setExtension ".html"
         compile $ pageCompiler
             >>> withHeaderAndFooter
-            >>> applyTemplateCompiler "templates/content.html"
-            >>> applyTemplateCompiler "templates/default.html"
+            >>> wrapContent
             >>> relativizeUrlsCompiler
 
     -- Render project main page
@@ -59,8 +55,7 @@ main = hakyll $ do
         >>> requireAllA "projects/*/index.markdown" addProj
         >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/projectlist.markdown"
-        >>> applyTemplateCompiler "templates/content.html"
-        >>> applyTemplateCompiler "templates/default.html"
+        >>> wrapContent
         >>> relativizeUrlsCompiler
 
     -- Render posts
@@ -69,8 +64,7 @@ main = hakyll $ do
         compile $ pageCompiler
             >>> withHeaderAndFooter
             >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/content.html"
-            >>> applyTemplateCompiler "templates/default.html"
+            >>> wrapContent
             >>> relativizeUrlsCompiler
         
     -- Render post list
@@ -81,8 +75,7 @@ main = hakyll $ do
         >>> requireA "blawgblurb.markdown" (setFieldA "blawgblurb" $ arr pageBody)
         >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/postlist.html"
-        >>> applyTemplateCompiler "templates/content.html"
-        >>> applyTemplateCompiler "templates/default.html"
+        >>> wrapContent
         >>> relativizeUrlsCompiler
 
 
@@ -101,6 +94,10 @@ withHeaderAndFooter :: Compiler (Page String) (Page String)
 withHeaderAndFooter = requireA "footer.markdown" (setFieldA "footer" $ arr pageBody)
                   >>> requireA "header.markdown" (setFieldA "header" $ arr pageBody)
 
+-- Wrap content in just the default template
+wrapContent :: Compiler (Page String) (Page String)
+wrapContent = applyTemplateCompiler "templates/content.html"
+          >>> applyTemplateCompiler "templates/default.html"
 
 addProj :: Compiler (Page String, [Page String]) (Page String)
 addProj = setFieldA "projects" $
