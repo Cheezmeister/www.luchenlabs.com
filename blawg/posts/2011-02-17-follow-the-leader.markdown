@@ -76,7 +76,7 @@ skill...but honestly, must we encourage *everybody* to be a leader? Isn't
 the entire value to having a leader in that the rest of us *don't have to*
 and can focus on what we're good at? I'm convinced that good leaders must
 have several innate talents, much like musicians and mathematicians, that
-can only be learned in a limited extent. 
+can only be learned to a limited extent. 
 
 Let those people hone their craft and run the world of tomorrow. I'll be
 here coding.

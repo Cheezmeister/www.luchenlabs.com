@@ -38,9 +38,9 @@ This bizarre time-travel based puzzle adventure from Oren Bartal and
 Potato Factory doesn't get nearly as much lovin' as it deserves. In it, you 
 control an adorable, somewhat snarky robot trying to figure out just what the 
 heck is going on. The puzzles are some of the best I've ever seen, requiring 
-lateral thinking of a caliber on par with those of Braid or Portal. Much
+lateral thinking of a caliber on par with Braid or Portal. Much
 like those games, the story is expertly woven into the gameplay; no monstrous 
-cutscenes.  Also, it mocks Clippit, the irritating Microsoft paperclip. You 
+cutscenes.  Also, it mocks [Clippit](https://en.wikipedia.org/wiki/Clippit). You 
 just can't beat that.
 
 ###  The SDL ### 
