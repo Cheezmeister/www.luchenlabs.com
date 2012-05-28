@@ -6,9 +6,9 @@ description: My current pet project
 genre: 3D Puzzle
 tech: C++, SDL, OpenGL, Luabind, wiiuse, CMake
 screenshot: /content/screenshots/spheres.png 
-windows: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-win32.exe/download
+windows: http://sourceforge.net/projects/soi/files/soi-0.1/
 mac: unsupported
-nix: http://sourceforge.net/projects/soi/files/soi-0.1/Spheres%20of%20Influence-0.1.1-Source.tar.gz/download
+nix: http://sourceforge.net/projects/soi/files/Spheres%20of%20Influence-0.1.2-Linux.tar.bz2/download
 sauce: http://soi.svn.sourceforge.net/svnroot/soi
 ---
 
