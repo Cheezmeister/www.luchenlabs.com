@@ -8,7 +8,7 @@ preferred mode of communication, but I’m not terribly picky.
 
   ----------------------------------------------------------------------- ------------------------------------------
   ![email    ](http://postbox-inc.com/favicon.ico       "Email"         ) <bml4633@rit.edu>
-  ![phone    ](/content/icons/phone.png                 "Phone"         ) 1.916.BLUCHEN (1.916.258.2436)
+  ![phone    ](/content/icons/phone.ico                 "Phone"         ) 1.916.BLUCHEN (1.916.258.2436)
   ![google   ](http://www.google.com/favicon.ico        "Google"        ) Cheezmeister
   ![so       ](http://www.stackoverflow.com/favicon.ico "Stack Overflow") Cheezmeister
   ![tigsource](http://www.tigsource.com/favicon.ico     "TIGSource"     ) Cheezmeister
@@ -18,6 +18,6 @@ preferred mode of communication, but I’m not terribly picky.
   ![twitter  ](http://www.twitter.com/favicon.ico       "Twitter"       ) NeoCheez
   ![aim      ](/content/icons/aim.ico                   "Aim"           ) HeWhoLikethCheez
   ![skype    ](/content/icons/skype.ico                 "Skype"         ) HeWhoLikethCheez
-  ![gamefaqs ](http://www.gamefaqs.com/favicon.ico      "GameFAQs"      ) HeWhoLikthCheez (sic)
+  ![gamefaqs ](http://www.gamefaqs.com/favicon.ico      "GameFAQs"      ) HeWhoLikthCheez 
   ----------------------------------------------------------------------- ------------------------------------------
 
