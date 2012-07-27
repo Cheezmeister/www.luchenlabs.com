@@ -18,7 +18,7 @@ immense amount putting it together and I'm still rather partial to it. You
 play as a piece of Swiss cheez and do some rather bizarre things(you'll see 
 what I mean). Music's my original composition, sprites (the better ones, 
 anyway) done by Rich "Spyke" DeFrancisco, and many thanks to the 
-[Lazy Foo](http://lazyfooproductions.com/SDL_tutorials/index.php) for 
+[Lazy Foo](http://lazyfoo.net/SDL_tutorials/index.php) for 
 teaching me everything I know about SDL. Enjoy!
 
 ![Screenshot]($screenshot$)
