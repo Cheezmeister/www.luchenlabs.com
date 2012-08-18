@@ -2,11 +2,11 @@
 title: Chromathud
 longtitle: Chromathud
 shorttitle: chromathud
-description: A limited-edition addition addiction
+description: A limited-edition addition addiction. <strong>Full version is out now!</strong>
 genre: 2D Puzzle, Educational
 tech: C#, XNA 
 screenshot: /content/screenshots/chromathud.png
-windows: /content/downloads/Chromathud\_Beta.zip
+windows: /content/downloads/Chromathud.1.0.0.0.msi
 mac: unsupported
 nix: unsupported
 sauce: unsupported
@@ -16,13 +16,14 @@ Chromathud is a somewhat educational math-based rising block puzzle currently in
 
 The game is deceptively simple, but twists come in the form of time bonuses; penalties for deselecting blocks; and clearing by traditional groups of four or more touching blocks. 
 
-You can find a brief review of Chromathud [here](http://indiegameschannel.com/wp/2010/12/21/igf-2011-review-chromathud-by-luchenlabs/), and may or may not be able to play it online via [Spoon](http://spoon.net/chromathud).
+You can find a brief review of Chromathud [here](http://indiegameschannel.com/wp/2010/12/21/igf-2011-review-chromathud-by-luchenlabs/), and may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
 
 ![Screenshot]($screenshot$ "Screenshot")
 
 ## Download ##
-The full version is out! This will be the last PC release before we hit Xbox...and probably simply the last PC release.
-In the meantime, you should totally [tell us](http://twitter.com/neocheez) what you think!
+The [full version]($windows$) is out! If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
+
+This will be the last PC release before we hit Xbox...and probably simply the last PC release. In the meantime, you should totally [tell us](http://twitter.com/neocheez) what you think!
 
 
 #### Ye Olde Versions ####
