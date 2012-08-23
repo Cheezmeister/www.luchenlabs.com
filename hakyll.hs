@@ -26,6 +26,7 @@ main = hakyll $ do
             compile $ pageCompiler
                 >>> withHeaderAndFooter
                 >>> wrapContent
+                >>> finish
                 >>> relativizeUrlsCompiler
 
     -- Render home page
@@ -38,6 +39,7 @@ main = hakyll $ do
         >>> applyTemplateCompiler "templates/projectlist.markdown"
         >>> applyTemplateCompiler "templates/index.markdown"
         >>> wrapContent
+        >>> finish
         >>> relativizeUrlsCompiler
 
     -- Render project pages
@@ -46,7 +48,21 @@ main = hakyll $ do
         compile $ pageCompiler
             >>> withHeaderAndFooter
             >>> wrapContent
+            >>> finish
             >>> relativizeUrlsCompiler
+
+    -- Render web apps
+    match "apps/*/*.js" $ do
+        route idRoute 
+        compile copyFileCompiler
+    match "apps/*/index.md" $ do
+        route   $ setExtension ".html"
+        compile $ pageCompiler
+           >>> withHeaderAndFooter
+           >>> wrapContent
+           >>> withJS
+           >>> relativizeUrlsCompiler
+
 
     -- Render project main page
     match "projects/index.html" $ route idRoute
@@ -56,6 +72,7 @@ main = hakyll $ do
         >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/projectlist.markdown"
         >>> wrapContent
+        >>> finish
         >>> relativizeUrlsCompiler
 
     -- Render posts
@@ -65,6 +82,7 @@ main = hakyll $ do
             >>> withHeaderAndFooter
             >>> applyTemplateCompiler "templates/post.html"
             >>> wrapContent
+            >>> finish
             >>> relativizeUrlsCompiler
         
     -- Render post list
@@ -76,6 +94,7 @@ main = hakyll $ do
         >>> withHeaderAndFooter
         >>> applyTemplateCompiler "templates/postlist.html"
         >>> wrapContent
+        >>> finish
         >>> relativizeUrlsCompiler
 
 
@@ -97,7 +116,14 @@ withHeaderAndFooter = requireA "footer.markdown" (setFieldA "footer" $ arr pageB
 -- Wrap content in just the default template
 wrapContent :: Compiler (Page String) (Page String)
 wrapContent = applyTemplateCompiler "templates/content.html"
-          >>> applyTemplateCompiler "templates/default.html"
+
+-- Apply nasty silly HTML boilerplate, with JS
+finish :: Compiler (Page String) (Page String)
+finish = applyTemplateCompiler "templates/default.html"
+
+-- Apply nasty silly HTML boilerplate
+withJS :: Compiler (Page String) (Page String)
+withJS = applyTemplateCompiler "templates/defaultwithjs.html"
 
 addProj :: Compiler (Page String, [Page String]) (Page String)
 addProj = setFieldA "projects" $

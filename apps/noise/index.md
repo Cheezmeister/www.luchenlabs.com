@@ -77,7 +77,7 @@ Red Book standard</a>), for comparison, are sampled at 44,100 Hz and has 16 bits
 
 <div id="html5-container">
  <audio id="output" preload="none">
-  <source id="data"></source>
+  <source id="data" controls="true" ></source>
  </audio>
 
  <div id="keyboard">

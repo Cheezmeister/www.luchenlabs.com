@@ -126,23 +126,29 @@ var init = function() {
 
 var playWithHTML5 = function(dataURI) {
     var output = document.getElementById('output');
+    var data = document.getElementById('data');
 
-    if (output) {
-        output.parentNode.removeChild(output);
-    }
+    output.pause();
+    var parent = output.parentNode;
+    parent.removeChild(output);
 
     output = document.createElement("audio");
-
+    output.setAttribute('id', 'output');
     console.log(output);
+
 
     var data = document.createElement('source');
     
+    console.log("setting");
     data.setAttribute('src', dataURI);
     output.setAttribute('autostart', true);
-    output.setAttribute('id', 'output');
-
     output.appendChild(data);
-    document.getElementById('html5-container').appendChild(output);
+
+    parent.appendChild(output);
+
+    output.play();
+
+    console.log("set");
 };
 
 
@@ -212,7 +218,7 @@ var playTone = function(channels, sampleRate, bitsPerSample, seconds, volume, fr
         document.getElementById('dump-contents').innerHTML = '';
     }
 
-    playWithPlugin(dataURI);
+    playWithHTML5(dataURI);
 };
 
 var playWithPlugin = function(dataURI) {
