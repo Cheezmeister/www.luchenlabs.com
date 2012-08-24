@@ -4,8 +4,14 @@ var player; // store embed tag
 var KEY_WIDTH = 40;
 var BLACK_HEIGHT = 0.8;
 var TWELFTH_ROOT_OF_TWO = 1.0594630943592952645618252949463417007792043174941856;
-
 var A4_FREQUENCY = 440;
+
+var MIN_VOLUME = 1000;
+var MAX_VOLUME = 20000;
+var MIN_TONIC = A4_FREQUENCY / 2;
+var MAX_TONIC = A4_FREQUENCY * 2;
+var MAX_LENGTH = 5;
+
 
 
 var linearInterp = function(a, b, x) {
@@ -47,17 +53,29 @@ var handleKey = function() {
            channels: 1, 
            sampleRate: 22050, 
            bitsPerSample: 16, 
-           seconds: 0.9, 
+           seconds: 1.2,
            volume: {
-               v: [8000, 0], 
+               v: [8000, 0],
                interpolator: linearInterp,
            },
     };
 
+    var tonic = 0;
+    var freq = A4_FREQUENCY;
+
     var pianoKey = function(index, color) {
         if (color == 'twelve') {
-            var tonic = A4_FREQUENCY;
+            if (freq !== $('#frequency').val()) {
+                freq = $('#frequency').val();
+                tonic = Math.abs(Math.abs(freq) - MIN_TONIC) % (MAX_TONIC - MIN_TONIC) + MIN_TONIC;
+            }
             params.frequency = tonic * Math.pow(TWELFTH_ROOT_OF_TWO, index);
+            params.seconds = $('#length').val() % MAX_LENGTH;
+            params.volume.v = [
+                Math.abs(Math.abs($('#volume').val()) - MIN_VOLUME) % (MAX_VOLUME - MIN_VOLUME) + MIN_VOLUME,
+                0,
+            ];
+
             playTone(params);
         }
     }
@@ -126,44 +144,30 @@ var init = function() {
     draw(canvas);
 };
 
+var visualize = function() {
+    return function(data) {
+        for (var i = 0; i < data.length; ++i) {
+        }
+    }
+}
+
 var playWithHTML5 = function() {
     var i = 0;
 
     return function(dataURI) {
         i = ++i % 4;
-        var id = 'output' + 0;
-        console.log(id);
-
+        var id = 'output' + i;
         var output = document.getElementById(id);
-        // // var parent = output.parentNode;
-        // // // var data = document.getElementById('data' + i);
-    
-        // // output.pause();
-        // // parent.removeChild(output);
-        // // output = document.createElement('audio');
-        // // output.setAttribute('id', id);
-    
-    
-        // // var data = document.createElement('source');
-        // // data.setAttribute('src', dataURI);
-    
-    
-        // // output.removeChild(output.lastChild);
-        // // output.setAttribute('autostart', true);
-        // // output.appendChild(data);
-        // // parent.appendChild(output);
-        // // output.play();
-        //
-        output.pause();
         var parent = output.parentNode;
+        var data = document.createElement('source');
+
+
+        output.pause();
         parent.removeChild(output);
 
         output = document.createElement('audio');
         output.setAttribute('id', id);
 
-        console.log(output);
-
-        var data = document.createElement('source');
 
         data.setAttribute('src', dataURI);
         output.setAttribute('autostart', true);
@@ -244,6 +248,8 @@ var playTone = function(params) {
     document.getElementById('uri-length').innerHTML = dataURI.length + ' bytes';
 
     playWithHTML5(dataURI);
+
+    // visualize(out);
 };
 
 var playWithPlugin = function(dataURI) {

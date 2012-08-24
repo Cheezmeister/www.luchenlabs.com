@@ -35,11 +35,11 @@ Red Book standard</a>), for comparison, are sampled at 44,100 Hz and has 16 bits
  <table border="0" cellspacing="0" cellpadding="0" class="form">
   <tr>
    <th><label for="length">Length</label></th>
-   <td><input type="text" name="length" id="length" size="2" value="2" /> seconds</td>
+   <td><input type="text" name="length" id="length" size="2" value="1" /> seconds</td>
   </tr>
   <tr>
    <th><label for="volume">"Volume"</label></th>
-   <td><input type="text" name="volume" id="volume" size="6" value="32767" /></td>
+   <td><input type="text" name="volume" id="volume" size="6" value="8000" /></td>
   </tr>
   <tr>
    <th><label for="frequency">Base Frequency</label></th>
