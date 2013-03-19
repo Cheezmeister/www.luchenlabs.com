@@ -2,7 +2,7 @@
 title: Spheres of Influence
 longtitle: Spheres of Influence
 shorttitle: spheres
-description: My current pet project
+description: Procedural rube-goldberg puzzle...IN SPACE.
 genre: 3D Puzzle
 tech: C++, SDL, OpenGL, Luabind, wiiuse, CMake
 screenshot: /content/screenshots/spheres.png 
@@ -10,6 +10,7 @@ windows: http://sourceforge.net/projects/soi/files/soi-0.1/
 mac: unsupported
 nix: http://sourceforge.net/projects/soi/files/Spheres%20of%20Influence-0.1.2-Linux.tar.bz2/download
 sauce: http://soi.svn.sourceforge.net/svnroot/soi
+status: hiatus
 ---
 
 
@@ -25,7 +26,7 @@ There are a couple of advantages to a game of this type:
 
 ### Development ###
 
-After toying around with this idea for quite some time, I finally decided to make the commitment to implement it. I kicked it off as the quarter-long project in Computer Graphics II. The scope of the quarter was to get the preliminaries out of the way, i.e. a robust engine, sane development environment and lots of PR. By the end of the quarter, we had solid cross-platform support, first-person motion and an interactive demo of different visual effects (it's a graphics course, after all). From there it's been all about gameplay.
+After toying around with this idea for quite some time, I finally decided to take the dive and implement it. I kicked it off as the quarter-long project in Computer Graphics II. The scope of the quarter was to get the preliminaries out of the way, i.e. a robust engine, sane development environment and lots of PR. By the end of the quarter, we had solid cross-platform support, first-person motion and an interactive demo of different visual effects (it's a graphics course, after all). From there it's been all about gameplay.
 
 ## News ##
 

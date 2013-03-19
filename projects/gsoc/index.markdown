@@ -10,6 +10,7 @@ windows: http://tux4kids.alioth.debian.org/tuxmath/download.php
 mac: http://tux4kids.alioth.debian.org/tuxmath/download.php
 nix: http://tux4kids.alioth.debian.org/tuxmath/download.php
 sauce: http://tux4kids.alioth.debian.org/tuxmath/download.php
+status: ongoing
 --- 
 
 *Tux, of Math Command*, or TuxMath for short, is a math tutor game for children based on [Missile Command](http://en.wikipedia.org/wiki/Missile_Command). It is the product of almost a decade of work by a handful of incredibly cool people. I've been involved with TuxMath, and its parent organization [Tux4Kids](http://tux4kids.alioth.debian.org), since Tux4Kids accepted me into [GSoC](http://socghop.appspot.com) for 2008. That summer, I worked on TuxMath, adding two new gameplay modes, a full campaign and a turn-based multiplayer. I also put in support for any resolution display and retooled the backend to be more extensible.

@@ -10,20 +10,23 @@ windows: /content/downloads/Chromathud.1.0.0.0.msi
 mac: unsupported
 nix: unsupported
 sauce: unsupported
+other: XBLIG
+status: finished
 --- 
 
-Chromathud is a somewhat educational math-based rising block puzzle currently in development in collaboration with one Mister [David Silverman](http://davesilvermanart.com/) with help from a certain Niels Van Hecke. The only math involved is addition, but it's the core mechanic. Blocks are numbered from 1 to 9 and they're cleared by selecting a few blocks which add up to a randomly chosen target number. 
+Chromathud is a somewhat educational math-based rising block puzzle, developed on-and-off over several years in collaboration with [Dave Silverman](http://davesilvermanart.com/). 
+The core mechanic is addition, but it plays a relatively small role in the overall gameplay. 
+Blocks are numbered from 1 to 9 and they're cleared by selecting a few blocks which add up to a randomly chosen target number. 
 
 The game is deceptively simple, but twists come in the form of time bonuses; penalties for deselecting blocks; and clearing by traditional groups of four or more touching blocks. 
 
-You can find a brief review of Chromathud [here](http://indiegameschannel.com/wp/2010/12/21/igf-2011-review-chromathud-by-luchenlabs/), and may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
+<iframe width="560" height="315" src="http://www.youtube.com/embed/jBqc_PjGK08" frameborder="0" allowfullscreen></iframe>
 
-![Screenshot]($screenshot$ "Screenshot")
 
 ## Download ##
-The [full version]($windows$) is out! If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
+Chromathud is available for [80MSP on XBLIG](http://marketplace.xbox.com/en-US/Product/Chromathud/66acd000-77fe-1000-9115-d80258550cc3) and is [free for Windows]($windows$)! If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
 
-This will be the last PC release before we hit Xbox...and probably simply the last PC release. In the meantime, you should totally [tell us](http://twitter.com/neocheez) what you think!
+Alternatively, you may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
 
 
 #### Ye Olde Versions ####

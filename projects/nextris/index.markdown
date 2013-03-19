@@ -10,6 +10,7 @@ windows: /content/downloads/Nextris-1.0.1-win32.zip
 mac: /content/downloads/Nextris-1.0.1-Darwin.tar.bz2
 nix: /content/downloads/nextris-1.0.1
 sauce: https://github.com/Cheezmeister/Nextris
+status: ongoing
 --- 
 
 I started Nextris because I realized and found it appalling that I hadn't coded a Tetris clone. <i>Everyone</i> has coded a Tetris clone! Why is mine special, you ask? Well, seeing as it's a clone, that's an odd question; but come to think of it, wouldn't it be fun to play in a style that allows both classic line clearing as well as by grouping similar colors? Yes. It would. To make things interesting, I'm coding so that the app doesn't require any static content. This means drawing rectangles for all the graphics and playing procedurally generated music. 

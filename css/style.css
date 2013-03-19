@@ -45,13 +45,10 @@ body {
 }
 
 .screenshot img {
-  border-radius:8px;
 }
 
 .dlsection img {
   font-size:14px;
-  background-color:steelblue;
-  border-radius:2px;
   padding:4px;
   padding-left:16px;
   padding-right:16px;
@@ -69,9 +66,38 @@ body {
   opacity:0.2;
   background-color:gray;
 }
+
+.st-wip {
+  background-color:yellow;
+}
+
+.st-finished {
+  background-color:lightgreen;
+}
+
+.st-hiatus {
+  background-color:gray;
+}
+
+.st-ongoing {
+  background-color:lightblue;
+}
+
+img.windows {
+  background-color:steelblue;
+}
+img.mac {
+  background-color:white;
+}
+img.nix {
+  background-color:tan;
+}
+img.sauce {
+  background-color:black;
+}
+
 a.unsupported, a.unsupported:hover {
   cursor:default;
-  color:blue;
 }
 
 table.projectlist {
@@ -87,6 +113,9 @@ table.projectlist {
 
 .projectlist img {
   float:right;
+}
+.projectrow td {
+  border:2px solid transparent;
 }
 
 .navigation {
@@ -216,11 +245,6 @@ h1,h2,h3,h4,h5,h6 {
 
 strong {
   color:olivedrab;
-}
-
-code {
-  color:midnightblue;
-  background-color:white;
 }
 
 table {
