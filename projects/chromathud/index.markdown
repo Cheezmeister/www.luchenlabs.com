@@ -2,7 +2,7 @@
 title: Chromathud
 longtitle: Chromathud
 shorttitle: chromathud
-description: A limited-edition addition addiction. <strong>Full version is out now!</strong>
+description: A limited-edition addition addiction. <strong>Now on XBLIG!</strong>
 genre: 2D Puzzle, Educational
 tech: C#, XNA 
 screenshot: /content/screenshots/chromathud.png

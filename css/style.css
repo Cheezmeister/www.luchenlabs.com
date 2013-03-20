@@ -67,20 +67,8 @@ body {
   background-color:gray;
 }
 
-.st-wip {
-  background-color:yellow;
-}
-
-.st-finished {
-  background-color:lightgreen;
-}
-
-.st-hiatus {
-  background-color:gray;
-}
-
-.st-ongoing {
-  background-color:lightblue;
+.status img {
+  vertical-align:baseline;
 }
 
 img.windows {
@@ -111,7 +99,7 @@ table.projectlist {
   text-align:top;
 }
 
-.projectlist img {
+.dlsection img {
   float:right;
 }
 .projectrow td {
@@ -148,16 +136,18 @@ table.projectlist {
   /*border-top:1px dotted green;*/
   width:100%;
 }
-.footer td {
-  width:33%;
+div .footer {
+  margin-top:40px;
 }
-#paypal {
+.footer #right {
   float:right;
   margin-right:0px;
 }
-#validator {
+.footer #left {
   float:left;
   margin-left:0px;
+}
+.footer #middle {
 }
 
 input#donate {

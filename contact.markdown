@@ -8,7 +8,7 @@ preferred mode of communication, but I’m not terribly picky.
 
   ----------------------------------------------------------------------- ------------------------------------------
   ![email    ](http://postbox-inc.com/favicon.ico       "Email"         ) <bml4633@rit.edu>
-  ![phone    ](/content/icons/phone.ico                 "Phone"         ) 1.916.BLUCHEN (1.916.258.2436)
+  ![phone    ](/content/icons/phone.png                 "Phone"         ) 1.916.BLUCHEN (1.916.258.2436)
   ![google   ](http://www.google.com/favicon.ico        "Google"        ) Cheezmeister
   ![so       ](http://www.stackoverflow.com/favicon.ico "Stack Overflow") Cheezmeister
   ![tigsource](http://www.tigsource.com/favicon.ico     "TIGSource"     ) Cheezmeister

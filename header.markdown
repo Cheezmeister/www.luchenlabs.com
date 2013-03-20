@@ -6,7 +6,6 @@ title: Header
 
 [Home](/)
 [Projects](/projects)
-[Blawg](/blawg)
 [Bio](/bio.html)
 [R&eacute;sum&eacute;](/resume)
 [Contact](/contact.html)

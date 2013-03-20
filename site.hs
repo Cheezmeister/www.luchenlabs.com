@@ -49,6 +49,7 @@ main = hakyll $ do
     match "projects/*/index.markdown" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
+            >>= applyAsTemplate defaultContext
             >>= latContent
             >>= latDefault
             >>= relativizeUrls
@@ -57,7 +58,7 @@ main = hakyll $ do
     create ["index.html"] $ do
         route idRoute
         compile $ do
-            let homeCtx = field "projects" (\_ -> projectList $ recentFirst . take 3)
+            let homeCtx = field "projects" (\_ -> projectList (fromRegex "projects/(chromathud|nextris|cheezus)/index.markdown") $ recentFirst)
                     `mappend` blurb "homeblurb" "homeblurb.markdown"
                     `mappend` constField "title" "Home"              
                     `mappend` defaultContext
@@ -73,7 +74,7 @@ main = hakyll $ do
     create ["projects/index.html"] $ do
         route idRoute
         compile $ do
-            let prjCtx = field "projects" (\_ -> projectList $ recentFirst)
+            let prjCtx = field "projects" (\_ -> projectList "projects/*/index.markdown" $ recentFirst)
                     `mappend` constField "title" "All Projects"              
                     `mappend` defaultContext
 
@@ -124,9 +125,9 @@ projectCtx =
 
 
 --------------------------------------------------------------------------------
-projectList :: ([Item String] -> [Item String]) -> Compiler String
-projectList sortFilter = do
-    posts   <- sortFilter <$> loadAll "projects/*/index.markdown"
+projectList :: Pattern -> ([Item String] -> [Item String]) -> Compiler String
+projectList pattern sortFilter = do
+    posts   <- sortFilter <$> loadAll pattern
     itemTpl <- loadBody "templates/projectrow.html"
     list    <- applyTemplateList itemTpl projectCtx posts
     return list
