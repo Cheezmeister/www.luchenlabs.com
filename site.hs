@@ -39,11 +39,15 @@ main = hakyll $ do
 
     match "resume/index.markdown" $ do
         route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= latContent
-            >>= latDefault
-            >>= relativizeUrls
-            >>= cleanUrls
+        compile $ do
+            let resumeCtx = convertResume `mappend` defaultContext
+            
+            pandocCompiler
+                >>= applyAsTemplate resumeCtx
+                >>= latContent
+                >>= latDefault
+                >>= relativizeUrls
+                >>= cleanUrls
 
     -- Render project pages
     match "projects/*/index.markdown" $ do
@@ -90,6 +94,7 @@ main = hakyll $ do
     match "toybox.markdown" $ compile pandocCompiler
     match "homeblurb.markdown" $ compile pandocCompiler
     match "blawgblurb.markdown" $ compile pandocCompiler
+    match "resume/src/b.m.luchen.resume.tex" $ compile pandocCompiler
 
     match "templates/*" $ compile templateCompiler
 
@@ -106,6 +111,9 @@ cleanUrls = return . fmap (withUrls clean)
 
 blurb :: String -> Identifier -> Context String
 blurb name id = field name $ \i -> loadBody id
+
+convertResume :: Context String
+convertResume = blurb "reshtml" "resume/src/b.m.luchen.resume.tex"
 
 headerFooterCtx :: Context String
 headerFooterCtx = headerFooter `mappend` defaultContext

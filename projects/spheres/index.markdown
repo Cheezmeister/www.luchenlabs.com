@@ -11,6 +11,7 @@ mac: unsupported
 nix: http://sourceforge.net/projects/soi/files/Spheres%20of%20Influence-0.1.2-Linux.tar.bz2/download
 sauce: http://soi.svn.sourceforge.net/svnroot/soi
 status: hiatus
+statuschar: …
 ---
 
 

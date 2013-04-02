@@ -12,6 +12,7 @@ nix: unsupported
 sauce: unsupported
 other: XBLIG
 status: finished
+statuschar: ✔
 --- 
 
 Chromathud is a somewhat educational math-based rising block puzzle, developed on-and-off over several years in collaboration with [Dave Silverman](http://davesilvermanart.com/). 
@@ -24,7 +25,9 @@ The game is deceptively simple, but twists come in the form of time bonuses; pen
 
 
 ## Download ##
-Chromathud is available for [80MSP on XBLIG](http://marketplace.xbox.com/en-US/Product/Chromathud/66acd000-77fe-1000-9115-d80258550cc3) and is [free for Windows]($windows$)! If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
+- Available for [80MSP on XBLIG](http://marketplace.xbox.com/en-US/Product/Chromathud/66acd000-77fe-1000-9115-d80258550cc3) 
+- [free for Windows]($windows$)! 
+- If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
 
 Alternatively, you may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
 

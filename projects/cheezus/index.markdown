@@ -11,6 +11,7 @@ mac: unsupported
 nix: unsupported
 sauce: unsupported
 status: finished
+statuschar: ✔
 ---
 
 Cheezus is a typical platformer with a few twists in presentation and level 

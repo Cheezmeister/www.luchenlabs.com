@@ -1,24 +1,21 @@
 body {
-  background-color:aliceblue;
+  background-color:rgb(58,58,58);
   font-family:"Arial", Helvetica, sans-serif;
-  font-size:12px;
-  color:darkgreen;
+  font-size:14px;
+  color:rgb(200,240,150);
   table-align:center;
 }
 
 #content {
   position:relative;
-  width:62%;
+  width:60%;
   height:auto;
-  min-width:800px;
-  min-height:800px;
-  border-style:outset;
-  border-width:1px;
-  border-color:lightgreen;
   margin-left:auto;
   margin-right:auto;
   padding-left:8px;
   padding-right:8px;
+  border-left: 1px solid rgb(50,50,50);
+  border-right: 1px solid rgb(50,50,50);
 }
 
 .figure {
@@ -45,6 +42,7 @@ body {
 }
 
 .screenshot img {
+  border: 3px solid rgb(50,70,70);
 }
 
 .dlsection img {
@@ -65,6 +63,28 @@ body {
 .dlsection img.unsupported, .dlsection img.unsupported:hover {
   opacity:0.2;
   background-color:gray;
+}
+
+.status {
+  border: 1px outset black;
+  border-radius: 5px;
+  padding: 4px;
+}
+.st-char {
+  font-size:200%;
+  vertical-align:-0.25ex;
+}
+.st-wip {
+  background-color:orange;
+}
+.st-hiatus {
+  background-color:rgb(40,40,40);
+}
+.st-ongoing {
+  background-color:rgb(50,60,100);
+}
+.st-finished {
+  background-color:green;
 }
 
 .status img {
@@ -89,7 +109,6 @@ a.unsupported, a.unsupported:hover {
 }
 
 table.projectlist {
-  min-width:600px;
   margin-top:10px;
   margin-bottom:10px;
   margin-left:auto; 
@@ -110,18 +129,20 @@ table.projectlist {
   text-align:center;
   font-size:18px;
   margin-bottom:2px;
+  border-bottom: 1px solid rgb(70,70,70);
+  background-image: linear-gradient(to bottom, rgb(58,58,58), rgb(64,64,64));
 }
 
 .navigation a {
-  color:black;
+  color:rgb(230,230,230);
   text-decoration:none;
   margin-right:40px;
-  border-right:1px solid black;
+  border-right:1px solid rgb(230,230,230);
   padding-bottom:2px;
-  border-bottom:2px solid black;
+  border-bottom:2px solid rgb(230,230,230);
 }
 .footer a {
-  color:black;
+  color:rgb(230,230,230);
   font-weight:bold;
 }
 .footer {
@@ -138,6 +159,7 @@ table.projectlist {
 }
 div .footer {
   margin-top:40px;
+  background-color: rgb(40,40,40);
 }
 .footer #right {
   float:right;
@@ -224,13 +246,17 @@ a#downloadbutton:active {
   width:200;
 }
 
+a {
+  color:#4499ff;
+}
+
 a:hover {
-  color:#8899ff;
+  color:#0044aa;
   border-bottom:0px;
 }
   
 h1,h2,h3,h4,h5,h6 {
-  color:darkred;
+  color:rgb(240,150,150);
 }
 
 strong {
@@ -238,7 +264,20 @@ strong {
 }
 
 table {
-  table-align:center;
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px;
+}
+tr.even {
+  background-color:rgb(56,56,56);
+  border: 0px;
+}
+tr.odd {
+  background-color:rgb(64,64,64);
+  border: 0px;
 }
 
 img {

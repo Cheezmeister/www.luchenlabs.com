@@ -9,4 +9,6 @@ Until then, please accept my positively adequate grasp of
 
 ![PDF](/content/icons/pdf.png "PDF")[Download](b.m.luchen.resume.pdf)
 
+<div id="resume">$reshtml$</div>
+
 

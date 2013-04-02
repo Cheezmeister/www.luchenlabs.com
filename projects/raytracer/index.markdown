@@ -11,6 +11,7 @@ mac: unsupported
 nix: unsupported
 sauce: /content/downloads/src7.tgz
 status: finished
+statuschar: ✔
 --- 
 
 This is the only school project you'll find here, and for good reason: I really like the pretty pictures! While I and a partner developed this, we had to maintain a web page as part of the assignment; since that was already done, I didn't even have the excuse of laziness not to show it off. The assignment was broken up into seven milestones, shown below, and you can see the images go from awful to...well, you decide.
