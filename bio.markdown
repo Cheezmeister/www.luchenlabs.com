@@ -11,7 +11,7 @@ can't help growing older, I still haven't gotten around to growing up.
 ### I Am ###
 A [gamer](http://backloggery.com); 
 a [hac](http://en.wikipedia.org/wiki/Footbag)[ker](http://en.wikipedia.org/wiki/Computer_Programming); 
-a [reader](http://www.multivax.com/last_question.html);
+a [reader](http://filer.case.edu/dts8/thelastq.htm);
 a [writer](tidbits/arrgh.txt);
 an [addict](http://en.wikipedia.org/wiki/Mountain_Dew); 
 a [lyricist](http://www.amiright.com/parody/80s/bryanadams25.shtml); 
