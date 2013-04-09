@@ -35,6 +35,10 @@ body {
   margin:0px;
 }
 
+div.logo {
+  float:left;
+}
+
 .eyecandy {
   margin:8px;
   position:relative;
@@ -51,6 +55,8 @@ body {
   padding-left:16px;
   padding-right:16px;
   margin:2px;
+  border: 1px solid rgb(30,30,30);
+  border-radius: 3px;
 }
 
 .dlsection img:hover {

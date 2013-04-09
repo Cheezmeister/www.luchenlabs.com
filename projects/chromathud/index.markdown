@@ -9,7 +9,7 @@ screenshot: /content/screenshots/chromathud.png
 windows: /content/downloads/Chromathud.1.0.0.0.msi
 mac: unsupported
 nix: unsupported
-sauce: unsupported
+sauce: https://github.com/Cheezmeister/Chromathud
 other: XBLIG
 status: finished
 statuschar: ✔
