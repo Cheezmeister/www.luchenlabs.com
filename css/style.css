@@ -135,6 +135,11 @@ input#donate {
   text-decoration:none;
 }
 
+.alter-egos img {
+  width: 16px;
+  height: 16px;
+}
+
 a#downloadbutton {
   background-color:green;
   color:white;
