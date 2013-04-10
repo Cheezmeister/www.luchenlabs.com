@@ -3,22 +3,19 @@ var player; // store embed tag
 
 var KEY_WIDTH = 40;
 var BLACK_HEIGHT = 0.8;
-var CUBE_ROOT_OF_TWO = 18904 / 17843.0;
-
+var TWELFTH_ROOT_OF_TWO = 1.0594630943592952645618252949463417007792043174941856;
 var A4_FREQUENCY = 440;
 
-// This is where the magic happens
-function generate(form) {
-    var channels = parseInt(form.channels.value);
-    var sampleRate = parseInt(form.sampleRate.value);
-    var bitsPerSample = parseInt(form.bitDepth.value);
-    var seconds = parseFloat(form.length.value);
-    var volume = parseInt(form.volume.value);
-    var frequency = parseInt(form.frequency.value);
-    var showDump = form.showDump.checked;
+var MIN_VOLUME = 1000;
+var MAX_VOLUME = 20000;
+var MIN_TONIC = A4_FREQUENCY / 2;
+var MAX_TONIC = A4_FREQUENCY * 2;
+var MAX_LENGTH = 5;
 
-    playTone(channels, sampleRate, bitsPerSample, seconds, volume, frequency, showDump);
 
+
+var linearInterp = function(a, b, x) {
+    return b * x + a * (x - 1);
 }
 
 var hookKey = function() {
@@ -52,11 +49,34 @@ var handleKey = function() {
             'j': 11,
     };
     
+    var params = {
+           channels: 1, 
+           sampleRate: 22050, 
+           bitsPerSample: 16, 
+           seconds: 1.2,
+           volume: {
+               v: [8000, 0],
+               interpolator: linearInterp,
+           },
+    };
+
+    var tonic = 0;
+    var freq = A4_FREQUENCY;
+
     var pianoKey = function(index, color) {
         if (color == 'twelve') {
-            var tonic = A4_FREQUENCY;
-            var frequency = tonic * Math.pow(CUBE_ROOT_OF_TWO, index);
-            playTone(1, 22050, 16, 0.5, 8000, frequency, false);
+            if (freq !== $('#frequency').val()) {
+                freq = $('#frequency').val();
+                tonic = Math.abs(Math.abs(freq) - MIN_TONIC) % (MAX_TONIC - MIN_TONIC) + MIN_TONIC;
+            }
+            params.frequency = tonic * Math.pow(TWELFTH_ROOT_OF_TWO, index);
+            params.seconds = $('#length').val() % MAX_LENGTH;
+            params.volume.v = [
+                Math.abs(Math.abs($('#volume').val()) - MIN_VOLUME) % (MAX_VOLUME - MIN_VOLUME) + MIN_VOLUME,
+                0,
+            ];
+
+            playTone(params);
         }
     }
 
@@ -124,27 +144,41 @@ var init = function() {
     draw(canvas);
 };
 
-var playWithHTML5 = function(dataURI) {
-    var output = document.getElementById('output');
-
-    if (output) {
-        output.parentNode.removeChild(output);
+var visualize = function() {
+    return function(data) {
+        for (var i = 0; i < data.length; ++i) {
+        }
     }
+}
 
-    output = document.createElement("audio");
+var playWithHTML5 = function() {
+    var i = 0;
 
-    console.log(output);
+    return function(dataURI) {
+        i = ++i % 4;
+        var id = 'output' + i;
+        var output = document.getElementById(id);
+        var parent = output.parentNode;
+        var data = document.createElement('source');
 
-    var data = document.createElement('source');
-    
-    data.setAttribute('src', dataURI);
-    output.setAttribute('autostart', true);
-    output.setAttribute('id', 'output');
 
-    output.appendChild(data);
-    document.getElementById('html5-container').appendChild(output);
-};
+        output.pause();
+        parent.removeChild(output);
 
+        output = document.createElement('audio');
+        output.setAttribute('id', id);
+
+
+        data.setAttribute('src', dataURI);
+        output.setAttribute('autostart', true);
+        output.appendChild(data);
+
+        parent.appendChild(output);
+
+        output.play();
+
+    };
+}();
 
 
 
@@ -155,15 +189,25 @@ var playWithHTML5 = function(dataURI) {
 ////////////////////////////////////////////////////////////////////////////////
 // Start stolen code ;)
 ////////////////////////////////////////////////////////////////////////////////
-var playTone = function(channels, sampleRate, bitsPerSample, seconds, volume, frequency, showDump) {
+var playTone = function(params) {
+        
+    var channels = params.channels; 
+    var sampleRate = params.sampleRate; 
+    var bitsPerSample = params.bitsPerSample; 
+    var seconds = params.seconds; 
+    var frequency = params.frequency; 
+    var showDump = params.showDump;
+
     var data = [];
     var samples = 0;
     
     // Generate the sine waveform
     for (var i = 0; i < sampleRate * seconds; i++) {
         for (var c = 0; c < channels; c++) {
-            var v = volume * Math.sin((2 * Math.PI) * (i / sampleRate) * frequency);
-            data.push(pack("v", v));
+            var v = params.volume;
+            var volume = v.interpolator(v.v[0], v.v[1], i / (sampleRate * seconds));
+            var phase = volume * Math.sin((2 * Math.PI) * (i / sampleRate) * frequency);
+            data.push(pack("v", phase));
             samples++;
         }
     }
@@ -202,17 +246,10 @@ var playTone = function(channels, sampleRate, bitsPerSample, seconds, volume, fr
     document.getElementById('result').style.display = 'block';
     document.getElementById('wav-length').innerHTML = out.length + ' bytes';
     document.getElementById('uri-length').innerHTML = dataURI.length + ' bytes';
-    
-    // Generate the hex dump
-    if (showDump) {
-        document.getElementById('dump').style.display = 'block';
-        document.getElementById('dump-contents').innerHTML = hexDump(out);
-    } else {
-        document.getElementById('dump').style.display = 'none';
-        document.getElementById('dump-contents').innerHTML = '';
-    }
 
-    playWithPlugin(dataURI);
+    playWithHTML5(dataURI);
+
+    // visualize(out);
 };
 
 var playWithPlugin = function(dataURI) {

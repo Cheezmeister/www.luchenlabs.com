@@ -10,6 +10,8 @@ windows: http://tux4kids.alioth.debian.org/tuxmath/download.php
 mac: http://tux4kids.alioth.debian.org/tuxmath/download.php
 nix: http://tux4kids.alioth.debian.org/tuxmath/download.php
 sauce: http://tux4kids.alioth.debian.org/tuxmath/download.php
+status: ongoing
+statuschar: ∞
 --- 
 
 *Tux, of Math Command*, or TuxMath for short, is a math tutor game for children based on [Missile Command](http://en.wikipedia.org/wiki/Missile_Command). It is the product of almost a decade of work by a handful of incredibly cool people. I've been involved with TuxMath, and its parent organization [Tux4Kids](http://tux4kids.alioth.debian.org), since Tux4Kids accepted me into [GSoC](http://socghop.appspot.com) for 2008. That summer, I worked on TuxMath, adding two new gameplay modes, a full campaign and a turn-based multiplayer. I also put in support for any resolution display and retooled the backend to be more extensible.
@@ -19,6 +21,7 @@ Summer of Code is a program that Google has run for the past few years aimed to 
 
 ## News ##
 I'm a mentor again for 2012! The circle of GSoC continues.
+
 I'm a student again for 2010! This time around I'm tackling the far less
 glamorous task of factoring out code common to TuxType and TuxMath into a
 shared library, libt4k_common. Previously, the two apps benefited from each
@@ -27,7 +30,7 @@ other largely by copy-paste. Ouch!
 I'm a mentor for 2009! How the heck did that happen? 
 
 # Download ##
-[Windows] [1], [Linux] [2], and [Mac] [3] releases. This is how things looked right before I started messing w - I mean, contributing. (These are ancient by now, but are left as a testament to how far the software has come as other talented students have stepped up and left eh eir mark.)
+[Windows] [1], [Linux] [2], and [Mac] [3] releases. This is how things looked right before I started messing w - I mean, contributing. (These are ancient by now, but are left as a testament to how far the software has come as other talented students have stepped up and left their mark.)
 
 [Git Repository](git://git.debian.org/tux4kids/tuxmath.git): For the latest and greatest code. 
 

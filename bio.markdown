@@ -4,20 +4,22 @@ title: About Me
 
 Hey there. Pleased to make your acquaintance. I'm a proud geek, born 
 and raised on Long Island, New York, but itching to see the world. I 
-recently graduated from [RIT](http://www.rit.edu) with a 
-BS in Computer Science (with math and German minors!) and though I 
+graduated from [RIT](http://www.rit.edu) with a 
+BS in Computer Science (plus math and German minors!) and though I 
 can't help growing older, I still haven't gotten around to growing up. 
 
 ### I Am ###
 A [gamer](http://backloggery.com); 
 a [hac](http://en.wikipedia.org/wiki/Footbag)[ker](http://en.wikipedia.org/wiki/Computer_Programming); 
-a [reader](http://www.multivax.com/last_question.html);
+a [reader](http://filer.case.edu/dts8/thelastq.htm);
 a [writer](tidbits/arrgh.txt);
 an [addict](http://en.wikipedia.org/wiki/Mountain_Dew); 
 a [lyricist](http://www.amiright.com/parody/80s/bryanadams25.shtml); 
 a [hippie](http://www.ecogeek.org/);
 a skier; a skater;
-a teacher, and a learner. I sincerly enjoy learning in all its forms; whenever 
+a teacher, and a learner. 
+
+I sincerly enjoy learning in all its forms; whenever 
 I find something cool or useful, I can't resist playing with it. This 
 sometimes results in late homeworks. On the flip side, I get a kick out of 
 sharing what knowledge I have effectively with others, especially with kids. 

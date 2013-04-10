@@ -1,24 +1,21 @@
 body {
-  background-color:aliceblue;
+  background-color:rgb(58,58,58);
   font-family:"Arial", Helvetica, sans-serif;
-  font-size:12px;
-  color:darkgreen;
+  font-size:15px;
+  color:rgb(200,240,150);
   table-align:center;
 }
 
 #content {
   position:relative;
-  width:62%;
+  width:60%;
   height:auto;
-  min-width:800px;
-  min-height:800px;
-  border-style:outset;
-  border-width:1px;
-  border-color:lightgreen;
   margin-left:auto;
   margin-right:auto;
   padding-left:8px;
   padding-right:8px;
+  border-left: 1px solid rgb(50,50,50);
+  border-right: 1px solid rgb(50,50,50);
 }
 
 .figure {
@@ -45,13 +42,11 @@ body {
 }
 
 .screenshot img {
-  border-radius:8px;
+  border: 3px solid rgb(50,70,70);
 }
 
 .dlsection img {
   font-size:14px;
-  background-color:steelblue;
-  border-radius:2px;
   padding:4px;
   padding-left:16px;
   padding-right:16px;
@@ -69,13 +64,51 @@ body {
   opacity:0.2;
   background-color:gray;
 }
+
+.status {
+  border: 1px outset black;
+  border-radius: 5px;
+  padding: 4px;
+}
+.st-char {
+  font-size:200%;
+  vertical-align:-0.25ex;
+}
+.st-wip {
+  background-color:rgb(120,90,0);
+}
+.st-hiatus {
+  background-color:rgb(40,40,40);
+}
+.st-ongoing {
+  background-color:rgb(50,60,100);
+}
+.st-finished {
+  background-color:rgb(40,120,40);
+}
+
+.status img {
+  vertical-align:baseline;
+}
+
+img.windows {
+  background-color:steelblue;
+}
+img.mac {
+  background-color:white;
+}
+img.nix {
+  background-color:tan;
+}
+img.sauce {
+  background-color:black;
+}
+
 a.unsupported, a.unsupported:hover {
   cursor:default;
-  color:blue;
 }
 
 table.projectlist {
-  min-width:600px;
   margin-top:10px;
   margin-bottom:10px;
   margin-left:auto; 
@@ -85,26 +118,31 @@ table.projectlist {
   text-align:top;
 }
 
-.projectlist img {
+.dlsection img {
   float:right;
+}
+.projectrow td {
+  border:2px solid transparent;
 }
 
 .navigation {
   text-align:center;
   font-size:18px;
   margin-bottom:2px;
+  border-bottom: 1px solid rgb(70,70,70);
+  background-image: linear-gradient(to bottom, rgb(58,58,58), rgb(64,64,64));
 }
 
 .navigation a {
-  color:black;
+  color:rgb(230,230,230);
   text-decoration:none;
   margin-right:40px;
-  border-right:1px solid black;
+  border-right:1px solid rgb(230,230,230);
   padding-bottom:2px;
-  border-bottom:2px solid black;
+  border-bottom:2px solid rgb(230,230,230);
 }
 .footer a {
-  color:black;
+  color:rgb(230,230,230);
   font-weight:bold;
 }
 .footer {
@@ -119,16 +157,24 @@ table.projectlist {
   /*border-top:1px dotted green;*/
   width:100%;
 }
-.footer td {
-  width:33%;
+div .footer {
+  margin-top:40px;
+  background-color: rgb(40,40,40);
 }
-#paypal {
+.footer #right {
+  border: 0px solid rgb(40,70,40);
+  border-radius:12px;
+  padding-left:14px;
+  padding-right:14px;
+  background-color: rgba(50,70,50,0.2);
   float:right;
   margin-right:0px;
 }
-#validator {
+.footer #left {
   float:left;
   margin-left:0px;
+}
+.footer #middle {
 }
 
 input#donate {
@@ -210,26 +256,38 @@ a#downloadbutton:active {
   width:200;
 }
 
+a {
+  color:#4499ff;
+}
+
 a:hover {
-  color:#8899ff;
+  color:#0044aa;
   border-bottom:0px;
 }
   
 h1,h2,h3,h4,h5,h6 {
-  color:darkred;
+  color:rgb(240,150,150);
 }
 
 strong {
   color:olivedrab;
 }
 
-code {
-  color:midnightblue;
-  background-color:white;
-}
-
 table {
-  table-align:center;
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px;
+}
+tr.even {
+  background-color:rgb(56,56,56);
+  border: 0px;
+}
+tr.odd {
+  background-color:rgb(64,64,64);
+  border: 0px;
 }
 
 img {

@@ -6,8 +6,6 @@ comment: Note, table syntax is a Pandoc extension not in standard markdown
 I’m generally a pretty easy guy to get in touch with. Email is my
 preferred mode of communication, but I’m not terribly picky.
 
-<div id="alter-egos">
-
   ----------------------------------------------------------------------- ------------------------------------------
   ![email    ](http://postbox-inc.com/favicon.ico       "Email"         ) <bml4633@rit.edu>
   ![phone    ](/content/icons/phone.ico                 "Phone"         ) 1.916.BLUCHEN (1.916.258.2436)
@@ -23,4 +21,3 @@ preferred mode of communication, but I’m not terribly picky.
   ![gamefaqs ](http://www.gamefaqs.com/favicon.ico      "GameFAQs"      ) HeWhoLikthCheez 
   ----------------------------------------------------------------------- ------------------------------------------
 
-</div>

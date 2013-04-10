@@ -10,6 +10,8 @@ windows: unsupported
 mac: unsupported
 nix: unsupported
 sauce: /content/downloads/src7.tgz
+status: finished
+statuschar: ✔
 --- 
 
 This is the only school project you'll find here, and for good reason: I really like the pretty pictures! While I and a partner developed this, we had to maintain a web page as part of the assignment; since that was already done, I didn't even have the excuse of laziness not to show it off. The assignment was broken up into seven milestones, shown below, and you can see the images go from awful to...well, you decide.
@@ -22,7 +24,7 @@ Here's a screencap:
 
 The parameters of object locations are defined as follows:
 
-~~~{.c}
+```c
     glutInitWindowSize( 288, 288 );
     /* Observer on Z axis, looking at origin, up is Y axis */
     gluLookAt( 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 );
@@ -38,7 +40,7 @@ The parameters of object locations are defined as follows:
     glTranslatef(-0.5, -0.4, -0.5);
     glutSolidSphere(0.4, 32, 32);
     glutSolidSphere(0.4, 32, 32);
-~~~
+```
 
 Milestone 2 was a bit different. Between ripping out the GL portion of the existing project and patching up the rest of it as neatly as possible, and shooting files back and forth over break owing to no source control, the intersection calculations were somewhat of an afterthought and still quite messy. Supersampling was easy enough, though--it basically amounted to tracing an image of twice the dimensions and averaging each 4 adjacent pixels, although curiously the jaggies on the right are still mostly distinguishable.
 And the screencaps:

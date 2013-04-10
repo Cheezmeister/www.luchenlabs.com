@@ -1,6 +1,6 @@
 $homeblurb$
 
-<h2>Top Projects</h2>
+<h2>Selected Projects</h2>
 
 $body$
 
