@@ -1,4 +1,4 @@
-Hey there! I'm Brendan Luchen, and I *love* to code. Actually, I generally like making tuff, period. This site serves primarily as a personal portfolio, but may also play host to musings, tunes, poems, rants, etc.
+Hey there! I'm Brendan Luchen, and I *love* to code. Actually, I generally like making stuff, period. This site serves primarily as a personal portfolio, but may also play host to musings, tunes, poems, rants, etc.
 
 
 <div id="omglookatme">
