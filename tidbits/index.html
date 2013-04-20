@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<title>Tidbits</title>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+<body>
+
+<script lang="javascript">
+
+  /*  This work is licensed under Creative Commons GNU LGPL License.
+  
+      License: http://creativecommons.org/licenses/LGPL/2.1/
+      Version: 0.9
+      Author:  Stefan Goessner/2006
+      Web:     http://goessner.net/ 
+  */
+  function json2xml(o, tab) {
+     var toXml = function(v, name, ind) {
+        var xml = "";
+        if (v instanceof Array) {
+           for (var i=0, n=v.length; i<n; i++)
+              xml += ind + toXml(v[i], name, ind+"\t") + "\n";
+        }
+        else if (typeof(v) == "object") {
+           var hasChild = false;
+           xml += ind + "<" + name;
+           for (var m in v) {
+              if (m.charAt(0) == "@")
+                 xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
+              else
+                 hasChild = true;
+           }
+           xml += hasChild ? ">" : "/>";
+           if (hasChild) {
+              for (var m in v) {
+                 if (m == "#text")
+                    xml += v[m];
+                 else if (m == "#cdata")
+                    xml += "<![CDATA[" + v[m] + "]]>";
+                 else if (m.charAt(0) != "@")
+                    xml += toXml(v[m], m, ind+"\t");
+              }
+              xml += (xml.charAt(xml.length-1)=="\n"?ind:"") + "</" + name + ">";
+           }
+        }
+        else {
+           xml += ind + "<" + name + ">" + v.toString() +  "</" + name + ">";
+        }
+        return xml;
+     }, xml="";
+     for (var m in o)
+        xml += toXml(o[m], m, "");
+     return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+  }
+
+  var colorTable = {
+    colors: [ { 
+        name: 'grey',
+        rgb: [0x3f , 0x3f , 0x3f]
+      }, {
+        name: 'cinnabar', 
+        rgb: [0xaf , 0x64 , 0x64]
+      }, {
+        name: 'green', 
+        rgb: [0x00 , 0x80 , 0x00]
+      }, {
+        name: 'goldenrod', 
+        rgb: [0x80 , 0x80 , 0x00]
+      }, {
+        name: 'navy', 
+        rgb: [0x23 , 0x23 , 0x33]
+      }, {
+        name: 'fuschia', 
+        rgb: [0xaa , 0x50 , 0xaa]
+      }, {
+        name: 'cyan', 
+        rgb: [0x00 , 0xdc , 0xdc]
+      }, {
+        name: 'slate', 
+        rgb: [0xcc , 0xdc , 0xdc]
+      }, {
+        name: 'lavender', 
+        rgb: [0x80 , 0x80 , 0xc0]
+      }, {
+        name: 'salmon', 
+        rgb: [0xff , 0xaf , 0xaf]
+      }, {
+        name: 'grey', 
+        rgb: [0x7f , 0x9f , 0x7f]
+      }, {
+        name: 'grey', 
+        rgb: [0xd3 , 0xd0 , 0x8c]
+      }, {
+        name: 'grey', 
+        rgb: [0x70 , 0x71 , 0xe3]
+      }, {
+        name: 'grey', 
+        rgb: [0xc8 , 0x80 , 0xc8]
+      }, {
+        name: 'grey', 
+        rgb: [0xaf , 0xdf , 0xf0]
+      }, {
+        name: 'grey', 
+        rgb: [0x3f , 0x3f , 0x3f]
+      }
+  ]};
+
+  
+  var rgb = function(r, g, b) {
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+  var hex = function(r, g, b) {
+    return r.toString(16) + '' + g.toString(16) + '' + b.toString(16);
+  };
+
+  var plaintextport = function(head, func, foot) {
+    return function(src) {
+      var ret = '<pre>';
+      
+      if (head) ret += head;
+      
+      for (var i = 0; i < 16; ++i) {
+        var c = src.colors[i];
+        ret += func(i, c.name, c.r, c.g, c.b);
+      }
+      
+      if (foot) ret += foot;
+      
+      return ret + '</pre>';
+    };
+  };
+  
+  var ports = {
+    "Pretty Table" : function(src) {
+      return $('<table>')
+        .css('border-collapse', 'separate')
+        .css('border-spacing', '1px')
+        .append($('<thead>')
+          .append($('<td>').html('Name'))
+          .append($('<td>').html('Red'))
+          .append($('<td>').html('Green'))
+          .append($('<td>').html('Blue'))
+          .append($('<td>').html('Hex'))
+          .css('background-color', '#f0f0f0')
+        )
+        .append($('<tbody>')).append(
+          jQuery.map(src.colors, function(color) {
+            return $('<tr>')
+              .append($('<td>').html(color.name))
+              .append($('<td>').html(color.r))
+              .append($('<td>').html(color.g))
+              .append($('<td>').html(color.b))
+              .append($('<td>').html(hex(color.r, color.g, color.b)))
+              .css('background-color', rgb(color.r, color.g, color.b));
+          })
+      );
+    },
+    
+    "Windows CMD, Powershell, etc." : plaintextport(
+      'Windows Registry Editor Version 5.00\n\n' + 
+      '[HKEY_CURRENT_USER\Console]\n', 
+      function(index, name, r, g, b) {
+        return '"ColorTable' + (index < 10 ? '0' : '') + index + '"=dword:00' + hex(r, g, b) + '\n';
+      },
+      ''
+    ),
+    
+    "Console2" : plaintextport(
+      '', 
+      function(index, name, r, g, b) {
+        var object = {
+          color : {
+            '@id' : index,
+            '@r' : r,
+            '@g' : g,
+            '@b' : b
+          }
+        };
+        return json2xml(object, ' ').replace('<', '&lt;') + '\n';
+      },
+      ''
+    )
+    
+  };
+  
+  $(document).ready(function() {
+    jQuery.map(colorTable.colors, function(color) {
+      color.r = color.rgb[0];  
+      color.g = color.rgb[1];  
+      color.b = color.rgb[2];  
+    });
+  
+    for (var p in ports) {
+      var f = ports[p];
+      $('#output').append('<h3>' + p + '</h3>');
+      $('#output').append($('<hr>'));
+      $('#output').append(f(colorTable));
+      
+    }
+
+  });
+
+</script>
+
+
+<xmp theme="cerulean" style="display:none;">
+
+
+# Zenburn0x
+
+I love zenburn! I especially love that there are so many 
+[ports](http://slinky.imukuppi.org/2006/10/31/just-some-alien-fruit-salad-to-keep-you-in-the-zone/) 
+of it for different editors, shells, styles, and so on. Unfortunately, there's not much 
+consistency in these ports, so I decided to start this page to keep things all in one place. 
+
+Most of these can be found elsewhere, and few are really original work, so I 
+won't claim that they are, but I'm too lazy to give individual credit for 
+everyone I stole from in hacking this together. Sorry.
+
+Thanks in particular to Jani Nurminen for `zenburn.vim`, Artur Adib for 
+`strapdown.js`, and the throng of assorted authors that adapted the theme 
+for everything unde the sun!
+
+I prefer using a 16 color variant rather than Jani's original 256-color one--16 colors is plenty enough for 
+me, and it plays nicely with a much wider variety of software, including vim over ssh :) 
+
+Below are some of the ports I use it for.
+
+<div id="output"></div>
+
+Feel free to send me your own! Here's an example (or just check the source of this page)
+
+    // Just the name of the port paired with a JS function mapping the colorTable to a chunk of HTML
+    // plaintextport is a helper that should suffice for most cases
+    "Windows CMD, Powershell, etc." : plaintextport(
+    
+      // This text appears once at the beginning of the port
+      'Windows Registry Editor Version 5.00\n\n' + 
+      '[HKEY_CURRENT_USER\Console]\n', 
+      
+      // This function takes an index [0..15], a human-readable name, and components and spits out a line for each color
+      function(index, name, r, g, b) {
+        return '"ColorTable' + (index < 10 ? '0' : '') + index + '"=dword:00' + hex(r, g, b) + '\n';
+      },
+      
+      // If this port needed any sort of footer, it would appear here
+      ''
+    ),
+
+</xmp>
+</body>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+
+</html>

@@ -3,10 +3,8 @@ title: Footer
 ---
 
 <div id="left">
-<span id="validator"> 
-
+<span id="validator">
 [![Valid XHTML](http://www.w3.org/Icons/valid-xhtml10-blue) ](http://validator.w3.org/check?uri=referer) 
-
 </span> 
 </div>
 
