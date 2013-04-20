@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<title>Tidbits</title>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+<body>
+
+<script lang="javascript">
+
+  /*  This work is licensed under Creative Commons GNU LGPL License.
+  
+      License: http://creativecommons.org/licenses/LGPL/2.1/
+      Version: 0.9
+      Author:  Stefan Goessner/2006
+      Web:     http://goessner.net/ 
+  */
+  function json2xml(o, tab) {
+     var toXml = function(v, name, ind) {
+        var xml = "";
+        if (v instanceof Array) {
+           for (var i=0, n=v.length; i<n; i++)
+              xml += ind + toXml(v[i], name, ind+"\t") + "\n";
+        }
+        else if (typeof(v) == "object") {
+           var hasChild = false;
+           xml += ind + "<" + name;
+           for (var m in v) {
+              if (m.charAt(0) == "@")
+                 xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
+              else
+                 hasChild = true;
+           }
+           xml += hasChild ? ">" : "/>";
+           xml += '\n';
+           if (hasChild) {
+              for (var m in v) {
+                 if (m == "#text")
+                    xml += v[m];
+                 else if (m == "#cdata")
+                    xml += "<![CDATA[" + v[m] + "]]>\n";
+                 else if (m.charAt(0) != "@")
+                    xml += toXml(v[m], m, ind+"\t");
+              }
+              xml += (xml.charAt(xml.length-1)=="\n"?ind:"") + "</" + name + ">" + '\n';
+           }
+        }
+        else {
+           xml += ind + "<" + name + ">" + v.toString() +  "</" + name + ">";
+        }
+        return xml;
+     }, xml="";
+     for (var m in o)
+        xml += toXml(o[m], m, "");
+     return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+  }
+  
+  function escapeEnts(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+  }
+
+
+  var colorTable = {
+    colors: [ { 
+        name: 'black', rgb : [0x3f, 0x3f, 0x3f] 
+      }, {                       
+        name: 'red', rgb : [0xaf, 0x64, 0x64] 
+      }, {                                              
+        name: 'green', rgb : [0x00, 0x80, 0x00] 
+      }, {                                               
+        name: 'yelow', rgb : [0x80, 0x80, 0x00] 
+      }, {                                               
+        name: 'blue', rgb : [0x23, 0x23, 0x33] 
+      }, {                                               
+        name: 'pink', rgb : [0xaa, 0x50, 0xaa] 
+      }, {                                               
+        name: 'cyan', rgb : [0x00, 0xdc, 0xdc] 
+      }, {                                               
+        name: 'white', rgb : [0xcc, 0xdc, 0xdc] 
+      }, {                                               
+        name: 'boldblack', rgb : [0x80, 0x80, 0xc0] 
+      }, {                                               
+        name: 'boldred', rgb : [0xff, 0xaf, 0xaf] 
+      }, {                                               
+        name: 'boldyellow', rgb : [0x7f, 0x9f, 0x7f] 
+      }, {                                               
+        name: 'boldgrey', rgb : [0xd3, 0xd0, 0x8c] 
+      }, {                                               
+        name: 'boldblue', rgb : [0x70, 0x71, 0xe3] 
+      }, {                                               
+        name: 'boldpink', rgb : [0xc8, 0x80, 0xc8] 
+      }, {                                               
+        name: 'boldcyan', rgb : [0xaf, 0xdf, 0xf0] 
+      }, {                                               
+        name: 'boldwhite', rgb : [0xff, 0xff, 0xff] 
+      }
+  ]};
+
+  
+  var rgb = function(r, g, b) {
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  };
+  var pad = function(n) {
+    return (n < 10 ? '0' : '') + n
+  };
+  
+  var hex = function(r, g, b) {
+    return pad(r.toString(16)) + pad(g.toString(16)) + pad(b.toString(16));
+  };
+
+  var plaintextport = function(head, func, foot) {
+    return function(src) {
+      var ret = '<pre>';
+      
+      if (head) ret += head;
+      
+      for (var i = 0; i < 16; ++i) {
+        var c = src.colors[i];
+        ret += func(i, c.name, c.r, c.g, c.b);
+      }
+      
+      if (foot) ret += foot;
+      
+      return ret + '</pre>';
+    };
+  };
+  
+  var ports = {
+    "Pretty Table" : {
+      instructions: '1. Look\n2. Ooh\n3. Aah',
+      generator : function(src) {
+        return $('<table>')
+          .css('border-collapse', 'separate')
+          .css('border-spacing', '1px')
+          .append($('<thead>')
+            .append($('<td>').html('Name'))
+            .append($('<td>').html('Red'))
+            .append($('<td>').html('Green'))
+            .append($('<td>').html('Blue'))
+            .append($('<td>').html('Hex'))
+            .append($('<td>').html('Swatch'))
+            .css('background-color', '#f0f0f0')
+          )
+          .append($('<tbody>')).append(
+            jQuery.map(src.colors, function(color) {
+              return $('<tr>')
+                .css('text-align', 'right')
+                .append($('<td>').html(color.name))
+                .append($('<td>').html(color.r))
+                .append($('<td>').html(color.g))
+                .append($('<td>').html(color.b))
+                .append($('<td>').html(hex(color.r, color.g, color.b)))
+                .append($('<td>').css('background-color', rgb(color.r, color.g, color.b)));
+            })
+         );
+       }
+    },
+    
+    "Windows CMD, Powershell, etc." : {
+      instructions: 'Save with a .reg extension, open file to import to Windows Registry.',
+      generator : plaintextport(
+        'Windows Registry Editor Version 5.00\n\n' + 
+        '[HKEY_CURRENT_USER\\Console]\n', 
+        function(index, name, r, g, b) {
+          return '"ColorTable' + pad(index) + '"=dword:00' + hex(r, g, b) + '\n';
+        },
+        ''
+      )
+    },
+    
+    "PuTTY" : {
+      instructions : 'Save with a .reg extension, import to Windows Registry.',
+      generator : plaintextport(
+        'Windows Registry Editor Version 5.00\n\n' + 
+        '[HKEY_CURRENT_USER\\Software\\SimonTatham\\PuTTY\\Sessions\\Zenburn]\n', 
+        function(index, name, r, g, b) {
+          var ret = '"Colour' + (index + 6) + '"="' + r + ',' + g + ',' + b + '"\n';
+          if (name == 'white') {
+            ret += '"Colour0"="' + r + ',' + g + ',' + b + '"\n';
+            ret += '"Colour1"="' + r + ',' + g + ',' + b + '"\n';
+            ret += '"Colour5"="' + r + ',' + g + ',' + b + '"\n';
+          } else if (name == 'black') {
+            ret += '"Colour2"="' + r + ',' + g + ',' + b + '"\n';
+            ret += '"Colour3"="' + r + ',' + g + ',' + b + '"\n';
+            ret += '"Colour4"="' + r + ',' + g + ',' + b + '"\n';
+          } 
+          return ret;
+        },
+        ''
+      )
+    },
+    
+/*    
+    "Code::Blocks" : {
+      instructions: 'This is a weird one. It probably has bugs. Edit `%appdata%/CodeBlocks/default.conf`, add this node under `<colour_sets>`.',
+      generator : function(src) {
+        var object = {
+          zenburn : {
+            NAME : {
+              str : {
+                '#cdata' : 'Zenburn'
+              }
+            },
+            cc : {
+              // To be populated
+            }
+          }
+        };
+        var categories = [
+          'Default',
+          'Comment',
+          'Line Comment',
+          'Doc Comment',
+          'Line Doc Comment',
+          'Keyword',
+          'Class',
+          'String',
+          'Character',
+          'UUID',
+          'Preprocessor',
+          'Operator',
+          'Selection',
+          'Active Line',
+          'Matching Brace',
+          'Generated code'
+        ];
+        
+        for (var c in src.colors) 
+        for (var i = 0; i < 4; ++i) {
+          var color = src.colors[c];
+          var style = object.zenburn.cc['style' + (c * 4 + i)] = {
+            FORE : {
+              'colour': {
+               '@r' : color.r,
+               '@g' : color.g,
+               '@b' : color.b
+              }
+            },
+            NAME : {
+              'str': {
+                '#cdata' :  categories[c]
+              }
+            }
+          };
+          
+          if (c == 0) style.BACK = {
+            'colour' : {
+              '@r' : color.r,
+              '@g' : color.g,
+              '@b' : color.b
+            }
+          };
+        }
+        
+        var str = escapeEnts(json2xml(object, '  '));
+        return '<pre>' + str + '</pre>';
+      }
+    },
+*/    
+    "Console2" : {
+      instructions: 'Edit `console.xml`, add these entries under `<colors>`.',
+      generator : plaintextport(
+        '', 
+        function(index, name, r, g, b) {
+          var object = {
+            color : {
+              '@id' : index,
+              '@r' : r,
+              '@g' : g,
+              '@b' : b
+            }
+          };
+          return json2xml(object, ' ').replace('<', '&lt;') + '\n';
+        },
+        ''
+      )
+    }
+  };
+  
+  $(document).ready(function() {
+    jQuery.map(colorTable.colors, function(color) {
+      color.r = color.rgb[0];  
+      color.g = color.rgb[1];  
+      color.b = color.rgb[2];  
+    });
+  
+    for (var p in ports) {
+      var f = ports[p];
+      $('#output').append($('<hr>'));
+      $('#output').append('<h3>' + p + '</h3>');
+      $('#output').append(marked(f.instructions));
+      $('#output').append(f.generator(colorTable));
+      
+    }
+
+  });
+
+</script>
+
+<xmp theme="cerulean" style="display:none;">
+
+# Zenburn0x
+
+I love zenburn! I especially love that there are so many 
+[ports](http://slinky.imukuppi.org/2006/10/31/just-some-alien-fruit-salad-to-keep-you-in-the-zone/) 
+of it for different editors, shells, styles, and so on. Unfortunately, there's not much 
+consistency in these ports, so I decided to throw my favorites on this page to keep things all in one place. 
+
+Most of these can be found elsewhere, so I won't call this original work,
+but I'm lazy so I won't give individual credit. You can find that out [easily enough](http://slinky.imukuppi.org/2006/10/31/just-some-alien-fruit-salad-to-keep-you-in-the-zone/).
+
+Thanks in particular to Jani Nurminen for `zenburn.vim`, Artur Adib for 
+`strapdown.js`, and the throng of assorted authors that adapted the theme 
+for everything under the sun.
+
+I prefer using a 16 color variant rather than Jani's original 256-color one--16 colors is plenty enough for 
+me, and it plays nicely with a much wider variety of software, including `cmd` 
+and ancient terminals. I guess you could say it's more portable :) 
+
+Below are some of the ports I use regularly.
+
+In the future I might extend this tidbit to be a general-purpose color-scheme portomatic...but don't get your hopes up.
+
+<div id="output"></div>
+
+Feel free to send me your own! Here's an example (or just check the source of this page)
+
+    // Just the name of the port paired with a JS function mapping the colorTable to a chunk of HTML
+    // plaintextport is a helper that should suffice for most cases
+    "Windows CMD, Powershell, etc." : {
+      instructions: 'Save with a .reg extension, open file to import to Windows Registry.',
+      generator : plaintextport(
+
+        // Any header text goes here
+        'Windows Registry Editor Version 5.00\n\n' + 
+        '[HKEY_CURRENT_USER\Console]\n', 
+      
+        // This function takes an index [0..15], a human-readable name, and components and spits out a line for each color
+        function(index, name, r, g, b) {
+          return '"ColorTable' + pad(index) + '"=dword:00' + hex(r, g, b) + '\n';
+        },
+      
+        // If this port needed any sort of footer, it would appear here
+        ''
+      )
+    }
+
+
+# EV Training Quick Reference
+
+<form id="main" action="" method="get" name="mainform"> 
+  <input type="button" id="btnTrain" value="   Train   " class="buttons" /> 
+  <div id="subform">
+    <div id="stuffyouhave">
+      <h3>Boost Items Available</h3>
+      <p><label for="macho"><input type="checkbox" title="Macho Brace" id="macho" name="macho" />Macho Brace</label></p>
+      <p><label for="pkrs"><input type="checkbox" title="Pok&eacute;rus" id="pkrs" name="pkrs" />Pokerus</label></p>
+      <script type="text/javascript">
+        for (stat in stats) {
+          var tmpcb = 
+  	  '<label for="p' + stat + '">' +
+  	    '<input type="checkbox" id="p' + stat + '" name="pitems" value="' + stats[stat] + '" />' + 
+  	    'Power ' + pitems[stats[stat]] + 
+  	  '</label>';
+          document.write(tmpcb + '<br />');
+        }
+      </script>
+    </div>
+    <div id="statchoice">
+      <h3>Stat to Train</h3>
+      <label for="txtGoal">
+        Goal: <input onchange="generateInstructions()" label="Goal" type="text" id="txtGoal" value="252" size="3" maxlength="3" />
+      </label>
+      <select id="stattotrain">
+        <script type="text/javascript">
+          for (stat in stats) {
+            document.write('<option value="' + stats[stat] + 
+                '" selected="false">' + stats[stat] + '</option>');
+          }
+	  k
+          document.mainform.stattotrain[0].selected = true;
+        </script>
+      </select>
+      <br />
+      <!-- input type="button" id="btnMore" value="Train Another Stat" class="buttons" /-->
+    </div>
+    <h3>Game Version</h3>
+    <p><label for="dp">
+      <input type="radio" id="dp" name="version" selected="true" /> Diamond/Pearl
+    </label></p>
+    <p><label for="hg">
+      <input type="radio" id="hg" name="version" /> HeartGold/SoulSilver
+    </label></p>
+  </div>
+</form>
+
+<div id="instructions">
+
+    Check *all* items you have available. Instructions will appear here.
+
+</div>
+
+##### Thanks
+[the_1337_toad](http://www.gamefaqs.com/boards/925602-pokemon-pearl-version/40072098) for inspiring this guide.
+<br />Intro1827 for *lots* of testing and suggestions
+
+##### Notes
+This guide is intended to be a beginner\'s lookup for the all-around quickest 
+way to EV train your Pokemon. Because it is automated, though, it does have its 
+limitations. An full understanding of EV training and a handy list of good
+locations is still the best way to find the best method for your
+specific training needs. 
+
+# Beep
+
+I wrote this in high school for my senior prank. It went swimmingly!
+
+For brevity, I omit the full code, which looped. I'm sure you get the idea.
+
+    /* Small C program to play the Legend of Zelda theme on the system speaker */
+    /* Free for use under the terms of the WTFPL (http://sam.zoy.org/wtfpl/) */
+    
+    #include <windows.h>
+    
+    #define NOTE_C 	262
+    #define NOTE_CSHARP 277
+    #define NOTE_D 	294
+    #define NOTE_DSHARP 311
+    #define NOTE_E 	330
+    #define NOTE_F 	349
+    #define NOTE_FSHARP 370
+    #define NOTE_G 	392
+    #define NOTE_GSHARP 415
+    #define NOTE_A 	440
+    #define NOTE_ASHARP 466
+    #define NOTE_B		494
+    
+    int main()
+    	{	
+    	Beep(NOTE_C * 2, 		500);
+    	Beep(NOTE_G, 			750);
+    	Beep(NOTE_C * 2, 		250);
+    	Beep(NOTE_C * 2, 		125);
+    	Beep(NOTE_D * 2, 		125);
+    	Beep(NOTE_E * 2, 		125);
+    	Beep(NOTE_F * 2, 		125);
+    	Beep(NOTE_G * 2, 		1250);
+    	Beep(NOTE_G * 2, 		250); 
+    	Beep(NOTE_G * 2, 		250); 
+    	Beep(NOTE_GSHARP * 2, 	125); 
+    	Beep(NOTE_ASHARP * 2, 	125); 
+    	Beep(NOTE_C * 3, 		1250); 
+    	Beep(NOTE_C * 3, 		250); 
+    	Beep(NOTE_C * 3, 		250); 
+    	Beep(NOTE_ASHARP * 2, 	125); 
+    	Beep(NOTE_GSHARP * 2, 	125); 
+    	Beep(NOTE_ASHARP * 2, 	375); 
+    	Beep(NOTE_GSHARP * 2, 	125); 
+    	Beep(NOTE_G * 2,		750); 
+    	return 0;
+    	}
+
+# Arrgh!
+
+```
+Well Pirate be as Pirate do, that's how it ought to be
+A mighty tale I'll have to tell, is how it seems to me
+Round five and twenty years ago, when I were just a lad,
+Them scurvy Munchkins took me from me mother and me dad
+Not half me height, but keen and crafty, demons from the deep
+They stole inside, they stole upstairs, they stole me in me sleep
+When I awakened, aye, we were surrounded by the sea
+And ne'er have I since returned, a pirate's life for me!
+I worked the galley, dawn 'til dusk, a lowly, stinkin' slave,
+I served the Munchkins, fed myself what scraps a boy could save
+Below the deck I met a fine lass, Gracie were her name
+Her indigestion gripped her; she were gorgeous all the same.
+I told 'er "Gracie darlin', one day--mark my words!--one day,
+We'll leave these scallawaggers and together sail away!
+We'll find some place that's pure and clean, with children and balloons
+A paradise where all the streets are paved in gold dubloons!
+Aye, years we toiled, we swabbed the deck with sweat and blood and tears
+The sea Munchkins grew sloppy as we sailed away our years
+They stopped the whippin's, fed me meat, and even shared their grog
+Though slave I be, I were to them no more a scurvy dog
+Until--at last!--from down below, one starry night, I saw 
+The key to my own shackles, left atop a pile o' straw
+I reached for it, but if it were that easy, matey, aye,
+My arms were leagues away, I had to sit right back and sigh
+But then--a roaming Octopus I took to calling Joe
+Caught on to where my eyes were set (they're very sharp, you know)
+Ol' Joe had fearsome tentacles, he grabbed that key with ease
+Undid my shackles straightaway, I thanked him with some cheese.
+And so, to keep my promise to my darlin', bless her soul,
+I tiptoed from the brig, a Munchkin's cutlass thar I stole
+Arrr, 'ere he could cry out, I quickly slashed the bilge rat's neck
+And, smartly as a dolphin, made me way across the deck
+That night I slew a dozen-dozen Munchkins as they slept
+Just like they done to me--a fitting fate! Then, aye, I wept.
+For Gracie, when I found her, were a painful sight to see
+That very night--afraid, alone--she died of dysent'ry.
+
+And so I sail, where'er wind blows, a cap'n with a crew
+I hoist the jolly roger! Aye! A pirate through and through
+I've sailed to Indones-i-a, I've sailed to Kathmandu,
+I've seen the North Pole, matey, and I've seen the South Pole too
+I've wrestled giant lobsters and the Kraken--fearsome, he
+I've slain the legendary Fligga-Flubbadiddle-Dee
+I've rescued seven princesses (I kidnapped two meself)
+I've partied in Atlantis with a Caribbean Elf!
+And yo-ho-ho, my journey here be almost at an end
+Exhausted by my travels and deserted by my friends
+I sail the River Styx, alone, in search of brighter shores
+To find my darlin' Gracie and to tell her "lass, I'm yours"
+But who am I to tempt these waters? Mortal, aye, I be
+But mayhaps not for long, methinks, the grave be houndin' me
+Me corsair's now a dinghy, and me cutlass be a knife
+Me hat has one more feather, and I'm clingin' fast to life
+I've buckled swash, I've cheated death, I've sailed eleven seas
+But never have I seen a bunch o' waves the likes o' these.
+A dozen-dozen angry spectres chill me to the bone
+The Munchkins! Back for vengeance! I can hear them hiss and moan
+A horde of wayward spirits without body, without home
+Avast thar! They be tearin' at me breeches from the gloam!
+But wait--Ahoy!--a warm glow through the mist lies right ahead
+And on I must--can I make land before I wind up dead?
+A Munchkin grips my shoe, my pistol fires to no avail
+As I begin to wonder what what should happen if I fail
+Well Pirate be as Pirate do, that's how it ought to be
+A mighty tale I'll have to tell...
+```
+
+
+</xmp>
+</body>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+
+</html>
