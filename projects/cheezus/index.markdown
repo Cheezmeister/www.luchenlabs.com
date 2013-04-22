@@ -19,8 +19,9 @@ design; it's some of the worst code I've ever written, but I learned an
 immense amount putting it together and I'm still rather partial to it. You 
 play as a piece of Swiss cheez and do some rather bizarre things(you'll see 
 what I mean). Music's my original composition, sprites (the better ones, 
-anyway) done by Rich "Spyke" DeFrancisco, and many thanks to the 
-[Lazy Foo](http://lazyfoo.net/SDL_tutorials/index.php) for 
+anyway) done by Rich "Spyke" DeFrancisco 
+([this guy](http://www.nasa.gov/directorates/spacetech/strg/2012_nstrf_defrancisco.html)), 
+and many thanks to the [Lazy Foo](http://lazyfoo.net/SDL_tutorials/index.php) for 
 teaching me everything I know about SDL. Enjoy!
 
 ![Screenshot]($screenshot$)

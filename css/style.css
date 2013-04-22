@@ -18,6 +18,24 @@ body {
   border-right: 1px solid rgb(50,50,50);
 }
 
+
+#omglookatme {
+  background-color:rgb(10,100,50);
+  background-image: linear-gradient(rgb(40,120,80), rgb(10,100,50));
+  border-top: 1px solid rgb(0,120,120);
+  border-bottom: 1px solid rgb(0,120,120);
+  margin-left: -8px;
+  margin-right: -8px;
+  padding-left:8px;
+  line-height:2px;
+}
+#omglookatme em {
+  color: rgb(150,100,50);
+  font-family: serif;
+  font-size:120%;
+  text-shadow: rgb(200,150,100) 1px 1px;
+}
+
 .figure {
   display:inline;
 }
@@ -35,6 +53,10 @@ body {
   margin:0px;
 }
 
+div.logo {
+  float:left;
+}
+
 .eyecandy {
   margin:8px;
   position:relative;
@@ -42,7 +64,7 @@ body {
 }
 
 .screenshot img {
-  border: 3px solid rgb(50,70,70);
+  border: 2px solid rgb(50,70,70);
 }
 
 .dlsection img {
@@ -51,6 +73,8 @@ body {
   padding-left:16px;
   padding-right:16px;
   margin:2px;
+  border: 1px solid rgb(30,30,30);
+  border-radius: 3px;
 }
 
 .dlsection img:hover {
@@ -126,10 +150,12 @@ table.projectlist {
 }
 
 .navigation {
+  min-height:66px;
   text-align:center;
   font-size:18px;
   margin-bottom:2px;
   border-bottom: 1px solid rgb(70,70,70);
+  padding-top:16px;
   background-image: linear-gradient(to bottom, rgb(58,58,58), rgb(64,64,64));
 }
 

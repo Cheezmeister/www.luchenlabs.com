@@ -3,9 +3,9 @@ title: Footer
 ---
 
 <div id="left">
-<span id="validator">
+<div id="validator"> 
 [![Valid XHTML](http://www.w3.org/Icons/valid-xhtml10-blue) ](http://validator.w3.org/check?uri=referer) 
-</span> 
+</div>
 </div>
 
 
@@ -24,8 +24,7 @@ Site lovingly crafted using [Hakyll](http://jaspervdj.be/hakyll/). Source availa
 <div id="right">
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-Caffeinate me?  [![Bitcoin](/content/bitcoin-accepted-here.png)](bitcoin:1DjG6msMaHvrsb3vbvY5u2bVEXihKseHru?amount=0.2?label=Starving%20Electronic%20Artist)
+Caffeinate me?  [![Bitcoin](/content/bitcoin-accepted-here.png "Donate bitcoins")](bitcoin:1DjG6msMaHvrsb3vbvY5u2bVEXihKseHru?amount=0.2?label=Starving%20Electronic%20Artist)
 
 <input type="image" id="donate" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Paypal" /> 
 <input type="hidden" name="cmd" value="_s-xclick" /> 
