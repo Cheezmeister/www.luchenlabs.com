@@ -1,7 +1,3 @@
----
-title:La Historia de Clyde, el Elefante Rosado
----
-
 Una vez, vivió un elefante rosado que se llama Clyde. Clyde tenía un talento especial: podía balancearse en su nariz. Cada tarde a las tres, después de su trabajo en el campo de construcción, Clyde y sus amigos, tres ratones ciegos que se llaman Inky, Pinky, y Blinky, iban a la cuadra de estacionamiento para relajarse con una Coca-Cola. Compartían historias mientras que Clyde se balanceaba arriba abajo en su nariz larga. Siempre terminaba riendo a carcajadas. Por un tiempo, la vida se quedaba buena. 
 
 Un día, los chimpancés del gobierno vinieron al jefe de Clyde, el león. Le dijeron que fuera ilegal emplear elefantes rosados sin la licencia (bastante cara) correcta. El león gritó con indignidad pero los chimpes no cambió su posición y al león amenezaron que le pusieran en el parque zoológico. Mirando al suelo, él dijo que cooperara, y los chimpancés le lanzaron su excremento y salieron.  A Clyde el león encojó los hombros y le dijo que no pudiera trabajar más en el campo de construcción y que tuviera que buscar trabajo en un lugar distinto. 
