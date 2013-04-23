@@ -146,6 +146,13 @@
          );
        }
     },
+
+    "Xresources" : {
+      instructions : 'Save to ~/.Xresources',
+      generator : plaintextport( '', function(index, name, r, g, b) {
+          return '*color' + index + ': #' + hex(r, g, b) + '\n';
+      }, '')
+    },
     
     "CMD, Powershell, etc." : {
       instructions: 'Save with a .reg extension, open file to import to Windows Registry.',
