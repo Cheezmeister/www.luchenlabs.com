@@ -1,10 +1,10 @@
 I love zenburn! I especially love that there are so many 
-[ports](http://slinky.imukuppi.org/2006/10/31/just-some-alien-fruit-salad-to-keep-you-in-the-zone/) 
+[ports](http://slinky.imukuppi.org/zenburnpage/) 
 of it for different editors, shells, styles, and so on. Unfortunately, there's not much 
 consistency in these ports, so I decided to throw my favorites on this page to keep things all in one place. 
 
 Most of these can be found elsewhere, so I won't call this original work,
-but I'm lazy so I won't give individual credit. You can find that out [easily enough](http://slinky.imukuppi.org/2006/10/31/just-some-alien-fruit-salad-to-keep-you-in-the-zone/).
+but I'm lazy so I won't give individual credit. You can find that out [easily enough](http://slinky.imukuppi.org/zenburnpage/).
 
 Thanks in particular to Jani Nurminen for `zenburn.vim`, Artur Adib for 
 `strapdown.js`, and the throng of assorted authors that adapted the theme 
