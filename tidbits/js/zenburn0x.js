@@ -1,3 +1,8 @@
+(function() {
+
+  function escapeEnts(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+  }
 
   /*  This work is licensed under Creative Commons GNU LGPL License.
   
@@ -46,10 +51,6 @@
      return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
   }
   
-  function escapeEnts(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
-  }
-
 
   var colorTable = {
     colors: [ { 
@@ -145,6 +146,31 @@
             })
          );
        }
+    },
+
+    'gtkrc' : {
+      instructions : 'Locate your gtkrc (this could be anywhere, so I assume you know what you are doing)' + 
+        ' and substitute this line ',
+      generator : plaintextport(
+        'gtk-color-scheme = "', 
+        function() {
+          var gtk_color_name = [
+            'base_color',
+            'fg_color',
+            'selected_bg_color',
+            'selected_fg_color',
+            'text_color',
+            'bg_color',
+            'base_color',
+            'base_color',
+            'base_color',
+          ];
+          return function(index, name, r, g, b) {
+            return gtk_color_name[index] + ':#' + hex(r, g, b ) + '\\n';
+          };
+        }(), 
+        '"'
+      )
     },
 
     "Xresources" : {
@@ -282,14 +308,17 @@
       color.b = color.rgb[2];  
     });
   
+    var divOutput = $('#output');
     for (var p in ports) {
       var f = ports[p];
-      $('#output').append($('<hr>'));
-      $('#output').append('<h3>' + p + '</h3>');
-      $('#output').append(marked(f.instructions));
-      $('#output').append(f.generator(colorTable));
+      divOutput.append($('<hr>'))
+        .append('<h3>' + p + '</h3>')
+        .append(marked(f.instructions))
+        .append(f.generator(colorTable));
       
     }
 
   });
+
+})();
 

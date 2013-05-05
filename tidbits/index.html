@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-<title>Tidbits</title>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="js/zenburn0x.js"></script>
+<head>
+  <title>Tidbits</title>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="js/zenburn0x.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+</head>
 
 <body>
 
@@ -20,8 +23,8 @@ This is a place to dump hacks, toys, and other stuff that doesn't belong anywher
 $(document).ready(function() {
   function loadTidbit(content, name, id, code) {
     $.get('./' + content + '.md', function(data) {
-      var el = $('<div>').attr('id', id).html(marked(data));
-      $('#content').append($('<h1>').html(name)).append(el);
+      var el = $('<div>').html(marked(data));
+      $('#content').append($('<h1>').attr('id', id).html(name)).append(el);
       
       if (code) {
         $.getScript('./js/' + code + '.js', function(script, textStatus, jqXHR) {

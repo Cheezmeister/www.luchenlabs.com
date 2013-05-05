@@ -18,26 +18,7 @@ Below are some of the ports I use regularly.
 
 In the future I might extend this tidbit to be a general-purpose color-scheme portomatic...but don't get your hopes up.
 
+Feel free to send me your own! 
+
 <div id="output"></div>
 
-Feel free to send me your own! Here's an example (or just check the source of this page)
-
-    // Just the name of the port paired with a JS function mapping the colorTable to a chunk of HTML
-    // plaintextport is a helper that should suffice for most cases
-    "Windows CMD, Powershell, etc." : {
-      instructions: 'Save with a .reg extension, open file to import to Windows Registry.',
-      generator : plaintextport(
-
-        // Any header text goes here
-        'Windows Registry Editor Version 5.00\n\n' + 
-        '[HKEY_CURRENT_USER\Console]\n', 
-      
-        // This function takes an index [0..15], a human-readable name, and components and spits out a line for each color
-        function(index, name, r, g, b) {
-          return '"ColorTable' + pad(index) + '"=dword:00' + hex(r, g, b) + '\n';
-        },
-      
-        // If this port needed any sort of footer, it would appear here
-        ''
-      )
-    }

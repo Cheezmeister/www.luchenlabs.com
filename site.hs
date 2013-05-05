@@ -28,6 +28,11 @@ main = hakyll $ do
             >>= relativizeUrls
             >>= cleanUrls
 
+    -- Tidbits
+    match "tidbits/**" $ do
+        route idRoute
+        compile copyFileCompiler
+
     -- Resume
     match "resume/src/b.m.luchen.resume.tex" $ do
         route $ setExtension "html" `composeRoutes` gsubRoute "src/" (const "")
