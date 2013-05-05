@@ -151,34 +151,55 @@ var visualize = function() {
     }
 }
 
-var playWithHTML5 = function() {
+var playWithHTML5 = (function() {
     var i = 0;
 
     return function(dataURI) {
-        i = ++i % 4;
-        var id = 'output' + i;
-        var output = document.getElementById(id);
-        var parent = output.parentNode;
-        var data = document.createElement('source');
+      i = (++i % 4);
 
+      var output = $('output' + i);
+      var parent = output.parent();
+      output.pause();
+      output.remove();
 
-        output.pause();
-        parent.removeChild(output);
+      var el = document.createElement('audio');
+      output = $(el)
+        .attr('autostart', true)
+        .attr('id', id)
+        .append($('<source>').attr('src', dataURI))
+        .get(0);
 
-        output = document.createElement('audio');
-        output.setAttribute('id', id);
+      parent.append(el);
 
-
-        data.setAttribute('src', dataURI);
-        output.setAttribute('autostart', true);
-        output.appendChild(data);
-
-        parent.appendChild(output);
-
-        output.play();
-
+      el.play();
     };
-}();
+
+
+//    return function(dataURI) {
+//        i = ++i % 4;
+//        var id = 'output' + i;
+//        var output = document.getElementById(id);
+//        var parent = output.parentNode;
+//        var data = document.createElement('source');
+//
+//
+//        output.pause();
+//        parent.removeChild(output);
+//
+//        output = document.createElement('audio');
+//        output.setAttribute('id', id);
+//
+//
+//        data.setAttribute('src', dataURI);
+//        output.setAttribute('autostart', true);
+//        output.appendChild(data);
+//
+//        parent.appendChild(output);
+//
+//        output.play();
+//
+//    };
+})();
 
 
 

@@ -1,42 +1,71 @@
-function addEvent( obj, type, fn ) {
-    if (obj.addEventListener)
-        obj.addEventListener( type, fn, false );
-    else if (obj.attachEvent) {
-        obj["e"+type+fn] = fn;
-        obj.attachEvent( "on"+type, function() { obj["e"+type+fn](); } );
-    }
-}
-function $() {
-    var elements = new Array();
-    for (var i = 0; i < arguments.length; i++) {
-        var element = arguments[i];
-        if (typeof element == 'string')
-            element = document.getElementById(element);
-        if (arguments.length == 1)
-            return element;
-        elements.push(element);
-    }
-    return elements;
-}
-function show_status(str) {
-    $('status').innerHTML = str;
-}
-function _(radiolist) {
-    for (i = 0; i < radiolist.length; ++i ) {
-        if (radiolist[i].selected)
-            return radiolist[i].value;
-    }
-    return null;
-}
-function init() {
-    addEvent($('btnTrain'),"click", generateInstructions);
-    //addEvent($('btnMore'),"click", addStat);
-    handleDayOfWeek();
-}
-function print(str) {
-    str += "<br />";
-    $('instructions').innerHTML += str;
-}
+// function addEvent( obj, type, fn ) {
+//     if (obj.addEventListener)
+//         obj.addEventListener( type, fn, false );
+//     else if (obj.attachEvent) {
+//         obj["e"+type+fn] = fn;
+//         obj.attachEvent( "on"+type, function() { obj["e"+type+fn](); } );
+//     }
+// }
+// function $() {
+//     var elements = new Array();
+//     for (var i = 0; i < arguments.length; i++) {
+//         var element = arguments[i];
+//         if (typeof element == 'string')
+//             element = document.getElementById(element);
+//         if (arguments.length == 1)
+//             return element;
+//         elements.push(element);
+//     }
+//     return elements;
+// }
+// function show_status(str) {
+//     $('status').innerHTML = str;
+// }
+// function _(radiolist) {
+//     for (i = 0; i < radiolist.length; ++i ) {
+//         if (radiolist[i].selected)
+//             return radiolist[i].value;
+//     }
+//     return null;
+// }
+// function init() {
+//     addEvent($('btnTrain'),"click", generateInstructions);
+//     //addEvent($('btnMore'),"click", addStat);
+//     handleDayOfWeek();
+// }
+// function print(str) {
+//     str += "<br />";
+//     $('instructions').innerHTML += str;
+// }
+
+(function($) {
+  $(function() {
+    console.log('bleh');
+    $('newform').dform({
+      'html' : [ {
+        'type' : 'checkbox',
+        'caption' : 'Macho Brace',
+        'id' : 'ckMacho',
+        'name' : 'macho'
+      }, {
+        'type' : 'checkbox',
+        'caption' : 'Pok&eacute;rus',
+        'id' : 'ckPkrs',
+        'name' : 'pkrs'
+      }, {
+        'type' : 'checkbox',
+        'options' : {
+          'bracer' : 'Power Bracer',
+          'anklet' : 'Power Anklet',
+          'weight' : 'Power Weight',
+          'lens' : 'Power Lens',
+          'belt' : 'Power Belt',
+          'band' : 'Power Band'
+        }
+      }]
+    });
+  });
+})(jQuery);
 
 var stats = ["HP",    "Attack","Defense","SpecialAttack","SpecialDefense","Speed"];
 
