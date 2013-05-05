@@ -1,5 +1,5 @@
 /* Small C program to play the Legend of Zelda theme on the system speaker */
-/* Free for use under the terms of the WTFPL (http://sam.zoy.org/wtfpl/) */
+/* Licensed under the terms of the WTFPL (http://sam.zoy.org/wtfpl/) */
 
 #include <windows.h>
 
