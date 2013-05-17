@@ -33,6 +33,12 @@ main = hakyll $ do
         route idRoute
         compile copyFileCompiler
 
+
+    -- Apps
+    match "apps/nextris/index.md" $ do
+        route $ setExtension "html"
+        compile pandocCompiler
+
     -- Resume
     match "resume/src/b.m.luchen.resume.tex" $ do
         route $ setExtension "html" `composeRoutes` gsubRoute "src/" (const "")
@@ -41,6 +47,10 @@ main = hakyll $ do
             >>= latDefault
             >>= relativizeUrls
             >>= cleanUrls
+
+    match "resume/*.pdf" $ do
+        route idRoute 
+        compile copyFileCompiler 
 
     match "resume/index.markdown" $ do
         route   $ setExtension "html"
