@@ -6,7 +6,7 @@ genre: Platformer
 description: My first completed game 
 tech: C++, SDL
 screenshot: /content/screenshots/cheezus.png
-windows: /content/downloads/cheezus.7z
+windows: /content/downloads/Cheezus.7z
 mac: unsupported
 nix: unsupported
 sauce: unsupported

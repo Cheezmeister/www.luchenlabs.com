@@ -35,9 +35,15 @@ main = hakyll $ do
 
 
     -- Apps
-    match "apps/nextris/index.md" $ do
+    match "apps/nextris/*.js" $ do
+        route idRoute 
+        compile copyFileCompiler
+    match "apps/nextris/*.md" $ do
         route $ setExtension "html"
-        compile pandocCompiler
+        compile $ pandocCompiler
+           >>= latDefault
+           >>= relativizeUrls
+           >>= cleanUrls
 
     -- Resume
     match "resume/src/b.m.luchen.resume.tex" $ do
@@ -128,7 +134,7 @@ blurb :: String -> Identifier -> Context String
 blurb name id = field name $ \i -> loadBody id
 
 convertResume :: Context String
-convertResume = blurb "reshtml" "resume/src/b.m.luchen.resume.tex"
+convertResume = field "reshtml" $ \i -> loadBody "resume/src/b.m.luchen.resume.tex"
 
 headerFooterCtx :: Context String
 headerFooterCtx = headerFooter `mappend` defaultContext

@@ -4,8 +4,8 @@ title: About Me
 
 Hey there. Pleased to make your acquaintance. I'm a proud geek, born 
 and raised on Long Island, New York, but itching to see the world. I 
-graduated from [RIT](http://www.rit.edu) with a 
-BS in Computer Science (plus math and German minors!) and though I 
+have an $80,000 piece of paper from [RIT](http://www.rit.edu) that says 
+"Bachelor of Science" in large ornate letters, and though I 
 can't help growing older, I still haven't gotten around to growing up. 
 
 ### I Am ###
@@ -76,7 +76,7 @@ given platform; with CMake, there is none of that, and life is good.
 In short: Heavily cross-platform, the build tool of your choice, a nice
 interface, an intuitive but powerful script language make for a wonderful tool.
 
-You might also want to check out [Premake](http://industriousone.com/what-premake).
+You might also want to check out [Premake](http://industriousone.com/what-premake) or [gyp](http://code.google.com/p/gyp/).
 
 ### Haskell ###
 [http://www.haskell.org](http://www.haskell.org)
