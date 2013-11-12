@@ -20,8 +20,9 @@
         }
         else if (typeof(v) == "object") {
            var hasChild = false;
+           var m;
            xml += ind + "<" + name;
-           for (var m in v) {
+           for (m in v) {
               if (m.charAt(0) == "@")
                  xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
               else
@@ -30,7 +31,7 @@
            xml += hasChild ? ">" : "/>";
            xml += '\n';
            if (hasChild) {
-              for (var m in v) {
+              for (m in v) {
                  if (m == "#text")
                     xml += v[m];
                  else if (m == "#cdata")
@@ -54,37 +55,37 @@
 
   var colorTable = {
     colors: [ { 
-        name: 'black', rgb : [0x3f, 0x3f, 0x3f] 
+        name: 'black',       rgb : [0x3f, 0x3f, 0x3f] 
       }, {                       
-        name: 'red', rgb : [0xaf, 0x64, 0x64] 
+        name: 'red',         rgb : [0xaf, 0x64, 0x64] 
       }, {                                              
-        name: 'green', rgb : [0x00, 0x80, 0x00] 
+        name: 'green',       rgb : [0x00, 0x80, 0x00] 
       }, {                                               
-        name: 'yelow', rgb : [0x80, 0x80, 0x00] 
+        name: 'yelow',       rgb : [0x80, 0x80, 0x00] 
       }, {                                               
-        name: 'blue', rgb : [0x23, 0x23, 0x33] 
+        name: 'blue',        rgb : [0x23, 0x23, 0x33] 
       }, {                                               
-        name: 'pink', rgb : [0xaa, 0x50, 0xaa] 
+        name: 'pink',        rgb : [0xaa, 0x50, 0xaa] 
       }, {                                               
-        name: 'cyan', rgb : [0x00, 0xdc, 0xdc] 
+        name: 'cyan',        rgb : [0x00, 0xdc, 0xdc] 
       }, {                                               
-        name: 'white', rgb : [0xcc, 0xdc, 0xdc] 
+        name: 'white',       rgb : [0xcc, 0xdc, 0xdc] 
       }, {                                               
-        name: 'boldblack', rgb : [0x80, 0x80, 0xc0] 
+        name: 'boldblack',   rgb : [0x80, 0x80, 0xc0] 
       }, {                                               
-        name: 'boldred', rgb : [0xff, 0xaf, 0xaf] 
+        name: 'boldred',     rgb : [0xff, 0xaf, 0xaf] 
       }, {                                               
-        name: 'boldgreen', rgb : [0x7f, 0x9f, 0x7f] 
+        name: 'boldgreen',   rgb : [0x7f, 0x9f, 0x7f] 
       }, {                                               
-        name: 'boldyellow', rgb : [0xd3, 0xd0, 0x8c] 
+        name: 'boldyellow',  rgb : [0xd3, 0xd0, 0x8c] 
       }, {                                               
-        name: 'boldblue', rgb : [0x70, 0x71, 0xe3] 
+        name: 'boldblue',    rgb : [0x70, 0x71, 0xe3] 
       }, {                                               
-        name: 'boldpink', rgb : [0xc8, 0x80, 0xc8] 
+        name: 'boldpink',    rgb : [0xc8, 0x80, 0xc8] 
       }, {                                               
-        name: 'boldcyan', rgb : [0xaf, 0xdf, 0xf0] 
+        name: 'boldcyan',    rgb : [0xaf, 0xdf, 0xf0] 
       }, {                                               
-        name: 'boldwhite', rgb : [0xff, 0xff, 0xff] 
+        name: 'boldwhite',   rgb : [0xff, 0xff, 0xff] 
       }
   ]};
 
@@ -93,7 +94,7 @@
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
   };
   var pad = function(n) {
-    return (n < 10 ? '0' : '') + n
+    return (n < 10 ? '0' : '') + n;
   };
   
   var hex = function(r, g, b) {

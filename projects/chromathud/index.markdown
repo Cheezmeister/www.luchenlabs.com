@@ -15,9 +15,10 @@ status: finished
 statuschar: ✔
 --- 
 
-Chromathud is a somewhat educational math-based rising block puzzle, developed on-and-off over several years in collaboration with [Dave Silverman](http://davesilvermanart.com/). 
+Chromathud is a somewhat educational math-based rising block puzzle, developed on-and-off over several years in collaboration with [Dave Silverman](http://davesilvermanart.com/) and featuring original music by [Ben Roberts](http://www.benrobertscomposer.com/).
 The core mechanic is addition, but it plays a relatively small role in the overall gameplay. 
 Blocks are numbered from 1 to 9 and they're cleared by selecting a few blocks which add up to a randomly chosen target number. 
+
 
 The game is deceptively simple, but twists come in the form of time bonuses; penalties for deselecting blocks; and clearing by traditional groups of four or more touching blocks. 
 

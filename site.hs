@@ -18,6 +18,11 @@ main = hakyll $ do
     match "css/**" $ do
         route   idRoute
         compile compressCssCompiler
+    match "styl/**" $ do
+        route $ gsubRoute "styl" (const "css")
+        compile $ getResourceString >>=
+            withItemBody (unixFilter "stylus" []) >>=
+            return 
 
     -- Render normal static pages
     match (fromList ["bio.markdown", "contact.markdown"]) $ do

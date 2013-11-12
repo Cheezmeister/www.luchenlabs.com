@@ -1,0 +1,332 @@
+body 
+  background-color rgb(58,58,58)
+  font-family "Arial", Helvetica, sans-serif
+  font-size 15px
+  color rgb(200,240,150)
+  table-align center
+
+
+#content 
+  positjon relative
+  width 60%
+  height auto
+  margin-left auto
+  margin-right auto
+  padding-left 8px
+  padding-right 8px
+  border-left  1px solid rgb(50,50,50)
+  border-right  1px solid rgb(50,50,50)
+
+
+
+#omglookatme 
+  background-color rgb(10,100,50)
+  background-image  linear-gradient(rgb(40,120,80), rgb(10,100,50))
+  border-top  1px solid rgb(0,120,120)
+  border-bottom  1px solid rgb(0,120,120)
+  margin-left  -8px
+  margin-right  -8px
+  padding-left 8px
+  line-height 2px
+
+  & em
+    color  rgb(150,100,50)
+    font-family  serif
+    font-size 120%
+    text-shadow  rgb(200,150,100) 1px 1px
+
+
+.figure 
+  display inline
+
+
+/* I wish Markdown wouldn't jam these stupid things in */
+.caption 
+  visibility hidden
+  font-color black
+  font-size 8px
+  border-bottom 1px solid black
+  border-left 1px solid black
+  border-right 1px solid black
+  position relative
+  top 0px
+  margin 0px
+
+
+div.logo 
+  float left
+
+
+.eyecandy 
+  margin 8px
+  position relative
+  max-width 600
+
+
+.screenshot img 
+  border  2px solid rgb(50,70,70)
+
+
+.dlsection img 
+  font-size 14px
+  padding 4px
+  padding-left 16px
+  padding-right 16px
+  margin 2px
+  border  1px solid rgb(30,30,30)
+  border-radius  3px
+
+
+.dlsection img:hover 
+  background-color lightgreen
+
+
+.dlsection img.supported 
+  opacity 1.0
+
+.dlsection img.unsupported, .dlsection img.unsupported:hover 
+  opacity 0.2
+  background-color gray
+
+
+.status 
+  border  1px outset black
+  border-radius  5px
+  padding  4px
+
+.st-char 
+  font-size 200%
+  vertical-align -0.25ex
+
+.st-wip 
+  background-color rgb(120,90,0)
+
+.st-hiatus 
+  background-color rgb(40,40,40)
+
+.st-ongoing 
+  background-color rgb(50,60,100)
+
+.st-finished 
+  background-color rgb(40,120,40)
+
+
+.status img 
+  vertical-align baseline
+
+
+img.windows 
+  background-color steelblue
+
+img.mac 
+  background-color white
+
+img.nix 
+  background-color tan
+
+img.sauce 
+  background-color black
+
+
+a.unsupported, a.unsupported:hover 
+  cursor default
+
+
+table.projectlist 
+  margin-top 10px
+  margin-bottom 10px
+  margin-left auto; 
+  margin-right auto
+
+.projectlist p 
+  text-align top
+
+
+.dlsection img 
+  float right
+
+.projectrow td 
+  border 2px solid transparent
+
+
+.navigation 
+  min-height 66px
+  text-align center
+  font-size 18px
+  margin-bottom 2px
+  border-bottom  1px solid rgb(70,70,70)
+  padding-top 16px
+  background-image  linear-gradient(to bottom, rgb(58,58,58), rgb(64,64,64))
+
+
+.navigation a 
+  color rgb(230,230,230)
+  text-decoration none
+  margin-right 40px
+  border-right 1px solid rgb(230,230,230)
+  padding-bottom 2px
+  border-bottom 2px solid rgb(230,230,230)
+
+.footer a 
+  color rgb(230,230,230)
+  font-weight bold
+
+.footer 
+  text-align center
+  text-align top
+  height 10px
+  display inline
+  line-height 0px
+
+.footer table 
+  /*background-color lightgreen;*/
+  /*border-top 1px dotted green;*/
+  width 100%
+
+div .footer 
+  margin-top 40px
+  background-color  rgb(40,40,40)
+
+.footer #right 
+  border  0px solid rgb(40,70,40)
+  border-radius 12px
+  padding-left 14px
+  padding-right 14px
+  background-color  rgba(50,70,50,0.2)
+  float right
+  margin-right 0px
+
+.footer #left 
+  float left
+  margin-left 0px
+
+.footer #middle 
+
+
+input#donate 
+  text-decoration none
+
+
+.alter-egos img 
+  width  16px
+  height  16px
+
+
+a#downloadbutton 
+  background-color green
+  color white
+  font-size 32px
+  text-decoration none
+  position absolute
+  top 0
+  padding 8px
+  border-style outset
+  border-width 2px
+
+a#downloadbutton active 
+  border-style inset
+  color black
+
+#sharebutton 
+  position absolute
+  bottom 0
+  right 0
+  margin-right 0px
+  margin-left auto
+
+#toys 
+  width 200px
+  height 160px
+  position relative
+  float right
+  margin-right 0px
+  border-width 2px
+  border-color black
+
+#section  
+  position absolute
+  bottom 0
+
+#thanks,#notes 
+  position relative
+  float left
+
+#btnTrain 
+  position relative
+  top 40
+
+#instructions 
+  position relative
+  text-align left
+  width 400
+  z-index -42
+
+#btnTrain 
+  position relative
+  left 100
+  font-size 24px
+
+#main 
+  position relative
+  float right
+
+#subform 
+  position relative
+
+#stuffyouhave 
+  float right
+  width 200
+
+#statchoice 
+  float right
+  width 200
+
+
+a 
+  color #4499ff
+
+
+a:hover 
+  color #0044aa
+  border-bottom 0px
+
+  
+h1,h2,h3,h4,h5,h6 
+  color rgb(240,150,150)
+
+
+strong 
+  color olivedrab
+
+
+table 
+  position  relative
+  margin-top  10%
+  margin-bottom  10%
+  margin-left  auto
+  margin-right  auto
+  border  0px
+
+
+#alter-egos img 
+  width  16px
+  height  16px
+
+
+tr.even 
+  background-color rgb(56,56,56)
+  border  0px
+
+tr.odd 
+  background-color rgb(64,64,64)
+  border  0px
+
+
+img 
+  border-style none
+  border-width 2px
+  max-width 800px
+  text-align center
+  margin auto auto auto auto
+  table-align center
+
