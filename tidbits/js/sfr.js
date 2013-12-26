@@ -1,6 +1,6 @@
 (function() {
   var sfr = {
-    Veggies : {
+    'Veggies' : {
       weight : 0.3,
       min : 3,
       list : [
@@ -17,7 +17,7 @@
         'tomato',
       ]
     },
-    Meat : {
+    'Meat' : {
       weight : 0.2,
       min : 1,
       list : [
@@ -53,6 +53,7 @@
         'salt',
         'pepper',
         'cumin',
+        'coriander',
         'cloves',
         'cinnamon',
         'ginger'
@@ -61,7 +62,7 @@
   };
     
 
-  $(document).ready(function() {
+  function reroll() {
     var text = "Ingredients:\n";
 
     for (var a in sfr) {
@@ -92,7 +93,29 @@
 
     text += "\n1. Dump your wondrous creation onto plate(s) and devour.";
 
-    $('#stir-fry-output').append($('<p>').append(marked(text)));
+    $('#sfr-output').html("");
+    $('#sfr-output').append($('<p>').append(marked(text)));
+  }
 
+  function sfrInit() {
+    for (var a in sfr) {
+      var id = 'sfr-' + a;
+      var listbox = $('<select multiple="multiple">').id(id).attr('name', id);
+      for (var i = 0; i < sfr[a].list.length; ++i) {
+        var x = sfr[a].list[i];
+        listbox.append($('<option>').text(x));
+      }
+      $('#sfr-ingredients').prepend(listbox);
+      //$('#sfr-ingredients').prepend($('<label>').attr('for', id).text(a);
+    }
+  }
+
+  $(document).ready(function() {
+    reroll();
+
+    $('#sfr-reroll').click(reroll);
+
+    sfrInit();
   });
+
 })();
