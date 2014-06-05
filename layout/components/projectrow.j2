@@ -1,0 +1,38 @@
+<tr class="projectrow">
+  <td>
+    <p><a href="/projects/{{ project.meta.shorttitle }}.html">{{ project.meta.title }}</a>: {{ project.meta.description }}</p>
+    <p>Type: {{ project.meta.genre }}</p>
+    <p>Technologies: {{ project.meta.tech }}</p>
+    <p>Status: <span class="status st-{{ project.meta.status }}"><span class="st-char">{{ project.meta.statuschar }}</span>{{ project.meta.status }}</span></p>
+
+  </td>
+
+  <td class="dlsection">
+      <p>
+      <a class="windows {{ project.meta.windows }}" href="{{ project.meta.windows }}">
+        <img class="windows {{ project.meta.windows }}" alt="Windows" title="Windows" width="16" height="auto" src="http://windows.microsoft.com/favicon.ico" />
+        </a>
+
+        <a class="mac {{ project.meta.mac }}" href="{{ project.meta.mac }}">
+          <img class="mac {{ project.meta.mac }}" alt="Mac" title="Mac" width="16" height="auto" src="http://www.apple.com/favicon.ico" />
+        </a>
+
+      </p><p>
+
+
+      <a class="nix {{ project.meta.nix }}" href="{{ project.meta.nix }}">
+        <img class="nix {{ project.meta.nix }}" alt="Nix" title="Linux/Unix" width="16" height="auto" src="http://www.linuxquestions.org/favicon.ico" />
+        </a>
+
+        <a class="sauce {{ project.meta.sauce }}" href="{{ project.meta.sauce }}">
+          <img class="sauce {{ project.meta.sauce }}" alt="Src" title="Source code" width="16" height="auto" src="/media/icons/sauce.png" />
+        </a>
+      </p>
+  </td>
+
+  <td class="screenshot"> <a href="/projects/{{ project.meta.shorttitle }}.html">
+      <img width="160" height="auto" alt="Screenshot" src="/media/images/screenshots/{{ project.meta.shorttitle }}.png" />
+  </a></td>
+</tr>
+
+

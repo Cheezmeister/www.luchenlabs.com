@@ -8,3 +8,5 @@ hakyll.hi
 hakyll.o
 
 
+content/media
+deploy
