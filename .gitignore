@@ -10,3 +10,4 @@ hakyll.o
 
 content/media
 deploy
+.hyde_deps
