@@ -1,0 +1,10 @@
+extends ./page.jade
+
+block innercontent
+  {{{ content }}}
+
+  table.projectlist
+    {{#index}} 
+    include partials/projectrow.jade
+    {{/index}}
+

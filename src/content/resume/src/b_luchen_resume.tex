@@ -1,0 +1,95 @@
+% LaTeX file for resume 
+% This file uses the resume document class (res.cls)
+
+\documentclass[line,margin]{res} 
+\setlength{\textheight}{9.6in} % increase text height to fit on 1-page 
+\linespread{1.2} % If space, stretch out and relax
+\usepackage{hyperref}
+
+\newsectionwidth{0.9in}
+
+\newcommand{\CS}{C\texttt{\#}}
+
+\begin{document} 
+
+\name{\huge Brendan Luchen} 
+\address{brendan@luchenlabs.com}
+\address{www.luchenlabs.com}
+
+\begin{resume}
+
+ 
+\section{\sc Employment}
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} }lr}
+        \textbf{Amazon} & \hfill Seattle, Washington  \\
+        \textit{SDE} & \hfill \textbf{June 2013--February 2014}
+    \end{tabular*}
+    \vspace{0.05in}
+    \begin{itemize}
+        \item Drive company-wide initiatives to reduce HTTP 5xx and other failures
+        \item Develop a full-stack, CI set of tools for FATALs tracking and analysis
+        \item Utilize tech including jQuery, Hibernate, Spring, Rails, InnoDB and much, much more
+        \item Share 24x7 pager-duty rotation with 2--4 other developers
+    \end{itemize}
+
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} }lr}
+      \textbf{Epic} & \hfill Madison, Wisconsin  \\
+      \textit{Software Developer} & \textbf{September 2011--March 2013}
+    \end{tabular*}
+    \vspace{0.05in}
+    \begin{itemize}
+        \item Core developer for \textit{Haiku for Android}, Epic's mobile sidekick for physicians
+        \item Migrated build system from the built-in ADT pipeline to a custom Ant script
+        \item Frequent code review and white-box testing of other developers' work
+    \end{itemize}
+
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} }lr}
+      \textbf{Activision} \hfill & Portland, Maine  \\
+      \textit{Programmer Intern} \hfill & \textbf{Summer 2011}
+    \end{tabular*}
+    \vspace{0.05in}
+    \begin{itemize}
+        \item Contributed performance analysis and bug fixes to \textit{Modern Warfare 3}
+        \item Developed an experimental aiming system using OpenCV and Kinect
+        \item Improved previous interns' graphical demo rendering animated Metaballs on the PS3's Cell BE 
+    \end{itemize}
+
+\section{\sc Shipped Software}
+    \textbf{Modern Warfare 3}: Multiplatform first-person shooter \\
+    \textbf{Chromathud}: Educational puzzle game for PC and Xbox Live Indie Games \\
+    \textbf{Haiku for Android}: Thin client to Epic's electronic medical record  \\
+    \textbf{Rational Requirements Composer}: Collaborative tool for requirements definition and management
+ 
+\section{\sc Education}          
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} }lr}
+        \textbf{Rochester Institute of Technology}     &  \hfill Rochester, NY  \\        
+        \textit{Bachelor of Science, Computer Science} &  \hfill May 2011 \\
+        \textit{Minors, German Language and Mathematics} &
+    \end{tabular*}
+    \begin{itemize}\itemsep-4pt
+        \item Honors Program 
+        \item Magna cum Laude 
+    \end{itemize}
+
+
+\section{\sc Skills}          
+    \begin{tabular*}{0.8\textwidth}{@{\extracolsep{\fill} }r|lll}
+      \textsl{Level} & \textbf{Proficient} & \textbf{Competent} & \textbf{Familiar} \\
+      \hline
+      \textbf{Programming Languages}& Java, C, JavaScript & \CS, Ruby, C++ & Perl, Python, Haskell \\
+      \textbf{Markup/Data Languages}& Markdown  & Haml & Yaml, Stylus \\
+      \textbf{Libraries/API        }& SDL, ADK & jQuery, OpenGL                                   \\
+      \textbf{Tools/Software       }& git, Vim, Eclipse & CMake, Visual Studio & GIMP, GDB \\
+      \textbf{Foreign Languages    }& Spanish, German
+    \end{tabular*}
+
+\section{\sc Honors \& Awards}          
+    \textbf{ACM Intercollegiate Programming Competition} \hfill Regional winners, 2010              \\
+    \textbf{Dean's List} \hfill                                              2007-2011              \\
+    \textbf{RIT Presidential Scholarship}                                                           
+
+\end{resume}
+
+\vfill
+\hfill \textit{\small References are available upon request.}
+\end{document}

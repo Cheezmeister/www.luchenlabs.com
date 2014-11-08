@@ -1,0 +1,110 @@
+# Directories
+dir:
+  build: 'build'
+  content: 'src/content'
+  deploy: 'deploy'
+  layout: 'src/layout'
+  source: 'src'
+  media: 'src/assets'
+
+# Package, no idea what this is used for
+pkg: "<json:package.json>"
+
+########################################
+# Tasks
+########################################
+
+# Cleaning
+clean:
+  build: '<%= dir.build %>'
+  deploy: '<%= dir.deploy %>'
+
+# Static assets
+copy:
+  assets:
+    files:
+      -
+        cwd: "<%= dir.media %>"
+        dest: "<%= dir.deploy %>/assets"
+        expand: true
+        src: ["images/**/*", "icons/**/*"]
+
+# Coffee
+coffee:
+  all:
+    cwd: '<%= dir.source %>'
+    dest: '<%= dir.build %>'
+    expand: true
+    ext: '.js'
+    src: ['**/*.coffee']
+
+# Stylus
+stylus:
+  all:
+    files:
+      -
+        cwd: "<%= dir.media %>"
+        dest: "<%= dir.deploy %>"
+        expand: true
+        ext: '.css'
+        src: "**/*.styl"
+
+# Jade
+jade:
+  all:
+    files: 
+      -  
+        cwd: "<%= dir.layout %>"
+        dest: "<%= dir.build %>"
+        expand: true
+        ext: '.hbs'
+        pretty: true
+        src: "**/*.jade"
+
+# Markdown + Handlebars + YFM rendering
+render:
+  projects:
+    index: '<%= dir.build %>/projectlist.hbs'
+    template: '<%= dir.build %>/project.hbs'
+    files:
+      -
+        expand: true
+        cwd: '<%= dir.content %>/projects'
+        src: ['*.md', '!index.md']
+        dest: '<%= dir.deploy %>/projects'
+        ext: '/index.html'
+  pages:
+    template: '<%= dir.build %>/page.hbs'
+    files:
+      -
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: ['resume/index.md', 'contact.md', 'bio.md', 'resume.md']
+        dest: '<%= dir.deploy %>'
+        ext: '/index.html'
+
+  tidbits:
+    template: '<%= dir.build %>/default.hbs'
+    files:
+      - 
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: ['tidbits/index.md']
+        dest: '<%= dir.deploy %>'
+        ext: '.html'
+
+  root:
+    template: '<%= dir.build %>/page.hbs'
+    files:
+      -
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: "index.md"
+        dest: '<%= dir.deploy %>'
+        ext: '.html'
+
+# Serving up http
+connect:
+  local:
+    base: '<%= dir.deploy %>'
+
