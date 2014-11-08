@@ -1,13 +1,2 @@
-# Hakyll-generated crap
-_cache/*
-_site/*
-
-# The crap generator in question ;)
-hakyll
-hakyll.hi
-hakyll.o
-
-
-content/media
+build
 deploy
-.hyde_deps
