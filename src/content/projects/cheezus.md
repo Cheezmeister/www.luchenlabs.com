@@ -61,6 +61,5 @@ and finally used some recent Music Theory knowledge to sequence background
 music. By the end of the summer, I had a game I was proud of, and that people 
 even seemed to like!
 
-[Installer](/downloads/InstallCheezus.exe): Windows 
-only, I'm afraid, though I've been told it works under Wine.
+[Download](/dl/Cheezus.7z): Windows only, I'm afraid, though I've been told it works under Wine.
 

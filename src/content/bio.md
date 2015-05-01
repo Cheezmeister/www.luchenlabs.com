@@ -1,6 +1,4 @@
 ---
-extends: page.j2
-default_block: content
 title: About Me
 ---
 
@@ -13,8 +11,8 @@ can't help growing older, I still haven't gotten around to growing up.
 ### I Am ###
 A [gamer](http://backloggery.com); 
 a [hac](http://en.wikipedia.org/wiki/Footbag)[ker](http://en.wikipedia.org/wiki/Computer_Programming); 
-a [reader](http://filer.case.edu/dts8/thelastq.htm);
-a [writer](tidbits/arrgh.txt);
+a [reader](http://www.multivax.com/last_question.html);
+a [writer](/tidbits/arrgh.md);
 an [addict](http://en.wikipedia.org/wiki/Mountain_Dew); 
 a [lyricist](http://www.amiright.com/parody/80s/bryanadams25.shtml); 
 a [hippie](http://www.ecogeek.org/);
@@ -29,6 +27,7 @@ There's something magical about the passing of insight from one mind to
 another, and I hope to one day save a few young minds from being stifled in the 
 halls of mediocrity known as the US public school system.
 
+I am also a bisexual male white anglosaxon protestant, in case you care about such things. I don't.
 
 ## Stuff I Think Is Awesome
 

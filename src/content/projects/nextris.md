@@ -30,9 +30,9 @@ By default, movement uses WASD and rotation uses the L and P keys (this was deve
 
 ## Download ##
 
-* [(Windows)](/dl/nextris.exe)
-* [(Mac)](/dl/nextris.exe)
-* [(Linux binary)](/dl/nextris.exe)
-* [(GitHub)](http://www.github.com/cheezmeister/nextris)
+* [Windows](/dl/Nextris-1.0.1-win32.zip)
+* [Mac](/dl/Nextris-1.0.1-Darwin.dmg)
+* [Linux binary](/dl/nextris-1.1.0)
+* [GitHub](http://www.github.com/cheezmeister/nextris)
 
 

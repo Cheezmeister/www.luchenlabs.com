@@ -21,6 +21,14 @@ clean:
 
 # Static assets
 copy:
+  raw:
+    files:
+      - 
+        cwd: "<%= dir.source %>/raw"
+        dest: "<%= dir.deploy %>"
+        expand: true
+        src: ["**/*"]
+
   assets:
     files:
       -
@@ -63,6 +71,15 @@ jade:
 
 # Markdown + Handlebars + YFM rendering
 render:
+  words:
+    template: '<%= dir.build %>/page.hbs'
+    files:
+      -
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: ['words/*.md']
+        dest: '<%= dir.deploy %>'
+        ext: '/index.html'
   projects:
     index: '<%= dir.build %>/projectlist.hbs'
     template: '<%= dir.build %>/project.hbs'
@@ -79,7 +96,7 @@ render:
       -
         expand: true
         cwd: "<%= dir.content %>"
-        src: ['resume/index.md', 'contact.md', 'bio.md', 'resume.md']
+        src: ['resume/index.md', 'bio.md', 'resume.md']
         dest: '<%= dir.deploy %>'
         ext: '/index.html'
 
@@ -105,6 +122,9 @@ render:
 
 # Serving up http
 connect:
-  local:
-    base: '<%= dir.deploy %>'
+  server:
+    options:
+      base: "<%= dir.deploy %>"
+      keepalive: true
+      livereload: true
 

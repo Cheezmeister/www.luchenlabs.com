@@ -26,13 +26,16 @@ The game is deceptively simple, but twists come in the form of time bonuses; pen
 
 ## Download ##
 - Available for [80MSP on XBLIG](http://marketplace.xbox.com/en-US/Product/Chromathud/66acd000-77fe-1000-9115-d80258550cc3) 
-- [free for Windows]($windows$)! 
-- If you're allergic to installers, you can grab the [zipped release](/content/downloads/Chromathud.1.0.0.0.7z) instead. 
+- [free for Windows]({{windows}})! 
+- If you're allergic to installers, you can grab the [zipped release](/dl/Chromathud.1.0.0.0.7z) instead. 
 
 Alternatively, you may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
 
 
 #### Ye Olde Versions ####
+
+These have been lost to the sands of time (actually, they're hiding in SVN tags) but are listed here for historical reference.
+
 - [Beta (0.14)](/dl/Chromathud_Beta.zip)
 - [GDC Online (0.10)](/dl/Chromathud_GDC.zip)
 - [Orientation (0.8)](/dl/Chromathud_Orientation.zip)

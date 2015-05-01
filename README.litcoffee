@@ -28,6 +28,7 @@ jade -> hbs
 md+yfm+hbs -> html
 styl -> css
 css,icons,images -> media
+raw -> *
 
       # Tasks
       grunt.registerTask 'default', 'build'
@@ -45,7 +46,7 @@ css,icons,images -> media
 Heavy Lifting
 -------------
 
-Coming from [Hakyll][] by way of [Hyde][], My pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's lesser of two evils.
+Coming from [Hakyll][] by way of [Hyde][], My pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
 [Hakyll]: http://github.com/jaspervdj/hakyll
 [Hyde]: http://hyde.github.io
 
@@ -80,7 +81,7 @@ A HBS template for an index page (listing metadata about each content file) is o
           template = grunt.file.read(@data.index)
           metadata = @files.map((f) -> grunt.file.read f.src).map matter
           metadata = metadata.map (x) -> x.data
-          fname = "#{@files[0].orig.dest}/index.htm"
+          fname = "#{@files[0].orig.dest}/index.html"
           renderStatic {index: metadata},fname, template
           grunt.log.ok "created #{fname}"
 
