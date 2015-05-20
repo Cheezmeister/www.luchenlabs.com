@@ -73,6 +73,7 @@ jade:
 render:
   words:
     template: '<%= dir.build %>/page.hbs'
+    index: '<%= dir.build %>/projectlist.hbs'
     files:
       -
         expand: true
@@ -125,6 +126,13 @@ connect:
   server:
     options:
       base: "<%= dir.deploy %>"
-      keepalive: true
       livereload: true
+
+# Watch for changes and live reload
+watch:
+  options: {livereload: true}
+  all:
+    files: ["<%= dir.source %>/**/*.*"]
+    tasks: ['build']
+
 

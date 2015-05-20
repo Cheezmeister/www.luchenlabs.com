@@ -5,9 +5,9 @@ shorttitle: nextris
 genre: Puzzle, Experimental
 description: A Tetris clone with a twist
 tech: C++, SDL, PortAudio
-windows: /content/downloads/Nextris-1.0.1-win32.zip
-mac: /content/downloads/Nextris-1.0.1-Darwin.dmg
-nix: /content/downloads/nextris-1.1.0
+windows: /dl/Nextris-1.0.1-win32.zip
+mac: /dl/Nextris-1.0.1-Darwin.dmg
+nix: /dl/nextris-1.1.0
 sauce: https://github.com/Cheezmeister/Nextris
 status: ongoing
 statuschar: ∞

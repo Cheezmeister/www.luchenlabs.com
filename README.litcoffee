@@ -16,6 +16,7 @@ Yes, I use Node and Grunt, I'm a horrible person. This is the real gruntfile. Be
         'grunt-contrib-jade',
         'grunt-contrib-stylus',
         'grunt-contrib-clean',
+        'grunt-contrib-watch',
         'grunt-contrib-copy',
         'grunt-contrib-connect',
         'grunt-compile-handlebars',
@@ -40,7 +41,8 @@ raw -> *
       ]
       grunt.registerTask 'serve', [
         'build',
-        'connect',
+        'connect:server',
+        'watch',
       ]
 
 Heavy Lifting
