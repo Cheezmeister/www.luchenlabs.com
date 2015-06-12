@@ -37,6 +37,14 @@ copy:
         expand: true
         src: ["images/**/*", "icons/**/*"]
 
+  literate_artifacts:
+    files:
+      -
+        cwd: "<%= dir.content %>"
+        dest: "<%= dir.deploy %>"
+        expand: true
+        src: ["lp/**/*.{coffee,md}"]
+
 # Coffee
 coffee:
   all:
@@ -100,6 +108,17 @@ render:
         src: ['resume/index.md', 'bio.md', 'resume.md']
         dest: '<%= dir.deploy %>'
         ext: '/index.html'
+
+  literate_programming:
+    template: '<%= dir.build %>/page.hbs'
+    files:
+      -
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: ['lp/**.md']
+        dest: '<%= dir.deploy %>'
+        ext: '.html'
+
 
   tidbits:
     template: '<%= dir.build %>/default.hbs'
