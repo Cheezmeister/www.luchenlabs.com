@@ -7,9 +7,12 @@ All Systems Go
 --------------
 
     module.exports = (grunt) ->
+
+Yes, I use Node and Grunt, I'm a horrible person. This is the real gruntfile. Because grunt configuration tends to get hideously overgrown, I've taken the liberty of hiding it in a separate file so as not to dominate the readme.
+
       grunt.initConfig(require "./grunt_config.yaml")
 
-Yes, I use Node and Grunt, I'm a horrible person. This is the real gruntfile. Below you'll find some of the giants whose shoulders I stand on or...hang off of, or something.
+Below you'll find some of the giants whose shoulders I stand on or...hang off of, or something.
 
       # Plugins
       grunt.loadNpmTasks plugin for plugin in [
@@ -81,8 +84,10 @@ A HBS template for an index page (listing metadata about each content file) is o
 
         if @data.index
           template = grunt.file.read(@data.index)
-          metadata = @files.map((f) -> grunt.file.read f.src).map matter
-          metadata = metadata.map (x) -> x.data
+          metadata = @files.
+            map((f) -> grunt.file.read f.src).
+            map(matter).
+            map (x) -> x.data
           fname = "#{@files[0].orig.dest}/index.html"
           renderStatic {index: metadata},fname, template
           grunt.log.ok "created #{fname}"

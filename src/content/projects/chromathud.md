@@ -29,7 +29,7 @@ The game is deceptively simple, but twists come in the form of time bonuses; pen
 - [free for Windows]({{windows}})! 
 - If you're allergic to installers, you can grab the [zipped release](/dl/Chromathud.1.0.0.0.7z) instead. 
 
-Alternatively, you may or may not be able to play it online via [Spoon](http://spoon.net/chromathud). We highly recommend downloading the installer, though. It won't bite, honest!
+Alternatively, you may or may not be able to play it online via [turbo.net](https://turbo.net/apps/chromathud) (formerly known as Spoon). We highly recommend downloading the installer, though. It won't bite, honest!
 
 
 #### Ye Olde Versions ####

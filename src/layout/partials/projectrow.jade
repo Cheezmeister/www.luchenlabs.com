@@ -3,13 +3,15 @@ tr.projectrow
   td.info
     p
       a(href="/projects/{{ shorttitle }}") {{ title }}
-      |: {{ description }}
+      | : {{ description }}
+    p Status: 
+      span.status(class="st-{{ status }}")
+        span {{ statuschar }} {{ status }}
     p Type: {{ genre }}
     p Technologies: {{ tech }}
-    p Status:
-      span.status(class="st-{{ status }}")
-        span.st-char {{ statuschar }}
-        | {{ status }}
+
+  td.status
+
   // Platforms & Downloads
   td.dlsection
     ul.platforms
@@ -26,4 +28,3 @@ tr.projectrow
   td.screenshot
     a(href="/projects/{{ shorttitle }}")
       img(width=160 height=auto alt="Screenshot" src="/assets/images/screenshots/{{ shorttitle }}.png")
-      

@@ -44,8 +44,7 @@ And inside that script is a bash one-liner that does all the real work.
 
 # But why?
 
-The point is that it takes a single line of bash (or three, at a stretch). 
-I bet you can do better. LP is a promising premise in today's tech world, but the tooling for it is just not there.
+The point is that it takes a single line of code (or three, at a stretch) to make **any programming language** support modern literate programming. It works, but it sure ain't fancy. I bet you can do better. LP holds serious potential in today's distracted tech world, but the tooling for it is just not there.
 One can envision a SCM-integrated wiki that is simultaneously its own codebase and, potentially, [its own test suite](https://bitheap.org/cram/), as well. 
 This has huge implications for bridging gaps between managers, architects, engineers and customers. It excites me so much I think I just wet my pants a little. But we're not there yet.
 

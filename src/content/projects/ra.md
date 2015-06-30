@@ -9,8 +9,9 @@ windows: /apps/ra
 mac: /apps/ra
 nix: /apps/ra
 sauce: https://github.com/Cheezmeister/RA
+screenshot: https://github.com/cheezmeister/vec
+statuschar: '?'
 status: prototype
-statuschar: ~
 ---
 
 My first foray into HTML5, RA started out with a smallish scope that gradually shrunk to that of a prototype over several months. I wanted a way to recognize music that spoke to me while by interpreting and augmenting it through gameplay. I kind of succeeded.

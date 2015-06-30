@@ -11,7 +11,7 @@ mac: unsupported
 nix: http://sourceforge.net/projects/soi/files/Spheres%20of%20Influence-0.1.2-Linux.tar.bz2/download
 sauce: http://soi.svn.sourceforge.net/svnroot/soi
 status: hiatus
-statuschar: …
+statuschar: ✖
 ---
 
 Spheres of Influence is just what it sounds like: a bunch of spheres floating around in space and influencing each other in different ways. This includes attracting, repelling, sticking, bouncing, and so on and so forth. The objective is generally to move a unique "Focusphere" to a goal by controlling how it enters the level, placing/moving other spheres prior to launching, and/or influencing its movement after launch.

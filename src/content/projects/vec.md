@@ -16,7 +16,7 @@ statuschar: …
 
 Vec is a procedural, dual-axis, polar-coordinate arcade thing I've been working on since GDC 2015. It's more of a toy than a game.  Spin around, shoot things and make pretty designs.
 
-![Screenshot](https://pbs.twimg.com/media/CCoGtf9WEAAMsrv.png:large)
+<div class="embed" ><iframe src="https://player.vimeo.com/video/127282068" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>
 
 History
 ----------

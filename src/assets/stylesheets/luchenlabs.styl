@@ -1,5 +1,8 @@
 LightGrey = rgb(58, 58, 58)
+LighterGrey = rgb(90, 90, 90)
+LightestGrey = rgb(160, 160, 160)
 LightGreen = rgb(200, 240, 150)
+DarkGreen = olivedrab
 LightRed = rgb(240,150,150)
 Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
@@ -19,7 +22,7 @@ body
   h1,h2,h3,h4,h5,h6 
     color LightRed
   strong 
-    color olivedrab
+    color DarkGreen
   pre, code
     color Violet
 
@@ -44,10 +47,15 @@ body
   #sidebar
     width 12%
     float right
+    font-size 0.8em
 
     tr>td>img
       width 16px
       height 16px
+      background-color white
+      border 1px solid DarkGreen
+      border-radius 8px
+
 
   #content 
     position relative
@@ -64,12 +72,6 @@ body
     img
       max-width:100%
 
-    table
-      img
-        width 16px
-        height 16px
-
-
     table.projectlist 
       margin-top 10px
       margin-bottom 10px
@@ -85,6 +87,9 @@ body
       .screenshot img
         width  160px
         height 120px
+
+  .embed
+    text-align center
 
   .bigblurb
     text-rendering: optimizelegibility
@@ -140,31 +145,25 @@ div.logo
 .screenshot img 
   border  2px solid rgb(50,70,70)
 
-
 .dlsection
   ul
     list-style-type none
-
-.dlsection img 
-  float right
-  font-size 14px
-  padding 4px
-  padding-left 16px
-  padding-right 16px
-  margin 2px
-  border  1px solid rgb(30,30,30)
-  border-radius  3px
-
-.dlsection img:hover 
-  background-color lightgreen
-
-
-.dlsection img.supported 
-  opacity 1.0
-
-.dlsection img.unsupported, .dlsection img.unsupported:hover 
-  opacity 0.2
-  background-color gray
+  img 
+    float right
+    font-size 14px
+    padding 4px
+    padding-left 16px
+    padding-right 16px
+    margin 2px
+    border  1px solid rgb(30,30,30)
+    border-radius  3px
+  &:hover 
+    background-color lightgreen
+  &.supported 
+    opacity 1.0
+  &.unsupported, &.unsupported:hover 
+    opacity 0.2
+    background-color gray
 
 
 .status 
@@ -178,6 +177,9 @@ div.logo
 
 .st-wip 
   background-color rgb(120,90,0)
+
+.st-prototype 
+  background-color rgb(120,120,120)
 
 .st-hiatus 
   background-color rgb(40,40,40)
@@ -233,88 +235,11 @@ a.unsupported, a.unsupported:hover
 input#donate 
   text-decoration none
 
-a#downloadbutton 
-  background-color green
-  color white
-  font-size 32px
-  text-decoration none
-  position absolute
-  top 0
-  padding 8px
-  border-style outset
-  border-width 2px
-
-a#downloadbutton active 
-  border-style inset
-  color black
-
-#sharebutton 
-  position absolute
-  bottom 0
-  right 0
-  margin-right 0px
-  margin-left auto
-
-#toys 
-  width 200px
-  height 160px
-  position relative
-  float right
-  margin-right 0px
-  border-width 2px
-  border-color black
-
-#section  
-  position absolute
-  bottom 0
-
-#thanks,#notes 
-  position relative
-  float left
-
-#btnTrain 
-  position relative
-  top 40
-
-#instructions 
-  position relative
-  text-align left
-  width 400
-  z-index -42
-
-#btnTrain 
-  position relative
-  left 100
-  font-size 24px
-
-#main 
-  position relative
-  float right
-
-#subform 
-  position relative
-
-#stuffyouhave 
-  float right
-  width 200
-
-#statchoice 
-  float right
-  width 200
-
 
 table 
   position  relative
-  margin 10% auto
   border  0px
 
-
-#alter-egos table
-  margin 5% auto
-
-#alter-egos img 
-  width  16px
-  height  16px
 
 
 img 
