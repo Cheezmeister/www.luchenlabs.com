@@ -80,14 +80,14 @@ jade:
 # Markdown + Handlebars + YFM rendering
 render:
   words:
+    index: '<%= dir.build %>/postlist.hbs'
     template: '<%= dir.build %>/page.hbs'
-    index: '<%= dir.build %>/projectlist.hbs'
     files:
       -
         expand: true
-        cwd: "<%= dir.content %>"
-        src: ['words/*.md']
-        dest: '<%= dir.deploy %>'
+        cwd: "<%= dir.content %>/words"
+        src: ['*.md']
+        dest: '<%= dir.deploy %>/words'
         ext: '/index.html'
   projects:
     index: '<%= dir.build %>/projectlist.hbs'

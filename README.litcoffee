@@ -61,6 +61,8 @@ The `render` task takes MD+YFM content plus a HBS template, and outputs static H
       marked = require 'marked'
       handle = require 'handlebars'
 
+      marked.setOptions { breaks: true }
+
       grunt.registerMultiTask 'render', 'Render 1..* page(s) and/or an index of multiple pages', ->
 
         return ok 0 unless @files.length > 0 # Do I need this? Probably.

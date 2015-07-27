@@ -1,5 +1,7 @@
 ---
 title: How I Crashed GDC (and why you should, too)
+shorttitle: gdc
+date: 2015-03-30
 ---
 
 How I Crashed GDC

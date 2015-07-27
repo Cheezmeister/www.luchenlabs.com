@@ -1,4 +1,8 @@
-# I - The Network
+---
+title: I - The Network
+shorttitle: internet
+date: 2015-06-30
+---
 
 > Cosmic Cycle 2.
 > Milky Way. Galactic Cycle 4
