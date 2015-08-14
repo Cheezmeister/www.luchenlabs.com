@@ -51,6 +51,10 @@ raw -> *
 Heavy Lifting
 -------------
 
+Just in case.
+
+      d = console.log
+
 Coming from [Hakyll][] by way of [Hyde][], My pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
 [Hakyll]: http://github.com/jaspervdj/hakyll
 [Hyde]: http://hyde.github.io
@@ -60,8 +64,6 @@ The `render` task takes MD+YFM content plus a HBS template, and outputs static H
       matter = require 'gray-matter'
       marked = require 'marked'
       handle = require 'handlebars'
-
-      marked.setOptions { breaks: true }
 
       grunt.registerMultiTask 'render', 'Render 1..* page(s) and/or an index of multiple pages', ->
 
@@ -102,7 +104,7 @@ Read each file, pull out its metadata, compile its markdown, and render it.
         @files.map (file) ->
           pageContent = grunt.file.read file.src
           pageData = matter(pageContent)
-          pageData.content = marked pageData.content
+          pageData.content = marked pageData.content, {breaks: false, smartypants: true}
           renderStatic pageData, file.dest, template
 
         ok @files.length

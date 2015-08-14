@@ -89,7 +89,7 @@ render:
         src: ['*.md']
         dest: '<%= dir.deploy %>/words'
         ext: '/index.html'
-  projects:
+  games:
     index: '<%= dir.build %>/projectlist.hbs'
     template: '<%= dir.build %>/project.hbs'
     files:
