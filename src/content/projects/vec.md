@@ -28,6 +28,6 @@ Downloads
 ---------
 * [GitHub](http://github.com/Cheezmeister/vec)
 * [Windows (7z)](http://luchenlabs.com/dl/Vec.7z)
-* [Mac Binary](http://luchenlabs.com/dl/vec-1.0.3-osx) (`brew install sdl2`) 
-* [Linux Binary](http://luchenlabs.com/dl/vec-1.0.3)
+* [Mac Binary](http://luchenlabs.com/dl/vec-osx) (`brew install sdl2`) 
+* [Linux Binary](http://luchenlabs.com/dl/vec)
 
