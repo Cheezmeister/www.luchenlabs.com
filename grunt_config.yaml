@@ -108,6 +108,16 @@ render:
         src: ['resume/index.md', 'bio.md', 'resume.md']
         dest: '<%= dir.deploy %>'
         ext: '/index.html'
+  tunes:
+    template: '<%= dir.build%>/tunes.hbs'
+    files:
+      -
+        expand: true
+        cwd: "<%= dir.content %>"
+        src: ['tunes.md']
+        dest: '<%= dir.deploy %>'
+        ext: '/index.html'
+
 
   literate_programming:
     template: '<%= dir.build %>/page.hbs'

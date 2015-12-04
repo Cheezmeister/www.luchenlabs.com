@@ -1,0 +1,18 @@
+extends ./page.jade
+
+block innercontent
+
+  p I make crappy tunes. At least, I did, once. I've been meaning to get back on that horse.
+
+  table.tunes
+    {{#data.tracks}}
+    tr
+      td(id='{{title}}')
+        a(href='{{path}}') {{title}}
+      td
+        p {{description}}
+      td 
+        audio(src='{{path}}' controls) Looks like your browser can't play HTML5 audio.
+
+    {{/data.tracks}}
+

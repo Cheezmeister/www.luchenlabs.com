@@ -116,5 +116,4 @@ four years on an FRC team. There aren't many other places where one can spend
 a summer learning to solder, program, and segway joust at the same time.
 
 ### Cheez ###
-Cheez is made from the curds of milk, typically a cow's. It's delicious, nutritious, and plays a key role in [the first game I developed](/projects/cheezus).
-
+Cheez is made from the curds of milk, typically a cow's. It's delicious, nutritious, and plays a key role in [the first game I developed](/projects/cheezus). Not to be confused with [cheese]( http://wiki.teamliquid.net/starcraft2/Cheese). 
