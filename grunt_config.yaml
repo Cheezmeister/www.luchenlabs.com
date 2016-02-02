@@ -141,7 +141,7 @@ render:
         ext: '.html'
 
   root:
-    template: '<%= dir.build %>/page.hbs'
+    template: '<%= dir.build %>/homepage.hbs'
     files:
       -
         expand: true

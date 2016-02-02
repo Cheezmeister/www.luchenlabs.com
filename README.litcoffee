@@ -94,7 +94,7 @@ A HBS template for an index page (listing metadata about each content file) is o
             map (x) -> x.data
           fname = "#{@files[0].orig.dest}/index.html"
           renderStatic {index: metadata},fname, template
-          grunt.log.ok "created #{fname}"
+          grunt.log.ok "created #{fname} from #{@files.map (f)->f.src}"
 
 ### Rendering Files
 

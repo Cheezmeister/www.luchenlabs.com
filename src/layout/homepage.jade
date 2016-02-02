@@ -1,0 +1,33 @@
+extends ./page.jade
+
+block innercontent
+  #intro
+    {{{ content }}}
+
+  table.sampler
+    tr
+      td: h4 I make stuff like apps...
+      td.apps
+        a(href='https://github.com/Cheezmeister/fkls')
+          img.sampler(alt='fkls' src='https://pbs.twimg.com/media/CSIvIqPUwAA9pOD.jpg' title='Short for "Fantaskulous" which didn\'t really roll off the tongue.')
+
+    tr
+      td: h4 ...and tunes...
+      td.tunes
+        p Lunar Ruin.mp3
+        audio(title='Lunar Ruin' src='http://luchenlabs.com/dl/Lunar Ruin.mp3' controls) Looks like your browser can't play HTML5 audio.
+
+    tr
+      td: h5 and sometimes doodles.
+      td.doodles
+        img.sampler(alt='fullmoon' src='https://pbs.twimg.com/media/CSicKr3VEAA2ezl.jpg')
+
+    tr
+      td: h5 But mostly I make games.
+      td.games
+        a(href='/projects/chromathud')
+          img.sampler(alt='chromathud' src='/assets/images/screenshots/chromathud.png')
+
+  p I do these things, not because they are easy, but because they are hard. It makes me happy.
+
+  img(alt='Jameson' src='/assets/images/jamie.png' title='His name is Jameson. Disclaimer: I did not make him.')

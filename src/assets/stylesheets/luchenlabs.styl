@@ -8,28 +8,28 @@ Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
 LighterBlue = rgb(170, 240, 180)
 
-body 
+body
   background-color LightGrey
   font-family "Arial", helvetica, sans-serif
   font-size 1em
   color LightGreen
   table-align center
 
-  a 
+  a
     color LightBlue
-  a:hover 
+  a:hover
     color #0044aa
     border-bottom 0px
-  h1,h2,h3,h4,h5,h6 
+  h1,h2,h3,h4,h5,h6
     color LightRed
-  strong 
+  strong
     color DarkGreen
   em
     color LighterBlue
   pre, code
     color Violet
 
-  .navigation 
+  .navigation
     min-height 66px
     text-align center
     font-size 18px
@@ -38,7 +38,7 @@ body
     padding-top 16px
     background-image  linear-gradient(to bottom, LightGrey, rgb(64,64,64))
 
-    a 
+    a
       color rgb(230,230,230)
       text-decoration none
       margin-right 40px
@@ -60,7 +60,7 @@ body
       border-radius 8px
 
 
-  #content 
+  #content
     position relative
     width 70%
     min-width 1em
@@ -75,21 +75,35 @@ body
     img
       max-width:100%
 
-    table.projectlist 
+    table.sampler
+      text-align center
+      h3,h4,h5,h6
+        text-align left
+      img 
+        width 25%
+        text-align right
+
+    table.projectlist
       margin-top 10px
       margin-bottom 10px
-      margin-left auto; 
+      margin-left auto;
       margin-right auto
 
       p
         text-align top
 
-      .projectrow td 
+      .projectrow td
         border 2px solid transparent
 
       .screenshot img
         width  160px
         height 120px
+
+    table.tunes
+      tr
+        height 4em
+        border-left 3px solid white
+        border-radius 5px
 
   .embed
     text-align center
@@ -101,7 +115,7 @@ body
 
 
 
-#omglookatme 
+#omglookatme
   background-color rgb(10,100,50)
   background-image  linear-gradient(rgb(40,120,80), rgb(10,100,50))
   border-top  1px solid rgb(0,120,120)
@@ -118,12 +132,12 @@ body
     text-shadow  rgb(200,150,100) 1px 1px
 
 
-.figure 
+.figure
   display inline
 
 
 /* I wish Markdown wouldn't jam these stupid things in */
-.caption 
+.caption
   visibility hidden
   font-color black
   font-size 8px
@@ -135,23 +149,23 @@ body
   margin 0px
 
 
-div.logo 
+div.logo
   float left
 
 
-.eyecandy 
+.eyecandy
   margin 8px
   position relative
   max-width 600
 
 
-.screenshot img 
+.screenshot img
   border  2px solid rgb(50,70,70)
 
 .dlsection
   ul
     list-style-type none
-  img 
+  img
     float right
     font-size 14px
     padding 4px
@@ -160,92 +174,92 @@ div.logo
     margin 2px
     border  1px solid rgb(30,30,30)
     border-radius  3px
-    &:hover 
+    &:hover
       background-color lightgreen
-    &.supported 
+    &.supported
       opacity 1.0
-    &.unsupported, &.unsupported:hover 
+    &.unsupported, &.unsupported:hover
       opacity 0.2
       background-color gray
 
 
-.status 
+.status
   border  1px outset black
   border-radius  5px
   padding  4px
 
-.st-char 
+.st-char
   font-size 200%
   vertical-align -0.25ex
 
-.st-wip 
+.st-wip
   background-color rgb(120,90,0)
 
-.st-prototype 
+.st-prototype
   background-color rgb(120,120,120)
 
-.st-hiatus 
+.st-hiatus
   background-color rgb(40,40,40)
 
-.st-ongoing 
+.st-ongoing
   background-color rgb(50,60,100)
 
-.st-finished 
+.st-finished
   background-color rgb(40,120,40)
 
 
-.status img 
+.status img
   vertical-align baseline
 
 
-img.windows 
+img.windows
   background-color steelblue
 
-img.mac 
+img.mac
   background-color white
 
-img.nix 
+img.nix
   background-color tan
 
-img.sauce 
+img.sauce
   background-color black
 
 
-a.unsupported, a.unsupported:hover 
+a.unsupported, a.unsupported:hover
   cursor default
 
 
-.footer a 
+.footer a
   color rgb(230,230,230)
   font-weight bold
 
-.footer 
+.footer
   text-align center
   text-align top
 
-.footer 
+.footer
   height 40px
 
-.footer 
+.footer
   #middle
     text-align center
     font-style mono
-  #left 
+  #left
     float left
-  #right 
+  #right
     float right
 
-input#donate 
+input#donate
   text-decoration none
 
 
-table 
+table
   position  relative
   border  0px
 
 
 
-img 
+img
   border-style none
   border-width 2px
   max-width 800px

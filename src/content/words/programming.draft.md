@@ -7,28 +7,27 @@ shorttitle: programming
 This is What Programming Language You Should Learn
 ==================================================
 
-A frequent question aspiring coders ask is, "What programming language should I start with?" It's not a *bad* question, but it's not the right one to ask; it belies a few fundamental misunderstandings regarding the science and art of programming:
+Aspiring coders tend to ask, "What programming language should I start with?" 
+It's not a *bad* question, but it's not really the right one to ask. Why?
 
 * Programming is a means to an end. Your motivation for learning to code may not be the same as mine. 
 * Programming is a cerebral activity. Brains come in all shapes and sizes, and the [paradigm][] that vibes with me may not vibe with you.
-* Learning a programming language and *learning to program* are two very different things. A language is a tiny tiny part of the equation.
+* Learning a programming language and *learning to program* are not the same.
 
 When newbs ask for language recommendations, they typically get one of two things. 
-The first is something to the effect of "It doesn't matter. Choose one and stick with it." It's not a *bad* answer, and strictly speaking is correct, but it belies a few fundamental misunderstandings in what a beginner is searching for <sup id="a1">[1](#f1)</sup>.
+The first is something to the effect of "It doesn't matter. Choose one and stick with it." It's not a *bad* answer--in fact it's correct--but it's not really the right one to offer beginners<sup id="a1">[1](#f1)</sup>.
 
 * Beginners need a place to start, i.e. a direction to go in
 * Beginners **have never programmed before** and tend to be only dimly aware of the most popular options, which may not be right for them
 * Beginners asking this question are asking for *help*. "It doesn't matter" is not helpful.
 
-The second is someone's personal favourite language, possibly the only one they've ever used, like "Java". This is a bad answer and if you do this, you should feel bad.
+The second is someone's personal favourite language, which is often the only one they've ever used. This is a bad answer and if you do this, you should feel bad.
 
-The first, less wrong answer has got to be immensely frustrating for newbs who just want to get the ball rolling. Although the question it addresses is a rather poor one, people keep asking, so it is with great trepidation that I endeavor here to actually answer it, to the extent it can be answered, not with a glib response like "JavaScript"<sup id="a2">[2](#f2)</sup>, but rather with the questions you *should* be asking, along with way more information than you bargained for. Sorry.
+This has got to be immensely frustrating for newbs who just want to get the ball rolling. Though language choice is of little consequence, people keep asking about it. I attempt to answer it, to the extent it can be answered, not with a glib response like "JavaScript"<sup id="a2">[2](#f2)</sup>, but rather with the questions you *should* be asking and a thorough overview of the landscape of coding today.
 
-The short version: it's more important for a budding coder to gain momentum and have fun doing it than it is to start in the "right" place. However, as time goes on and one's skills improve, one will find that certain patterns of knowledge complement each other more readily (see also: specialist vs. generalist) thus enabling a higher overall problem-solving potential. It is my goal to describe and delineate those patterns--to the extent that I (a generalist, game developer, and open-source fan) understand them.
+It's more important for a budding coder to gain momentum and have fun doing it than it is to start in the "right" place. However, as time goes on and one's skills improve, one will find that certain patterns of knowledge complement each other readily, enabling a higher overall problem-solving potential. I'll try to describe and delineate those patterns--to the extent that I (a generalist, game developer, and open-source fan) understand them.
 
-This article is geared towards people who have never (or rarely) programmed before but who are considering a career or otherwise substantial investment of time into learning to code. I hope it may be useful to those who want to pick up coding for shiggles or perhaps to automate a part of their job, but know that it's not my primary focus.
-
-Finally, I've made an attempt to link generously to relevant articles and overviews, but I can't magically make every proper noun into a link; and I'm too lazy to do so by hand. Don't be afraid to Google if you don't recognize a term.
+This article is geared towards people who have never (or rarely) programmed before but who are considering a career or otherwise substantial investment of time into learning to code. I hope it may be useful to those who want to pick up coding for shiggles or perhaps to automate a part of their job, but it's not my primary focus.
 
 Without further ado, here's a bigass list of...
 
@@ -84,13 +83,13 @@ Programming languages come in four basic flavors: system, scripting, managed, an
 
 ### Systems Programming
 
-The lowest-level type of programming as we typically think of it. [Fortran] and [C] are the major examples here, although you won't find Fortran in modern usage, except in highly scientific domains, where it is still among the best at what it does. [C++] is a bit of a beast in a category all its own, but may be considered a systems language.
+The lowest-level type of programming as we typically think of it. [Fortran] and [C] are the major examples here, although you won't find Fortran in modern usage, except in highly scientific domains. [C++] is a bit of a beast in a category all its own, but may be considered a systems language.
 
 Learning a systems language will empower you to write software that runs not only in browsers or PCs, but in toasters, cars, wearables, and devices that have yet to be invented.
 
 Programming in a systems language is not easy. However, *learning* to program in one is. The relative simplicity of the lower levels means there are fewer nasty surprises outside of your control, but you will wind up writing your own nasty surprises as your projects grow in complexity.
 
-On that note, there's been an uptick in high-level native languages such as [Haskell], [Rust] or [Go], which compile down to machine code like C or C++, but operate at a level of abstraction more typical of [scripting languages](#scripting-languages). As far as I know, they are not used for sysprog as such, but they certainly could be. Along with next-generation compiler tech like [LLVM], such languages offer an enticing blend of productivity and performance that could give managed languages a run for their money in the coming years.
+There's been an uptick in high-level native languages like [Haskell], [Rust] or [Go], which compile down to machine code like C or C++, but operate at a level of abstraction more typical of [scripting languages](#scripting-languages). Along with next-generation compiler tech like [LLVM], such languages offer an enticing blend of productivity and performance that could give managed languages a run for their money in the coming years.
 
 [LLVM]: http://www.llvm.org
 
@@ -157,7 +156,7 @@ concrete lessons learned. The entire space of CS concepts is rather vague, with 
 - Control concepts (which give rise to algorithms) such as branching, iteration, recursion, parallelization
 - Data concepts (which give rise to design patterns) such as pointers, composition, containers and typing
 
-A programming *[paradigm][]* is a set of both control and data constructs that work reasonably well together and are frequently found snuggling together in the form of a particular language. Functional, procedural, and declarative paradigms are highly influential in modern programming, and although Object Oriented Programming gets all the attention, it's really just a particular formulation of those three. You'll want to master them before you begin to truly grok OOP. I mean, hell, the very definition of a *class* is data plus controlling code.
+A programming *[paradigm][]* is a set of both control and data constructs that work reasonably well together and are frequently found snuggling together in the form of a particular language. Functional, procedural, and declarative paradigms are highly influential in modern programming. Object Oriented Programming gets all the attention but it's really just a particular formulation of those three. You'll want to master them before you begin to truly grok OOP. I mean, hell, the very definition of a *class* is data plus controlling code.
 
 Coding concepts are inextricably tied to programming languages that embody them, and so it's not feasible to study them "purely", as divorced from languages. Still, you should pay special attention to the concepts exposed in your language of choice, and challenge yourself on occasion to bend a language into using a concept it wasn't designed for.
 
@@ -239,7 +238,7 @@ Your interactive command line. At its most basic, a shell is a program that read
 
 Usually when people talk about a "shell", they mean a Unix-style shell that follows the conventions pioneered by `sh`, the [Bourne Shell][]. `bash` is probably the most popular of these with the more feature-packed `zsh` a close second. 
 
-Microsoft's Powershell is good in its own right, but Windows-only with a high learning curve. It's head-and-shoulders above `cmd`, though, so if you are invested in (or stuck with) Windows, I'd recommend getting comfortable with it at some point. Even though Windows generally has a better graphical and mouse-driven experience, making the command line less obligatory for everyday tasks, being able to script things from time to time still comes in handy.
+Microsoft's Powershell is good in its own right, but Windows-only with a high learning curve. It's head-and-shoulders above `cmd`, though, so if you are invested in (or stuck with) Windows, you should get comfortable with it. Even though Windows generally favors a graphical, mouse-driven experience, being able to script things from time to time still comes in handy.
 
 If you do find yourself on a Mac or Linux system, try `fish`--the [Friendly Interactive SHell][fish]. It's a more modern take on the classic Unix shell which is less compatible with scripts using "traditional" syntax but offers a more pleasant interactive experience.
 
@@ -262,13 +261,16 @@ A good VCS makes it easy to *branch* and *merge* your code, easing the burden of
 
 ### Build Automation
 
-"Building" code can mean many different things. *Compilation* is the process of changing source code into binary--specifically, machine language (or, in the case of managed languages, bytecode). *Minification* means removing whitespace to reduce file size without changing it from plaintext. *Transpilation* changes source code from one language into another.
+"Building" code means turning it into a runnable program you can distribute to users. In practice this can mean many different things. *Compilation* is the process of changing source code into binary--specifically, machine language (or, in the case of managed languages, bytecode). *Minification* means removing whitespace to reduce file size without changing it from plaintext. *Transpilation* changes source code from one language into another.
 
-Build tools tend to be language-specific for some reason. We have CMake for C, Rake for Ruby, Cargo for Rust, and so on. The one that isn't is also one of the oldest: [make]. Thugh it's not specific to any one language, it *does* use native shell commands, so using it on Windows (while possible) can have mixed results.
+Build tools tend to be language-specific for some reason. We have [CMake] for C, [Rake] for Ruby, [Cargo] for Rust, and so on. The one that isn't is also one of the oldest: [make]. Though it's not specific to any one language, it *does* use native shell commands, so using it on Windows (while possible) can have mixed results.
 
 You can also use a build service, or if you're the buzzwordy type, a *continuous integration* (CI) thingamajangus like Travis or Appveyor, which automatically builds stuff every time you check it in to your VCS. (You _are_ using one, right? Right?? Right.) 
 
 [make]: https://en.wikipedia.org/wiki/make_(software)
+[CMake]: https://en.wikipedia.org/wiki/CMake
+[Rake]: https://en.wikipedia.org/wiki/Rake_(software)
+[Cargo]: http://doc.crates.io/
 
 ### Deployment
 
@@ -292,7 +294,7 @@ Some developers prefer to use an IDE like [Eclipse][], [Visual Studio][] or [IDE
 
 By tying everything together in a known configuration, IDEs make the dev process more seamless. For example, by integrating a debugger with the inbuilt text editor (something that is possible, but difficult to achieve with standalone tools), an IDE can make following the flow of code through a complex project and pinpointing the exact point of failure into a quick and painless process.
 
-In addition, most IDEs are offer advanced features for navigating large codebases (e.g. "find references" or "call hierarchy"), intelligent refactoring ("extract method") and code generation (declaring local variables, creating methods that haven't been defined, or encapsulating fields via accessors). This frees the developer from busy work so they can focus on the bigger picture.
+In addition, most IDEs offer advanced features for navigating large codebases (e.g. "find references" or "call hierarchy"), intelligent refactoring ("extract method") and code generation (declaring local variables, creating methods that haven't been defined, or encapsulating fields via accessors). This frees the developer from busy work so they can focus on the bigger picture.
 
 The two main downsides to using an IDE are resource consumption (all that power has to come from somewhere) and sometimes inscrutable error messages (IDEs infer a lot of information relating to the build process and often hide it from the user; sometimes they get it wrong).
 

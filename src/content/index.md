@@ -2,10 +2,6 @@
 title: Home
 ---
 
-Hi there! I'm Brendan Luchen, and I *love* to make stuff.  It makes me happy. 
+Hi there! I'm Brendan Luchen, and I *love* to make stuff. I make all kinds of stuff. Left brain or right, it doesn't matter.
 
 This is where I put the stuff I make.
-
-![Jameson](/assets/images/jamie.png "His name is Jameson. Disclaimer: I did not make him.")
-
-
