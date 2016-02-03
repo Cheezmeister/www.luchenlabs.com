@@ -1,0 +1,30 @@
+tr.projectrow
+  // Info
+  td.info
+    p
+      a(href="/projects/{{ shorttitle }}") {{ title }}
+      | : {{ description }}
+    p Status: 
+      span.status(class="st-{{ status }}")
+        span {{ statuschar }} {{ status }}
+    p Type: {{ genre }}
+    p Technologies: {{ tech }}
+
+  td.status
+
+  // Platforms & Downloads
+  td.dlsection
+    ul.platforms
+      li: a.windows(class="{{ windows }}" href="{{ windows }}")
+        img.windows(class=" {{windows}}" alt="Windows" title="Windows" width=16 height=auto src="http://windows.microsoft.com/favicon.ico")
+      li: a.mac(class="{{mac}}" href="{{ mac }}")
+        img.mac(class="{{mac}}" alt="Mac" title="Mac" width=16 height=auto src="http://www.apple.com/favicon.ico")
+      li: a.nix(class="{{nix}}" href="{{ nix }}")
+        img.nix(class="{{nix}}" alt="Linux/Unix" title="Linux/Unix" width=16 height=auto src="http://linuxquestions.org/favicon.ico")
+      li: a.sauce(class="{{sauce}}" href="{{ sauce }}")
+        img.sauce(class="{{sauce}}" alt="Src" title="Source code" width=16 height=auto src="/assets/icons/sauce.png")
+
+  // Screenshot
+  td.screenshot
+    a(href="/projects/{{ shorttitle }}")
+      img(width=160 height=auto alt="Screenshot" src="/assets/images/screenshots/{{ shorttitle }}.png")

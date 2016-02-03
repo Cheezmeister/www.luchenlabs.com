@@ -1,0 +1,252 @@
+LightGrey = rgb(58, 58, 58)
+LighterGrey = rgb(90, 90, 90)
+LightestGrey = rgb(160, 160, 160)
+LightGreen = rgb(200, 240, 150)
+DarkGreen = olivedrab
+LightRed = rgb(240,150,150)
+Violet = rgb(120, 90, 180)
+LightBlue = #4499ff
+
+body 
+  background-color LightGrey
+  font-family "Arial", helvetica, sans-serif
+  font-size 1em
+  color LightGreen
+  table-align center
+
+  a 
+    color LightBlue
+  a:hover 
+    color #0044aa
+    border-bottom 0px
+  h1,h2,h3,h4,h5,h6 
+    color LightRed
+  strong 
+    color DarkGreen
+  pre, code
+    color Violet
+
+  .navigation 
+    min-height 66px
+    text-align center
+    font-size 18px
+    margin-bottom 2px
+    border-bottom  1px solid rgb(70,70,70)
+    padding-top 16px
+    background-image  linear-gradient(to bottom, LightGrey, rgb(64,64,64))
+
+    a 
+      color rgb(230,230,230)
+      text-decoration none
+      margin-right 40px
+      border-right 1px solid rgb(100,100,100)
+      padding-bottom 2px
+      border-bottom 2px solid rgb(100,100,100)
+
+
+  #sidebar
+    width 12%
+    float right
+    font-size 0.8em
+
+    tr>td>img
+      width 16px
+      height 16px
+      background-color white
+      border 1px solid DarkGreen
+      border-radius 8px
+
+
+  #content 
+    position relative
+    width 70%
+    min-width 1em
+    height auto
+    margin-left auto
+    margin-right auto
+    padding-left 8px
+    padding-right 8px
+    border-left  1px solid rgb(50,50,50)
+    border-right  1px solid rgb(50,50,50)
+
+    img
+      max-width:100%
+
+    table.projectlist 
+      margin-top 10px
+      margin-bottom 10px
+      margin-left auto; 
+      margin-right auto
+
+      p
+        text-align top
+
+      .projectrow td 
+        border 2px solid transparent
+
+      .screenshot img
+        width  160px
+        height 120px
+
+  .embed
+    text-align center
+
+  .bigblurb
+    text-rendering: optimizelegibility
+    font-size: 180%
+    text-align: center
+
+
+
+#omglookatme 
+  background-color rgb(10,100,50)
+  background-image  linear-gradient(rgb(40,120,80), rgb(10,100,50))
+  border-top  1px solid rgb(0,120,120)
+  border-bottom  1px solid rgb(0,120,120)
+  margin-left  -8px
+  margin-right  -8px
+  padding-left 8px
+  line-height 2px
+
+  & em
+    color  rgb(150,100,50)
+    font-family  serif
+    font-size 120%
+    text-shadow  rgb(200,150,100) 1px 1px
+
+
+.figure 
+  display inline
+
+
+/* I wish Markdown wouldn't jam these stupid things in */
+.caption 
+  visibility hidden
+  font-color black
+  font-size 8px
+  border-bottom 1px solid black
+  border-left 1px solid black
+  border-right 1px solid black
+  position relative
+  top 0px
+  margin 0px
+
+
+div.logo 
+  float left
+
+
+.eyecandy 
+  margin 8px
+  position relative
+  max-width 600
+
+
+.screenshot img 
+  border  2px solid rgb(50,70,70)
+
+.dlsection
+  ul
+    list-style-type none
+  img 
+    float right
+    font-size 14px
+    padding 4px
+    padding-left 16px
+    padding-right 16px
+    margin 2px
+    border  1px solid rgb(30,30,30)
+    border-radius  3px
+    &:hover 
+      background-color lightgreen
+    &.supported 
+      opacity 1.0
+    &.unsupported, &.unsupported:hover 
+      opacity 0.2
+      background-color gray
+
+
+.status 
+  border  1px outset black
+  border-radius  5px
+  padding  4px
+
+.st-char 
+  font-size 200%
+  vertical-align -0.25ex
+
+.st-wip 
+  background-color rgb(120,90,0)
+
+.st-prototype 
+  background-color rgb(120,120,120)
+
+.st-hiatus 
+  background-color rgb(40,40,40)
+
+.st-ongoing 
+  background-color rgb(50,60,100)
+
+.st-finished 
+  background-color rgb(40,120,40)
+
+
+.status img 
+  vertical-align baseline
+
+
+img.windows 
+  background-color steelblue
+
+img.mac 
+  background-color white
+
+img.nix 
+  background-color tan
+
+img.sauce 
+  background-color black
+
+
+a.unsupported, a.unsupported:hover 
+  cursor default
+
+
+.footer a 
+  color rgb(230,230,230)
+  font-weight bold
+
+.footer 
+  text-align center
+  text-align top
+
+.footer 
+  height 40px
+
+.footer 
+  #middle
+    text-align center
+    font-style mono
+  #left 
+    float left
+  #right 
+    float right
+
+input#donate 
+  text-decoration none
+
+
+table 
+  position  relative
+  border  0px
+
+
+
+img 
+  border-style none
+  border-width 2px
+  max-width 800px
+  text-align center
+  margin auto auto auto auto
+  table-align center
+
