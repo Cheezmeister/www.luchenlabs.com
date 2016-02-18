@@ -27,12 +27,13 @@ Below you'll find some of the giants whose shoulders I stand on or...hang off of
 
 The pipeline is sort of randomly cobbled together but looks something like the following:
 
-**src  => build => deploy**
-jade -> hbs
-md+yfm+hbs -> html
-styl -> css
-css,icons,images -> media
-raw -> *
+src    | build | deploy
+-------|-------|-----
+jade   | hbs
+md+yfm |  +    | = html
+styl   |  ->    | css
+css,icons,images || assets
+raw | -> | *
 
       # Tasks
       grunt.registerTask 'default', 'build'
