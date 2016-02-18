@@ -105,9 +105,15 @@ render:
       -
         expand: true
         cwd: "<%= dir.content %>"
-        src: ['resume/index.md', 'bio.md', 'resume.md']
+        src: ['bio.md', 'resume.md']
         dest: '<%= dir.deploy %>'
         ext: '/index.html'
+  resume:
+    template: '<%= dir.build %>/page.hbs'
+    files: 
+      -
+        src: ["<%= dir.content %>/resume/src/content.tex"]
+        dest: '<%= dir.deploy %>/resume.html'
   tunes:
     template: '<%= dir.build%>/tunes.hbs'
     files:

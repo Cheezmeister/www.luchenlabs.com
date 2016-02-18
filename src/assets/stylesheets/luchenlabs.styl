@@ -1,15 +1,17 @@
-LightGrey = rgb(58, 58, 58)
-LighterGrey = rgb(90, 90, 90)
-LightestGrey = rgb(160, 160, 160)
+DarkGrey     = #323232
+LightGrey    = #839496
+LighterGrey  = #93a1a1
+LightestGrey = #eee8d5
+
 LightGreen = rgb(200, 240, 150)
+LighterGreen = rgb(170, 240, 180)
 DarkGreen = olivedrab
 LightRed = rgb(240,150,150)
 Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
-LighterBlue = rgb(170, 240, 180)
 
 body
-  background-color LightGrey
+  background-color DarkGrey
   font-family "Arial", helvetica, sans-serif
   font-size 1em
   color LightGreen
@@ -25,7 +27,7 @@ body
   strong
     color DarkGreen
   em
-    color LighterBlue
+    color LighterGreen
   pre, code
     color Violet
 
@@ -33,18 +35,24 @@ body
     min-height 66px
     text-align center
     font-size 18px
+    margin -8px
     margin-bottom 2px
-    border-bottom  1px solid rgb(70,70,70)
+    border-bottom  1px solid LightGreen
     padding-top 16px
-    background-image  linear-gradient(to bottom, LightGrey, rgb(64,64,64))
+    // background-image  linear-gradient(to bottom, LightGrey, DarkGrey)
+    background DarkGreen
 
     a
-      color rgb(230,230,230)
+      color LightGreen
+      text-shadow 2px
       text-decoration none
       margin-right 40px
-      border-right 1px solid rgb(100,100,100)
+      // border-right 1px solid DarkGrey
       padding-bottom 2px
-      border-bottom 2px solid rgb(100,100,100)
+      // border-bottom 2px solid DarkGrey
+
+      &:hover
+        color LightGrey
 
 
   #sidebar

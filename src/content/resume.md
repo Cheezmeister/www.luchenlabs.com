@@ -1,5 +1,5 @@
 ---
-title: R&eacute;sum&eacute;
+title: Résumé
 ---
 
 I never miss an opportunity to brag about how talented and awesome I am. 
