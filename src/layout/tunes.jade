@@ -5,7 +5,7 @@ block innercontent
   p {{{content}}}
 
   table.tunes
-    {{#data.tracks}}
+    {{#tracks}}
     tr
       td(id='{{title}}')
         h3: a(href='{{path}}') {{title}}
@@ -14,5 +14,5 @@ block innercontent
       td
         audio(src='{{path}}' controls) Looks like your browser can't play HTML5 audio.
 
-    {{/data.tracks}}
+    {{/tracks}}
 

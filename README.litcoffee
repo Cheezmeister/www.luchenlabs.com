@@ -85,10 +85,15 @@ Get the extension of a Grunt "src/dest" file. I can't believe this doesn't come 
         extension = (file) ->
           "#{file.src}".split('.').pop()
 
+Capitalize a string
+
+        capitalize = (str) ->
+          str.charAt(0).toUpperCase() + str.slice(1)
+
 Invoking handlebars.
 
-        renderStatic = (data, dest, tmpl) ->
-          renderedHtml = (handle.compile tmpl) data
+        renderStatic = (pageData, dest, tmpl) ->
+          renderedHtml = (handle.compile tmpl) pageData
           grunt.file.write "#{dest}", renderedHtml
 
 Compiling content. We use Marked for markdown...
@@ -118,7 +123,12 @@ A HBS template for an index page (listing metadata about each content file) is o
             map(matter).
             map (x) -> x.data
           fname = "#{@files[0].orig.dest}/index.html"
-          renderStatic {index: metadata},fname, template
+
+Infer the page's title from the task args. E.g. `grunt render:Posts:Javascript` will set title to 'Posts - Javascript'. We can also configure a title directly.
+
+          title = @data.title || capitalize @target
+
+          renderStatic {index: metadata, title: title},fname, template
           grunt.log.ok "created #{fname} from #{@files.map (f)->f.src}"
 
 ### Rendering Files
@@ -132,8 +142,8 @@ Read each file, pull out its metadata, compile its content, and render it.
           pageData = matter(pageContent)
           ext = extension file
           if ext is 'md'
-            pageData.content = compileMarkdown pageData.content
-            renderStatic pageData, file.dest, template
+            pageData.data.content = compileMarkdown pageData.content
+            renderStatic pageData.data, file.dest, template
           else
             done = gruntTask.async()
             compileLatex pageData.content, (err, result) ->
