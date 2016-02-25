@@ -1,6 +1,6 @@
-#!/usr/bin/env coffee
+#!/usr/bin/env coffee # [Huh?](https://en.wikipedia.org/wiki/Shebang)
 
-[Shebang!](htps://en.wikipedia.org/wiki/Shebang)
+    #!/usr/bin/env coffee
 
 # WTF?
 
@@ -45,7 +45,7 @@ And inside that script is a bash one-liner that does all the real work.
 # But why?
 
 The point is that it takes a single line of code (or three, at a stretch) to make **any programming language** support modern literate programming. It works, but it sure ain't fancy. I bet you can do better. LP holds serious potential in today's distracted tech world, but the tooling for it is just not there.
-One can envision a SCM-integrated wiki that is simultaneously its own codebase and, potentially, [its own test suite](https://bitheap.org/cram/), as well. 
+One can envision a [SCM-integrated wiki](http://www.gitit.net/) that is simultaneously its own codebase and, potentially, [its own test suite](https://bitheap.org/cram/), as well. 
 This has huge implications for bridging gaps between managers, architects, engineers and customers. It excites me so much I think I just wet my pants a little. But we're not there yet.
 
 This page is my small step in that direction.

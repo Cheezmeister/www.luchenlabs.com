@@ -43,7 +43,7 @@ copy:
         cwd: "<%= dir.content %>"
         dest: "<%= dir.deploy %>"
         expand: true
-        src: ["lp/**/*.{coffee,md}"]
+        src: ["lp/**/*.{coffee,pl,sh,md}"]
 
 # Coffee
 coffee:
@@ -126,6 +126,7 @@ render:
 
 
   literate_programming:
+    literate: true
     template: '<%= dir.build %>/page.hbs'
     files:
       -

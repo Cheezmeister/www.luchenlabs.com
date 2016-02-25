@@ -99,7 +99,14 @@ Invoking handlebars.
 
 Compiling content. We use Marked for markdown...
 
-        compileMarkdown = (content) ->
+        compileMarkdown = (content, highlightLanguage) ->
+          marked.setOptions
+            highlight: (code) ->
+              hljs = require('highlight.js')
+              result = if highlightLanguage then hljs.highlightAuto(code, [highlightLanguage]) else hljs.highlightAuto code
+              console.log "Detected #{result.language} for\n #{code}\nhl was #{highlightLanguage}"
+              result.value
+
           marked content, {breaks: false, smartypants: true}
 
 ...and Pandoc for LaTeX. I couldn't find a synchronous Pandoc wrapper, so Grunt `async` it is! I could also promises, but feh.
@@ -134,16 +141,28 @@ Infer the page's title from the task args. E.g. `grunt render:Posts:Javascript` 
 
 ### Rendering Files
 
-Read each file, pull out its metadata, compile its content, and render it.
+Perhaps instead of configuring a single template, it could be specified
+per-document with YFM. Or just override. I dunno.
 
         template = grunt.file.read @data.template
+        literate = @data.literate
 
         @files.map (file) ->
+
+If the task has `literate: true` we will detect the source language from the 
+_inner_ file extension and use it to highlight code blocks.
+
+          codeExt = null
+          if literate
+            codeExt = "#{file.src}".split('.').reverse()[1]
+            console.log "Ext is #{codeExt}"
+
+Regardless, we read each file, pull out its metadata, compile its content, and render it.
+
           pageContent = grunt.file.read file.src
           pageData = matter(pageContent)
-          ext = extension file
-          if ext is 'md'
-            pageData.data.content = compileMarkdown pageData.content
+          if extension(file) is 'md'
+            pageData.data.content = compileMarkdown pageData.content, (codeExt || 'coffee')
             renderStatic pageData.data, file.dest, template
           else
             done = gruntTask.async()

@@ -1,14 +1,18 @@
+DarkerGrey   = #282828
 DarkGrey     = #323232
+Grey         = #555555
 LightGrey    = #839496
 LighterGrey  = #93a1a1
 LightestGrey = #eee8d5
 
 LightGreen = rgb(200, 240, 150)
 LighterGreen = rgb(170, 240, 180)
-DarkGreen = olivedrab
+DarkGreen = #5f8700
 LightRed = rgb(240,150,150)
 Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
+Yellow = #af8700
+LightYellow = #626262
 
 body
   background-color DarkGrey
@@ -24,12 +28,21 @@ body
     border-bottom 0px
   h1,h2,h3,h4,h5,h6
     color LightRed
+    text-shadow 2x 2px 5px Grey
   strong
     color DarkGreen
   em
-    color LighterGreen
-  pre, code
-    color Violet
+    color DarkGreen
+  code
+    color DarkGreen
+
+  pre 
+    padding 3px
+    border 1px solid Grey
+    border-radius 2px
+    background-color DarkerGrey
+    code
+      color LightestGrey
 
   .navigation
     min-height 48px
