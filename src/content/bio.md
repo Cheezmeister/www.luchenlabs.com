@@ -115,5 +115,17 @@ remains throughout. I wouldn't be the person I am today if it weren't for my
 four years on an FRC team. There aren't many other places where one can spend
 a summer learning to solder, program, and segway joust at the same time.
 
+### The Color Green ###
+
+In case it's not evident, I use the color liberally. Not that I really discriminate on the basis of color, but having a default when I need to choose just makes life easier.
+
+I don't know why, but green has always appealed to me. It's a pretty solid color. It was the color of the first bedroom I remember clearly, and of the ski jacket that served me for almost half my life. 
+It's also the color of [grass](http://www.21stcenturymed.org/happy-boy-in-grass.jpg)
+and [trees](http://www.publicdomainpictures.net/pictures/100000/nahled/cannabis-sativa-leaf.jpg)
+and [these](http://wallpapercave.com/wp/6Rkrc0D.jpg)
+and [those](http://vignette1.wikia.nocookie.net/sonic/images/0/06/The_beginning.png/revision/latest?cb=20130331110926)
+and [this](http://uploads.neatorama.com/images/posts/323/62/62323/1370549920-0.jpg) 
+and of course [that](https://49.media.tumblr.com/tumblr_lsudn1Xqjy1qzunn4o1_400.gif).
+
 ### Cheez ###
 Cheez is made from the curds of milk, typically a cow's. It's delicious, nutritious, and plays a key role in [the first game I developed](/projects/cheezus). Not to be confused with [cheese]( http://wiki.teamliquid.net/starcraft2/Cheese). 

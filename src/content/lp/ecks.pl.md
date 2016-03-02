@@ -12,7 +12,7 @@ Like all literate programs worth reading, this one begins with a story. Once, lo
 alias x='tmux -2'
 ```
 
-Why 'x', you ask? Well, 't' was already taken by some task list or another, but that's neither here nor there.
+Why `x`, you ask? Well, `t` was already taken by some task list or another, but that's neither here nor there.
 
 For a while, life was good.
 The code monkey could hammer out `x ls` to view running sessions, `x new -s something` to start one, and `x a -t something` to attach a session.
@@ -48,7 +48,7 @@ To list all running sessions (`tmux list-sessions`):
 $ x
 ```
 
-To create a session named "hackery", or attach to it if it already exists (`tmux attach-session -t hackery || tmux new-session -s hackery
+To create a session named "hackery", or attach to it if it already exists (`tmux attach-session -t hackery || tmux new-session -s hackery`):
 
 ```sh
 $ x hackery
@@ -69,16 +69,19 @@ We could perhaps read inputs from a config file or something, but that would be 
     my ($sessname) = @ARGV;
 
 
-By default, just print current running sessions and early-out. If you are a Perl hacker and know how to fit this one line, please tell me. I couldn't figure it out.
+By default, just print current running sessions and early-out. 
 
-    system("$tmux_command ls") unless $sessname;
-    exit(0) unless $sessname;
+    system("$tmux_command ls"), exit(0) unless $sessname;
 
-Do it!
+Fun fact: this line gave me plenty of grief. It started with a `&&` instead, after shell conventions, but *it turns out* that shell conventions are stupid, treating the success return value of 0 as "true" and nonzero as "false". This makes for intuitive scripts but defies logic (literally); Perl (like C) *does the exact opposite*. 
+
+Anyway, if we did get a session name, attach or create as necessary and move on with our life.
 
     system( "$tmux_command attach -t $sessname || $tmux_command new-session -s $sessname");
 
 ## Chapter 3: Installation
+
+You have roughly four options.
 
 1. `curl http://luchenlabs.com/lp/ecks.pl -o /usr/local/bin/ecks.pl`
 2. [Download](ecks.pl.md) the source code in its raw form and "compile" it with [Literati](literati.html)
@@ -100,6 +103,6 @@ Into this:
 ```sh
 alias x='ecks.pl'
 ```
-Which is just what the code monkey did. And he lived happily ever after.
+Which is just what the code monkey [did](https://github.com/Cheezmeister/dotfiles/commit/edda872). And he lived happily ever after.
 
 I hope reading this has given you as much joy as writing it gave me. Perhaps, with time, the keystrokes it saves me will compensate for the fact that I turned a simple, concise Perl script into a sproinking novel.

@@ -10,16 +10,25 @@ written in interpreted programming languages.
 
 # Usage
 
-`liberate` is not intended to be run interactively but rather via a shebang line
+`liberate` is not intended for interactive use but rather via a shebang line
 on the target source file, like the one at the top of this document.
   
-For instance, where a `.rb` file might start with `#!/usr/local/bin/ruby`, an equivalent
-`.rb.md` file would instead start with `#!/usr/local/bin/liberate /usr/local/bin/ruby`.
+For instance, where a `.rb` file might start with 
+```sh
+#!/usr/local/bin/ruby
+```
+An equivalent `.rb.md` file would instead start with 
+```sh
+#!/usr/local/bin/liberate /usr/local/bin/ruby
+```
 
-Or, more succincly using `env`: `#!/usr/bin/env liberate ruby`
+Or, more succinctly using `env`
+```sh
+#!/usr/bin/env liberate ruby
+```
 
-It's imporant to note that passing flags to the interpreter via shebang may cause strange
-behaviour due to the way we juggle arguments. I recommend keeping it simple.
+Passing flags like `-w` to the interpreter via shebang may cause strange
+behaviour due to the way we juggle arguments. I recommend against it.
 
 # Implementation
 
@@ -29,6 +38,19 @@ and the target file (from the OS)...
     interpreter=$1; shift
     file=$1; shift
 
-Then pass the rest of the args through.
+Then we can cut and grep our way to success. 
 
-    cat $file | grep '^    ' | cut -b 5- | $interpreter $*
+    cat $file | grep '^    ' | cut -b 5- | $interpreter
+
+Note that with this approach, you can't 
+pass command-line arguments. A better solution would probably involve a 
+temporary file and a more conventional invocation where the first arg is the 
+(liberated) script's filename and the rest are passed through to it. 
+
+Patches are always welcome, of course.
+
+# Installation
+
+`curl http://luchenlabs.com/lp/liberate.sh -o /usr/local/bin/liberate`
+
+Paste that into your shell.

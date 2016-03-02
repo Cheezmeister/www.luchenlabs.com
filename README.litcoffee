@@ -104,7 +104,6 @@ Compiling content. We use Marked for markdown...
             highlight: (code) ->
               hljs = require('highlight.js')
               result = if highlightLanguage then hljs.highlightAuto(code, [highlightLanguage]) else hljs.highlightAuto code
-              console.log "Detected #{result.language} for\n #{code}\nhl was #{highlightLanguage}"
               result.value
 
           marked content, {breaks: false, smartypants: true}
@@ -162,7 +161,7 @@ Regardless, we read each file, pull out its metadata, compile its content, and r
           pageContent = grunt.file.read file.src
           pageData = matter(pageContent)
           if extension(file) is 'md'
-            pageData.data.content = compileMarkdown pageData.content, (codeExt || 'coffee')
+            pageData.data.content = compileMarkdown pageData.content, codeExt
             renderStatic pageData.data, file.dest, template
           else
             done = gruntTask.async()
