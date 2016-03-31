@@ -10,11 +10,11 @@ mac: /dl/Vec-1.0.4-osx
 nix: /dl/vec-1.0.4
 sauce: https://github.com/Cheezmeister/Vec
 screenshot: https://github.com/cheezmeister/vec
-status: wip
-statuschar: …
+status: finished
+statuschar: ✔
 --- 
 
-Vec is a procedural, dual-axis, polar-coordinate arcade thing I've been working on since GDC 2015. It's more of a toy than a game.  Spin around, shoot things and make pretty designs.
+Vec is a procedural, dual-axis, polar-coordinate arcade thing I worked on in 2015. It's more of a toy than a game.  Spin around, shoot things and make pretty designs.
 
 <div class="embed" ><iframe src="https://player.vimeo.com/video/127282068" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>
 

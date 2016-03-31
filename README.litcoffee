@@ -56,7 +56,7 @@ Just in case.
 
       d = console.log
 
-Coming from [Hakyll][] by way of [Hyde][], My pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
+Coming from [Hakyll][] by way of [Hyde][], my pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
 
 [Hakyll]: http://github.com/jaspervdj/hakyll
 [Hyde]: http://hyde.github.io

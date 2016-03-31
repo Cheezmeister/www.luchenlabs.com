@@ -3,7 +3,7 @@ title: Spheres of Influence
 longtitle: Spheres of Influence
 shorttitle: spheres
 description: Procedural rube-goldberg puzzle...IN SPACE.
-genre: 3D Puzzle
+genre: 3D Puzzle, Procedural
 tech: C++, SDL, OpenGL, Luabind, wiiuse, CMake
 screenshot: /assets/images/screenshots/spheres.png 
 windows: http://sourceforge.net/projects/soi/files/soi-0.1/

@@ -2,7 +2,7 @@
 title: Nextris
 longtitle: Nextris
 shorttitle: nextris
-genre: Puzzle, Experimental
+genre: Puzzle, Procedural
 description: A Tetris clone with a twist
 tech: C++, SDL, PortAudio
 windows: /dl/Nextris-1.0.1-win32.zip

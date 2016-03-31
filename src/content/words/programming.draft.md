@@ -42,8 +42,8 @@ Briefly, and in no particular order:
   - [Scripting](#scripting-languages)
   - [Data](#data-languages)
 2. [Concepts](#concepts)
-  - Control
-  - Data
+  - [Control](#control-concepts)
+  - [Data](#data-concepts)
 3. [Libraries](#libraries)
   - Modules
   - Frameworks
@@ -156,11 +156,36 @@ concrete lessons learned. The entire space of CS concepts is rather vague, with 
 - Control concepts (which give rise to algorithms) such as branching, iteration, recursion, parallelization
 - Data concepts (which give rise to design patterns) such as pointers, composition, containers and typing
 
-A programming *[paradigm][]* is a set of both control and data constructs that work reasonably well together and are frequently found snuggling together in the form of a particular language. Functional, procedural, and declarative paradigms are highly influential in modern programming. Object Oriented Programming gets all the attention but it's really just a particular formulation of those three. You'll want to master them before you begin to truly grok OOP. I mean, hell, the very definition of a *class* is data plus controlling code.
+A programming *[paradigm][]* is a set of both control and data constructs that work reasonably well together and are frequently found snuggling together in the form of a particular language. Notably, the *functional*, *procedural*, and *declarative* paradigms are highly influential in modern programming. Object Oriented Programming gets all the attention but it's really just a particular formulation of those three. Mastering them first will help you understand why OOP is as effective as it is. For example: the very definition of a *class* is data plus controlling code.
 
 Coding concepts are inextricably tied to programming languages that embody them, and so it's not feasible to study them "purely", as divorced from languages. Still, you should pay special attention to the concepts exposed in your language of choice, and challenge yourself on occasion to bend a language into using a concept it wasn't designed for.
 
 [paradigm]: https://en.wikipedia.org/wiki/Programming_paradigm
+
+### Control Concepts
+
+Every (electronic) computer is ultimately a circuit with electrons shooting through it, really really fast. By carefully designing this circuit, we can control exactly how those electrons behave--choreographing millions of electric pulses into an intricate dance we call *software*.
+
+Let's take a modest processor operating at 1 GHz. This means it goes through one billion *clock cycles* per second. Each clock cycle (i.e. every nanosecond) this processor executes a single *instruction* and does the thing that the instruction says to do. Instructions might be be any of several dozen to several hundred basic operations, depending on the processor's [instruction set architecture][ISA]. A single instruction might say "multiply these two bytes together and put the result in that byte", or "set this byte to zero".<sup id="a5">[5](#f5)</sup>.
+
+Usually, instructions are processed one-by-one in the order they appear, kind of like following a cookie recipe. The real magic comes into play with special instructions that tell the process to *branch* based on certain conditions, which turns our simple recipe into a nonlinear choose-your-own-adventure novel where something different might happen every time.
+
+In most programming languages, branching takes the form of the `if` statement--and occasionally, the notorious `goto`. Abstracting upon the humble `if` gives us more powerful ideas like *iteration* (doing the same thing over and over), *recursion* ([code that calls itself](http://knowyourmeme.com/memes/xzibit-yo-dawg)), and others.
+
+[![GOTO considered fatal](https://imgs.xkcd.com/comics/goto.png)](http://www.explainxkcd.com/wiki/index.php/292)
+
+[ISA]: https://en.wikipedia.org/wiki/ISA
+
+### Data Concepts
+
+(Under construction)
+Pointers: AKA references, data whose purpose is to point to something else. Hyperlinks
+are a form of pointer: `http://www.google.com` is useless data, but the search engine
+served up by pointing (eh, eh?) a browser at it is useful.
+
+Composition, not the musical kind. Implies "has-a" relationship.
+
+Containers use an evolved form of composition where a data structure has an arbitrary amount of stuff. The order of that stuff may matter (list, tree), or it may not (set, map). When the term "data structures" is used in an academic context, it usually means containers.
 
 Libraries
 ---------
@@ -200,7 +225,7 @@ More powerful editors like Notepad++, TextMate or gedit offer syntax highlightin
 
 Everybody uses one. Except maybe my grandma, because she's just that hardcore. As more and more of society moves into "the cloud", browsing the web is becoming an increasingly large proportion of how we interact with the world around us. 
 
-Web browsers are incredibly powerful bits of software. They are capable of some interesting things that help you save time and stay focused, if you know how to use them. A favorite of mine, pioneered by Opera (if I'm not mistaken) is the ability to set keyword searches. I can type `w visual studio` into the location bar and instantly pull up the Wikipedia page for Visual Studio. I use Wikipedia a ton, so shaving five seconds off of every wiki search I conduct adds up pretty quickly!
+Web browsers are powerful bits of software. They are capable of some interesting things that help you save time and stay focused, if you know how to use them. A favorite of mine, pioneered by Opera (if I'm not mistaken) is the ability to set keyword searches. I can type `w visual studio` into the location bar and instantly pull up the Wikipedia page for Visual Studio. I use Wikipedia a ton, so shaving five seconds off of every wiki search I conduct adds up pretty quickly!
 
 Take the time to learn the ins and outs of your browser of choice, and feel more like [Tony Stark][] and less like [Alice in Wonderland][] on the web.
 
@@ -218,11 +243,11 @@ You may (read: will) come across the term "Unix", which is usually used as an um
 
 ### Communications
 
-These are the tools you use to keep in touch with friends, family and colleagues. They include email, chat, telephony and various social media clients. As anyone with an overflowing inbox can attest, communication in the information age can be an enormous drain on your time and attention if not managed carefully.
+These are the tools you use to keep in touch with friends, family and colleagues. They include email, chat, telephony and various social media clients. Communication in the information age can be an enormous drain on your time and attention if not managed carefully.
 
 The approach I personally take is to avoid "kitchen sink" tools like Facebook or GMail--these products combine email, chat, and social channels in a rather distracting way, and I wind up looking at cat pictures **again** when all I really needed to do was send a quick message. Instead I use Thunderbird for _all_ my email, Pidgin for _all_ my chat accounts<sup id="a3">[3](#f3)</sup> and set aside time for checking social media when I can wander aimlessly and not feel bad.
 
-I _still_ haven't found a decent tool for managing telephony/VoIP. Cell phones are a notch above tin-can-and-string in voice quality, and most desktop tools involve services where you pay to connect to landlines. I'd invest in traditional landline service if I didn't move so often. Voice is my least preferred mode of communication though, so finding a solution here isn't a huge priority.
+I _still_ haven't found a decent tool for managing telephony/VoIP. Cell phones are a notch above tin-can-and-string in voice quality, and most desktop tools involve services where you pay to connect to landlines. I'd spring for a landline if I didn't move so often. Voice is my least preferred mode of communication though, so finding a solution here isn't a huge priority.
 
 ### Productivity
 
@@ -415,6 +440,8 @@ I think that's pretty freaking cool.
 
 <b id="f2">[2](#f2)</b>   I would never recommend JS to a beginner. The language is laden with more traps than a Mayan temple and it trips up seasoned professionals on a daily basis. [↩](#a2)
 
-<b id="f3">[3](#f3)</b> I use AIM a lot, still. Nobody else does. I'm not sure why. Actually, I do, and it rhymes with "schmasebook". [↩](#a3)
+<b id="f3">[3](#f3)</b> I use AIM a lot, still. Nobody else does. I think the reason rhymes with "schmasebook". [↩](#a3)
 
 <b id="f4">[4](#f4)</b> This is a poor analogy but it's the best I could come up with. I bet you can think of a better one. [↩](#a4)
+
+<b id="f5">[5](#f5)</b> Modern 64 bit processors operate (mostly) on 8-byte words, but the idea is the same. You can pretend this imaginary processor is from the 8-bit era. [↩](#a5)
