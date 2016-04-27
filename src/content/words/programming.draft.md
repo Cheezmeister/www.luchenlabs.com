@@ -1,7 +1,9 @@
 ---
 title: This is What Programming Language You Should Learn
-date: 
+date: 2015-12-30
+updated: 2016-04-28
 shorttitle: programming
+class: article
 ---
 
 This is What Programming Language You Should Learn
@@ -178,14 +180,28 @@ In most programming languages, branching takes the form of the `if` statement--a
 
 ### Data Concepts
 
-(Under construction)
-Pointers: AKA references, data whose purpose is to point to something else. Hyperlinks
-are a form of pointer: `http://www.google.com` is useless data, but the search engine
-served up by pointing (eh, eh?) a browser at it is useful.
+Like code, digital data is nothing but heaps of ones and zeroes. What makes it interesting is how it is organized and interpreted.
 
-Composition, not the musical kind. Implies "has-a" relationship.
+The *pointer* is among the most fundamental data concepts but is notoriously difficult to wrap your head around. Pointers are sometimes called *references*<sup id="a5">[5](#f5)</sup>. Pointers are, simply, data whose purpose is to point to something else. This is called *indirection* and is a simple form of abstraction.
 
-Containers use an evolved form of composition where a data structure has an arbitrary amount of stuff. The order of that stuff may matter (list, tree), or it may not (set, map). When the term "data structures" is used in an academic context, it usually means containers.
+![castle](https://i.ytimg.com/vi/dlbhipB2PcU/hqdefault.jpg 'A pointer incarnated as a Toad')
+
+Hyperlinks are a form of pointer you're probably familiar with: `http://www.google.com` is useless data, but what *is* useful is the search engine served up by pointing a browser at it (pun intended). Similarly, you may have some bit of data `0xd34dbe3f` that doesn't do much until you *dereference* it, fetching the memory stored at that location, which might be a picture of a cat or something.
+
+*Composition* (not the musical kind) is the idea of bundling related data together. Composition implies a "has-a" relationship; that is, that one thing has a different thing, in the sense that your wallet has a debit card, a credit card, and an ID.
+
+```cxx
+struct Wallet {
+  Card credit_card;
+  Card debit_card;
+  Card driver_licence;
+  int dollars;
+}
+```
+
+Composition lets us write programs that model real stuff with grace. Without it, we'd be limited to just numbers and letters, perpetually reliving the first grade. Yech.
+
+*Containers* are an evolved form of composition where a data structure has an arbitrary amount of the same type of stuff. The order of that stuff may matter (list, array, tree), or it may not (set, map). When the term "data structures" is used in an academic context, it usually means containers.
 
 Libraries
 ---------
@@ -445,3 +461,5 @@ I think that's pretty freaking cool.
 <b id="f4">[4](#f4)</b> This is a poor analogy but it's the best I could come up with. I bet you can think of a better one. [↩](#a4)
 
 <b id="f5">[5](#f5)</b> Modern 64 bit processors operate (mostly) on 8-byte words, but the idea is the same. You can pretend this imaginary processor is from the 8-bit era. [↩](#a5)
+
+<b id="f6">[6](#f6)</b> C++, confusingly, has both pointers *and* references, which behave almost the same way, but not quite. [↩](#a6)

@@ -52,7 +52,7 @@ This page is my small step in that direction.
 
 As an added bonus, here's how to generate fancy-ass documentation as well:
 
-    $ "markdown #{file} > $(basename #{file} | cut -d . -f 1).html"
+    $ "marked #{file} > $(basename #{file} | cut -d . -f 1).html"
 
 There. Four lines. Is that enough SLOC for my TPS report? Now go, write some LP already, and have fun.
 
