@@ -3,7 +3,6 @@ title: This is What Programming Language You Should Learn
 date: 2015-12-30
 updated: 2016-04-28
 shorttitle: programming
-class: article
 ---
 
 This is What Programming Language You Should Learn
@@ -174,7 +173,7 @@ Usually, instructions are processed one-by-one in the order they appear, kind of
 
 In most programming languages, branching takes the form of the `if` statement--and occasionally, the notorious `goto`. Abstracting upon the humble `if` gives us more powerful ideas like *iteration* (doing the same thing over and over), *recursion* ([code that calls itself](http://knowyourmeme.com/memes/xzibit-yo-dawg)), and others.
 
-[![GOTO considered fatal](https://imgs.xkcd.com/comics/goto.png)](http://www.explainxkcd.com/wiki/index.php/292)
+[![GOTO considered fatal](https://imgs.xkcd.com/comics/goto.png GOTO considered fatal)](http://www.explainxkcd.com/wiki/index.php/292)
 
 [ISA]: https://en.wikipedia.org/wiki/ISA
 
