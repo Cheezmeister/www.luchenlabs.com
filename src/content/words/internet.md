@@ -2,6 +2,7 @@
 title: I - The Network
 shorttitle: internet
 date: 2015-06-30
+tags: [creative]
 ---
 
 > Cosmic Cycle 2.

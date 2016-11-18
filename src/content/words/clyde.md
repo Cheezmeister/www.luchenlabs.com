@@ -2,6 +2,7 @@
 title: La historia de Clyde, el elefante rosado
 shorttitle: clyde
 date: old
+tags: [creative]
 ---
 
 Una vez, vivió un elefante rosado que se llama Clyde. Clyde tenía un talento especial: podía balancearse en su nariz. Cada tarde a las tres, después de su trabajo en el campo de construcción, Clyde y sus amigos, tres ratones ciegos que se llaman Inky, Pinky, y Blinky, iban a la cuadra de estacionamiento para relajarse con una Coca-Cola. Compartían historias mientras que Clyde se balanceaba arriba abajo en su nariz larga. Siempre terminaba riendo a carcajadas. Por un tiempo, la vida se quedaba buena. 

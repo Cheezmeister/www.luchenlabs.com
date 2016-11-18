@@ -3,6 +3,7 @@ title: This is What Programming Language You Should Learn
 date: 2015-12-30
 updated: 2016-04-28
 shorttitle: programming
+tags: [technical]
 ---
 
 This is What Programming Language You Should Learn

@@ -45,6 +45,17 @@ copy:
         expand: true
         src: ["lp/**/*.{coffee,pl,sh,md}"]
 
+# Literate "compilation" with Writ
+writ:
+  all:
+    files:
+      -
+        cwd: "<%= dir.content %>"
+        dest: "<%= dir.deploy %>/lp"
+        expand: true
+        src: ["**/*.*.md"]
+
+
 # Coffee
 coffee:
   all:
@@ -81,7 +92,7 @@ jade:
 render:
   words:
     index: '<%= dir.build %>/postlist.hbs'
-    template: '<%= dir.build %>/page.hbs'
+    template: '<%= dir.build %>/post.hbs'
     files:
       -
         expand: true

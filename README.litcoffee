@@ -56,6 +56,13 @@ Just in case.
 
       d = console.log
 
+Gotta log when everything goes as planned. This seems to be the conventional way to do it.
+
+      ok = (n) ->
+        grunt.log.ok(n + ' ' + grunt.util.pluralize(n, 'file/files') + ' created.')
+
+## Render
+
 Coming from [Hakyll][] by way of [Hyde][], my pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
 
 [Hakyll]: http://github.com/jaspervdj/hakyll
@@ -75,11 +82,6 @@ The `render` task takes MD+YFM content plus a HBS template, and outputs static H
         return ok 0 unless @files.length > 0 # Do I need this? Probably.
 
 ### Some Helpers
-
-Gotta log when everything goes as planned. This seems to be the conventional way to do it.
-
-        ok = (n) ->
-          grunt.log.ok(n + ' ' + grunt.util.pluralize(n, 'file/files') + ' created.')
 
 Get the extension of a Grunt "src/dest" file. I can't believe this doesn't come standard.
 
@@ -173,4 +175,9 @@ Regardless, we read each file, pull out its metadata, compile its content, and r
 
         ok @files.length
 
+## Writ
 
+      writ = require 'writ'
+      grunt.registerMultiTask 'writ', 'Emit source for literate programs using writ', ->
+        writ.writ file.src, file.orig.dest for file in @files
+        /* ok JSON.stringify file for file in @files */

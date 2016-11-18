@@ -25,6 +25,12 @@ enough NOT to say screw it and rewrite the whole goshdarn thing?
 Yup. Staying true to my word, I am pulling this game kicking and screaming
 across the finish line.
 
-In Progress. See continuing DevLog on [TigSource](http://is.gd/JMaRak)
+In Progress. See continuing DevLog on [TigSource](http://is.gd/JMaRak) and [Twitter](https://twitter.com/search?q=%23cheezus2)
+
+## Download
+
+[Windows](http://dl.luchenlabs.com/Cheezus2FF.7z)
+[Mac](http://dl.luchenlabs.com/Cheezus2FF-mac.tgz)
+[Linux](http://dl.luchenlabs.com/Cheezus2FF-nix.tgz)
 
 ![Screenshot](/assets/images/screenshots/cheezus2.png)

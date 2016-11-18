@@ -57,7 +57,7 @@ Add your own.
 
     my %search_engines = (
       'd' => 'https://duckduckgo.com/?q=%s',
-      'g' => 'https://google.com/q=%s',
+      'g' => 'https://google.com/?q=%s',
       'w' => 'https://en.wikipedia.org/wiki/Special:Search?search=%s',
       'so' => 'https://stackoverflow.com/search?q=%s'
       'wa' => 'https://wolframalpha.com/input?i=%s',
@@ -87,7 +87,7 @@ Grab the engine keyword from command line args.
 `$^O` reports the OS Perl is running under. If we were, hypothetically, to ask Perl
 to `use English`, it'd be called `$OSNAME`, but that's far too intelligible, so we won't.
 
-    my $opener = $open_commands{$^O};
+    my $opener = $open_commands{$^O} or croak;
 
 Choose the right URL template from the keyword passed in. In case you forgot, they're listed [up there](#search-engines).
 

@@ -2,6 +2,7 @@
 title: Arrgh!
 shorttitle: arrgh
 date: old
+tags: [creative]
 ---
 
 <div style="text-align: center">

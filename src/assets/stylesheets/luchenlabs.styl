@@ -1,3 +1,4 @@
+DarkestGrey   = #181818
 DarkerGrey   = #282828
 DarkGrey     = #323232
 Grey         = #555555
@@ -8,9 +9,12 @@ LightestGrey = #eee8d5
 LightGreen = rgb(200, 240, 150)
 LighterGreen = rgb(170, 240, 180)
 DarkGreen = #5f8700
+DarkerGreen = #147d33
 LightRed = rgb(240,150,150)
+DarkRed = #863030
 Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
+DarkYellow = #66580b
 Yellow = #af8700
 LightYellow = #626262
 
@@ -99,6 +103,29 @@ body
     border-left  1px solid rgb(50,50,50)
     border-right  1px solid rgb(50,50,50)
     min-height 800px
+
+    .badge
+      background DarkerGrey
+      border 1px solid DarkestGrey
+      border-radius  5px
+      padding  2px
+
+    .postlist
+      h2, .posttags
+        display inline-block
+      .posttags span
+        text-shadow 1px 1px black
+        margin 1em
+        text-transform capitalize
+      span.tag-creative
+        background Violet
+      span.tag-technical
+        background DarkerGreen
+      span.tag-gamedev
+        background DarkRed
+      span.tag-ramblings
+        background DarkYellow
+
 
     .centered
       margin-left auto

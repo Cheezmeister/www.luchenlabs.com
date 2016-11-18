@@ -8,5 +8,11 @@ block innercontent
 
   .postlist
     {{#index}}
-    h2: a(href="{{shorttitle}}") {{title}}
+    .post
+      small.posttags
+        {{#each tags}}
+        span.badge(class="tag-{{this}}") {{this}}
+        {{/each}}
+      h2
+        a(href="{{shorttitle}}") {{title}}
     {{/index}}

@@ -2,6 +2,7 @@
 title: A Brief History of my Fingers
 shorttitle: history
 date: June 5
+tags: [technical]
 ---
 
 I had a long cross-country flight today. Sleep wasn't in the cards and I couldn't make any code come out of my fingers.
