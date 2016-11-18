@@ -5,9 +5,9 @@ shorttitle: cheezus2
 genre: Platformer
 description: The Ten-Year Sequel
 tech: C++, SDL
-windows: unsupported
-mac: unsupported
-nix: unsupported
+windows: http://dl.luchenlabs.com/Cheezus2FF.7z
+mac: http://dl.luchenlabs.com/Cheezus2FF-mac.tgz
+nix: http://dl.luchenlabs.com/Cheezus2FF-nix.tgz
 sauce: unsupported
 screenshot: xxx
 status: wip
