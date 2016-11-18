@@ -14,6 +14,8 @@ status: wip
 statuschar: …
 ---
 
+![Screenshot](/assets/images/screenshots/cheezus2.png)
+
 Once, long ago, I made [Cheezus](cheezus). It was fun. It was educational.
 And it contained a promise for a sequel. That sequel was quickly designed
 and coding began forthwith. Three years later, development had tapered off
@@ -32,5 +34,3 @@ In Progress. See continuing DevLog on [TigSource](http://is.gd/JMaRak) and [Twit
 [Windows](http://dl.luchenlabs.com/Cheezus2FF.7z)
 [Mac](http://dl.luchenlabs.com/Cheezus2FF-mac.tgz)
 [Linux](http://dl.luchenlabs.com/Cheezus2FF-nix.tgz)
-
-![Screenshot](/assets/images/screenshots/cheezus2.png)

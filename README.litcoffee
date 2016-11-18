@@ -180,4 +180,3 @@ Regardless, we read each file, pull out its metadata, compile its content, and r
       writ = require 'writ'
       grunt.registerMultiTask 'writ', 'Emit source for literate programs using writ', ->
         writ.writ file.src, file.orig.dest for file in @files
-        /* ok JSON.stringify file for file in @files */
