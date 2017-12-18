@@ -2,17 +2,15 @@ extends ./page.jade
 
 block innercontent
 
-  p {{{content}}}
+  .content !=content
 
   table.tunes
-    {{#tracks}}
-    tr
-      td(id='{{title}}')
-        h3: a(href='{{path}}') {{title}}
-        p 
-          {{description}}
-      td
-        audio(src='{{path}}' controls) Looks like your browser can't play HTML5 audio.
+    each t in data.tracks
+      tr
+        td(id='#{t.title}')
+          h3: a(href='#{t.path}') #{t.title}
+          p #{t.description}
+        td
+          audio(src='#{t.path}' controls) Looks like your browser can't play HTML5 audio.
 
-    {{/tracks}}
 

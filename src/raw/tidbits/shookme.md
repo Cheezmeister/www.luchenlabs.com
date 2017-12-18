@@ -15,3 +15,5 @@ You weigh a metric ton!
 You weigh a metric ton!
 You weigh a metric ton!
 
+I herd u liek references, so I wrote some functions in a Perl
+in a Markdown that invokes a shell script to invoke perl on itself

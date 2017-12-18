@@ -19,6 +19,11 @@ a [hippie](http://www.ecogeek.org/);
 a skier; a skater;
 a teacher, and a learner. 
 
+* Professional Polymath
+* Electronic Artist
+* Amateur Everything
+* Semicolon Slinger
+
 I sincerly enjoy learning in all its forms; whenever 
 I find something cool or useful, I can't resist playing with it. This 
 sometimes results in late homeworks. On the flip side, I get a kick out of 

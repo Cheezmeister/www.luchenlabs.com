@@ -123,7 +123,7 @@ Pedants will point out that data languages aren't, technically, languages--but w
 
 [XML], [JSON], and [Yaml] are examples of data interchange formats. They model "stuff" that can be loaded into your program in many different ways. Each has its strengths and weaknesses, but all are easy to use from any programming language and will save you plenty of headaches over rolling your own format [like my dumb ass once did](/projects/cheezus).
 
-[HTML], [Markdown], [LaTeX] are [markup languages](https://en.wikipedia.org/wiki/Markup_language), a special form of data language geared towards writing documents. HTML, of course, is the de facto language of the web and it's hard to be a modern techie without getting at least a little familiar with it. [LaTeX] on the other hand is geared towards printable documents and is commonly used to produce PDFs. Markdown is a more minimalist format modeled after email conventions but it's become popular with communities like GitHub, Reddit and StackOverflow adopting it for its ease of use. This article was written in Markdown.
+[HTML], [Markdown], [LaTeX] are [markup languages](https://en.wikipedia.org/wiki/Markup_language), a special form of data language geared towards writing documents. HTML, of course, is the de facto language of the web and it's hard to be a modern techie without getting at least a little familiar with it. [LaTeX] on the other hand is geared towards printable documents and is commonly used to produce PDFs. Markdown is a more minimalist format modeled after email conventions but it's become popular with communities like GitHub, Reddit and StackOverflow adopting it for its ease of use. [This article was written in Markdown.](sourcecode)
 
 By the way, you can combine markup languages with programming languages if you want to describe a bit of code in detail. That's called [literate programming][litprog] and I think it's mad cool. [Here's a small literate program I wrote.](http://luchenlabs.com/lp/literati).
 
@@ -148,6 +148,7 @@ By the way, you can combine markup languages with programming languages if you w
 [LaTeX]: https://en.wikipedia.org/wiki/LaTeX
 [Forth]: https://en.wikipedia.org/wiki/Forth_%28programming_language%29
 [litprog]: https://en.wikipedia.org/wiki/Literate_Programming
+[sourcecode]: https://raw.githubusercontent.com/Cheezmeister/luchenlabs/master/src/content/words/programming.md
 
 Concepts
 --------

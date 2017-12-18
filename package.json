@@ -1,0 +1,33 @@
+{
+  "name": "www.luchenlabs.com",
+  "version": "1.0.0",
+  "description": "Turn Back Now =============",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "^1.12.7",
+    "glob": "^7.1.2",
+    "gray-matter": "^3.1.1",
+    "handlebars": "^4.0.11",
+    "live-server": "^1.2.0",
+    "marked": "^0.3.7",
+    "pdc": "^0.2.3",
+    "pug": "^2.0.0-rc.4",
+    "stylus": "^0.54.5"
+  },
+  "scripts": {
+    "test": "echo \"I fart in your general direction\"",
+    "serve": "live-server dist",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheezmeister/luchenlabs.git"
+  },
+  "author": "Brendan Luchen",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/cheezmeister/luchenlabs/issues"
+  },
+  "homepage": "https://github.com/cheezmeister/luchenlabs#readme"
+}

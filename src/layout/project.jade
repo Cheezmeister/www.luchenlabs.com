@@ -3,7 +3,7 @@ extends ./page.jade
 
 block innercontent
 
-  h2 {{ title }}
+  h2 #{title}
 
   table.centered.stats
     th Genre
@@ -11,10 +11,10 @@ block innercontent
     th Technologies
     th Development Status
     tr
-      td {{genre}}
-      td {{description}}
-      td {{tech}}
-      td {{status}}
+      td #{genre}
+      td #{description}
+      td #{tech}
+      td #{status}
 
 
-  {{{  content  }}}
+  !=content
