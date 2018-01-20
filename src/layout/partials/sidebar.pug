@@ -1,9 +1,11 @@
+mixin contact(name, link, icon)
+  tr(class=name)
+    td: img(src=icon title=name)
+    td: a(href=link) name
+
 #sidebar
   p I can be reached at my first name @ this domain or via your community of choice.
   table.contact
-    // tr.phone
-    //   td: img(src='/assets/icons/phone.png' title='Phone')
-    //   td: a(href='tel:19162582436') 1.916.BLUCHEN
     tr.twitter
       td: img(src='/assets/icons/twitter.ico' title='twitter')
       td: a(href='http://twitter.com/chzmstr') Twitter
@@ -37,13 +39,7 @@
     // tr.steam
     //   td: img(src='/assets/icons/steam.ico' title='steam')
     //   td xCheezmeister
+    // RIP, AIM. /me pours one out
     // tr.aim
     //   td: img(src='/assets/icons/aim.ico' title='Aim')
     //   td HeWhoLikethCheez
-    // tr.skype
-    //   td: img(src='/assets/icons/skype.ico' title='Skype')
-    //   td HeWhoLikethCheez
-
-//   .bling
-//     img(src='https://projecteuler.net/profile/Cheezmeister.png')
-//     img(src='http://stackexchange.com/users/flair/40769.png')

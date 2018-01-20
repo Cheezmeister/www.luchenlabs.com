@@ -1,11 +1,12 @@
-extends ./page.jade
+extends ./page.pug
 
 block innercontent
 
-  .content !=content
+  .content 
+    !=content
 
   table.tunes
-    each t in data.tracks
+    each t in tracks
       tr
         td(id='#{t.title}')
           h3: a(href='#{t.path}') #{t.title}

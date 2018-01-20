@@ -1,0 +1,31 @@
+mixin download(platform, name, link, icon)
+  li: a(class=`${platform} ${link}` href=link)
+    img(class=platform alt=name title=name width=16 height=auto src=icon)
+
+
+tr.projectrow
+  // Info
+  td.info
+    p
+      a(href=`/projects/${ game.shorttitle }`) #{ game.title }
+      | : #{ game.description }
+    p Status: 
+      span.status(class=`st-${ game.status }`)
+        span #{ game.statuschar } #{ game.status }
+    p Type: #{ game.genre }
+    p Technologies: #{ game.tech }
+
+  td.status
+
+  // Platforms & Downloads
+  td.dlsection
+    ul.platforms
+      +download('windows', 'Windows', game.windows, '/assets/icons/sauce.png')
+      +download('mac', 'MacOS', game.mac, '/assets/icons/sauce.png')
+      +download('nix', 'Linux/Unix', game.nix, '/assets/icons/sauce.png')
+      +download('sauce', 'Source Code', game.sauce, '/assets/icons/sauce.png')
+
+  // Screenshot
+  td.screenshot
+    a(href=`/projects/${ game.shorttitle }`)
+      img(width=160 height=auto alt="Screenshot" src=`/assets/images/screenshots/${ game.shorttitle }.png`)

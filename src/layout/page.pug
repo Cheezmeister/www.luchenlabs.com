@@ -1,0 +1,10 @@
+extends ./default.pug
+
+block content
+  include ./partials/header.pug
+  include ./partials/sidebar.pug
+  #content.main
+    block innercontent
+      !=content
+  include ./partials/footer.pug
+

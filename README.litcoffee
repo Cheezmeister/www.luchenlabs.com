@@ -63,6 +63,11 @@ Gotta log when everything goes as planned. This seems to be the conventional way
 
 ## Render
 
+You might ask what makes this website special. I don't know why you would, but you might. Well, besides being mine, this website is
+static. It has (excepting bits that are obviously interactive) no JavaScript. At all. It also has no database or server-side logic. At all. 
+This makes page loads quite snappy and limited only by the actual size of the page and the speed of your connection.
+I _use_ all of the crap in this repo to make it that way, but once built, it's just stuff.
+
 Coming from [Hakyll][] by way of [Hyde][], my pages are written in markdown with some YFM metadata. Rendering them by hand seems kind of silly, but evidently there's no middle ground between the hard way and going full-on framework a la assemble or something. Neither is really desirable, but here's the lesser of two evils.
 
 [Hakyll]: http://github.com/jaspervdj/hakyll

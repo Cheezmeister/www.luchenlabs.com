@@ -15,6 +15,7 @@ const Npm = {
   pug     : require('pug'),
   glob    : require('glob'),
   mkdirp  : require('mkdirp'),
+  hljs    : require('highlight.js'),
 }
 
 // Directories
@@ -25,10 +26,13 @@ const Dir = {
   media: 'src/assets',
 }
 
-// Shorthands
-const readFile = Node.util.promisify(Node.fs.readFile)
-const writeFile = Node.util.promisify(Node.fs.writeFile)
-const mkdirp = Node.util.promisify(Npm.mkdirp)
+// Shorthands and Promisification
+const promisify = Node.util.promisify
+const identityFn = (a) => a
+const readFile = promisify(Node.fs.readFile)
+const writeFile = promisify(Node.fs.writeFile)
+const copyFile = promisify(Node.fs.copyFile)
+const mkdirp = promisify(Npm.mkdirp)
 const glob = (cwd, pattern) => new Promise((resolve, reject) => {
   Npm.glob(pattern, {cwd: cwd}, function(err, files) {
     if (err) reject(err)
@@ -43,30 +47,40 @@ const renderStylus = (content, filename) => new Promise((resolve, reject) => {
 })
 
 // Helpers
+const select = (field) => (object) => object[field]
+const color = (name) => (str) => {
+  const termcode = (v) => `\x1b[${v}m`
+  const [on, off] = Node.util.inspect.colors[name].map(termcode)
+  return `${on}${str}${off}`
+}
 const chopExtension = (filename) => {
+  // This is not watertight. It is good enough(tm).
   const parts = filename.split('.')
   const ext = parts.pop()
   return parts.join('.')
 }
+const getExtension = (filename) => filename.split('.').reverse()[0]
 const changeExtension = (ext) => (filename) => `${chopExtension(filename)}.${ext}`
-const color = (name) => (str) => {
-  const vals = Node.util.inspect.colors[name]
-  const oncode = `\x1b[${vals[0]}m`
-  const offcode = `\x1b[${vals[1]}m`
-  return `${oncode}${str}${offcode}`
-}
+const toPrettyURL = (filename) => `${chopExtension(filename)}/index.html`
+
+const extHTML = changeExtension('html')
+const extCSS = changeExtension('css')
+
+const red = color('red')
 const green = color('green')
 const blue = color('blue')
+const cyan = color('cyan')
+const magenta = color('magenta')
+const yellow = color('yellow')
 
 // How To Do Stuff
 async function bulkProcess(srcDir, files, destDir, munge, transformer) {
-  // console.log(`Got  ${files}`)
+  munge = munge || identityFn
   filenames = await glob(srcDir, files)
-  console.debug(`Expanded to ${filenames}`)
   return Promise.all(filenames.map(async (f) => {
     const content = await readFile(Node.path.join(srcDir, f), 'utf8')
     const result = await transformer(content, f)
-    const destfile = `${destDir}/${munge(f)}`
+    const destfile = Node.path.join(destDir, munge(f))
     console.log(`${blue(f)} => ${green(destfile)}`)
     await mkdirp(Node.path.dirname(destfile))
     return await writeFile(destfile, result)
@@ -78,43 +92,83 @@ function makeBulkTask(transformer) {
 }
 
 async function index(template, srcDir, files, destDir) {
-  console.log('here')
+  const metadata = (await glob(srcDir, files))
+    .filter((a) => -1 == a.indexOf('index.md')) // This is awful.
+    .map((f) => Node.fs.readFileSync(`${srcDir}/${f}`, {}).toString())
+    .map(Npm.matter)
+    .map(select('data'))
+
   const html = Npm.pug.renderFile(template, {
-    index: (await glob(Dir.content, files)).map(readFile).map(Npm.matter).map((o)=>o.data)
+    index: metadata
   })
-  console.log('there')
-  destfile = changeExtension('html')(template)
-  console.log(`Index ${blue(files)} => ${green(destfile)}`)
+  const destfile = `${destDir}/${Node.path.dirname(files)}/index.html`
+  await mkdirp(Node.path.dirname(destfile))
+  console.log(`Index ${yellow(files)} (${srcDir}) => ${green(destfile)}`)
   return await writeFile(destfile, html)
 }
 
-const stylus = makeBulkTask((text, filename) => renderStylus(text, filename))
-const renderTemplate = (template) => {
+makeHighlighter = (extension) => {
+  const r = new Npm.marked.Renderer()
+  r.code = (code, language) => {
+    const lang = extension || language;
+    const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
+    return Npm.pug.render(`pre: code.hljs.${'pl'} !{code}`, {code: hl.value})
+  }
+  return r;
+}
+
+// e.g. 'README.coffee.md' => 'coffee', 'aoc.pl.md' => 'pl'
+highlightLiterate = (_, filename) => {renderer: makeHighlighter(getExtension(chopExtension(filename)))}
+const precompilePug = (template, extraOptions = (() => {})) => {
+
   const pugFunc = Npm.pug.compileFile(template)
   return makeBulkTask((text, filename) => {
     const page = Npm.matter(text)
-    const html = Npm.marked(page.content, {breaks: false, smartypants: true})
-    return pugFunc(Object.assign({content: html}, page.data))
+    const extras = extraOptions(text, filename) || {};
+    const content = Npm.marked(page.content, Object.assign(extras, {
+      breaks: false,
+      smartypants: true,
+      renderer: makeHighlighter(filename.split('.').reverse()[1]),
+    }))
+    return pugFunc(Object.assign({content: content}, page.data))
   })
 }
 
-const pages = renderTemplate(`${Dir.layout}/page.jade`)
-const tunes = renderTemplate(`${Dir.layout}/tunes.jade`)
-const words = renderTemplate(`${Dir.layout}/page.jade`)
-const games = renderTemplate(`${Dir.layout}/project.jade`)
-// const lp    = renderTemplate(`${Dir.layout}/page.page`)
-const home = renderTemplate(`${Dir.layout}/homepage.jade`)
+const assets = async (srcDir, files, destDir) => {
+  filenames = await glob(srcDir, files)
+  return Promise.all(filenames.map(async (f) => {
+    const srcfile = Node.path.join(srcDir, f)
+    const destfile = Node.path.join(destDir, f)
+    await copyFile(srcfile, destfile)
+    console.log(`${cyan(f)} => ${green(destfile)}`)
+    await mkdirp(Node.path.dirname(destfile))
+    return await copyFile(srcfile, destfile)
+  }))
+}
+
+const stylus = makeBulkTask((text, filename) => renderStylus(text, filename))
+
+const renameMeRender = (template, o) => precompilePug(`${Dir.layout}/${template}.pug`, o)
+
+const tunes = renameMeRender('tunes')
+const games = renameMeRender('project')
+const home = renameMeRender('homepage')
+const pages = renameMeRender('page')
+const words = renameMeRender('page')
+const lprog = renameMeRender('page', highlightLiterate)
+
 
 try {
-
-
-  // stylus(Dir.media, '**/*.styl', Dir.deploy, changeExtension('css'), { })
-  // home(Dir.content, 'index.md', Dir.deploy, changeExtension('html'))
-  // pages(Dir.content, '{bio,resume}.md', Dir.deploy, changeExtension('html'))
-  // pages(Dir.content, 'lp/**.md', Dir.deploy, changeExtension('html'))
-  // games(Dir.content, 'projects/*.md', Dir.deploy, changeExtension('/index.html'))
-  // index(Dir.content, 'projects/*.md', Dir.deploy)
-  index(`${Dir.layout}/projectlist.jade`, 'projects', '*.md', Dir.deploy)
+  home(Dir.content, 'index.md', Dir.deploy, extHTML)
+  lprog(Dir.content, 'lp/*.md', Dir.deploy, extHTML)
+  pages(Dir.content, '{bio,resume}.md', Dir.deploy, toPrettyURL)
+  tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL)
+  games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL)
+  words(Dir.content, 'words/*.md', Dir.deploy, toPrettyURL)
+  index(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy)
+  index(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy)
+  stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { })
+  assets(Dir.media, '{images,icons}/**/*', `${Dir.deploy}/assets`)
 } catch  (err) {
   console.log(`caught ${err}`)
 }

@@ -1,0 +1,17 @@
+extends ./page.pug
+
+block innercontent
+
+  p Pardon the mess here. It's the thought that counts, right? When my thoughts wander, I try to herd them back here. 
+  small: strike Then I shave them, milk them for all they're worth, and brand them as my own.
+
+  !=content
+
+  .postlist
+    each post in index
+      .post
+        small.posttags
+          each tag in (post.tags || [])
+            span.badge(class=`tag-${tag}`) #{tag}
+        h2
+          a(href=post.shorttitle) #{post.title}

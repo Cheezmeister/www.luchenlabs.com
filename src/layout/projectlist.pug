@@ -1,0 +1,12 @@
+extends ./page.pug
+
+block innercontent
+
+  p I make small games. Here be dragons.
+
+  !=content
+
+  table.projectlist
+    each game in index
+      include partials/projectrow.pug
+

@@ -1,7 +1,7 @@
 ---
 title: A Brief History of my Fingers
 shorttitle: history
-date: June 5
+date: June 5 2016
 tags: [technical]
 ---
 
