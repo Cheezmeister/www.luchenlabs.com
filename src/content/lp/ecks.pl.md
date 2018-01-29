@@ -77,7 +77,13 @@ Fun fact: this line gave me plenty of grief. It started with a `&&` instead, aft
 
 Anyway, if we did get a session name, attach or create as necessary and move on with our life.
 
-    system( "$tmux_command attach -t $sessname || $tmux_command new-session -s $sessname");
+    $sessname =~ /(\w+)(@(\w+))?/;
+    my $cmd =  "$tmux_command attach -t $1 || $tmux_command new-session -s $1";
+    if ($3) {
+      system ("ssh $3 -t '$cmd'");
+    } else {
+      system($cmd);
+    }
 
 ## Chapter 3: Installation
 
