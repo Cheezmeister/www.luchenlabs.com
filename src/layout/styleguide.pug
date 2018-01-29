@@ -1,0 +1,28 @@
+extends ./page.pug
+block innercontent
+  h1 Heading 1
+  h2 Heading 2
+  h3 Three
+  h4 Four
+  h5 Five
+  h6 Six
+
+  h1 Text
+  != content
+
+  h2 Badges
+  p We got tags for posts
+  .postlist
+    span.badge Normal
+    span.badge.tag-creative Creative
+    span.badge.tag-technical Technical
+    span.badge.tag-gamedev Gamedev
+    span.badge.tag-ramblings Ramblings
+  p And we got status things for projects
+  span.badge.status.st-finished Done
+  span.badge.status.st-wip WIP
+  span.badge.status.st-ongoing Ongoing
+  span.badge.status.st-prototype Prototype
+  span.badge.status.st-hiatus Hiatus
+
+

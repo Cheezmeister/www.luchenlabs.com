@@ -186,6 +186,7 @@ const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) =>
 
 
 try {
+  renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML)
   home(Dir.content, 'index.md', Dir.deploy, extHTML)
   lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL))
   other(Dir.content, '{bio,resume}.md', Dir.deploy, toPrettyURL)

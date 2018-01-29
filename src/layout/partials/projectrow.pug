@@ -1,31 +1,33 @@
 mixin download(platform, name, link, icon)
-  li: a(class=`${platform} ${link}` href=link)
-    img(class=platform alt=name title=name width=16 height=auto src=icon)
+  if !link || link == 'unsupported'
+    li: a(class=`${platform}` href='#')
+      img.unsupported(class=platform alt=name title=name width=16 height=auto src=icon)
+  else
+    li: a(class=`${platform}` href=link)
+      img.supported(class=platform alt=name title=name width=16 height=auto src=icon)
 
 
 tr.projectrow
+  // Screenshot
+  td.screenshot
+    a(href=`/projects/${ game.shorttitle }`)
+      img(width=160 height=auto alt="Screenshot" src=`/assets/images/screenshots/${ game.shorttitle }.png`)
+
+
+  // Platforms & Downloads
+  td.dlsection
+    ul.platforms
+      +download('windows', 'Windows', game.windows, 'https://www.microsoft.com/favicon.ico')
+      +download('mac', 'MacOS', game.mac, 'https://www.apple.com/favicon.ico')
+      +download('nix', 'Linux/Unix', game.nix, '/assets/icons/linux.ico')
+      +download('sauce', 'Source Code', game.sauce, '/assets/icons/sauce.png')
+
   // Info
   td.info
     p
       a(href=`/projects/${ game.shorttitle }`) #{ game.title }
       | : #{ game.description }
     p Status: 
-      span.status(class=`st-${ game.status }`)
-        span #{ game.statuschar } #{ game.status }
+      small: span.badge.status(class=`st-${ game.status }`) #{ game.statuschar } #{ game.status }
     p Type: #{ game.genre }
     p Technologies: #{ game.tech }
-
-  td.status
-
-  // Platforms & Downloads
-  td.dlsection
-    ul.platforms
-      +download('windows', 'Windows', game.windows, '/assets/icons/sauce.png')
-      +download('mac', 'MacOS', game.mac, '/assets/icons/sauce.png')
-      +download('nix', 'Linux/Unix', game.nix, '/assets/icons/sauce.png')
-      +download('sauce', 'Source Code', game.sauce, '/assets/icons/sauce.png')
-
-  // Screenshot
-  td.screenshot
-    a(href=`/projects/${ game.shorttitle }`)
-      img(width=160 height=auto alt="Screenshot" src=`/assets/images/screenshots/${ game.shorttitle }.png`)

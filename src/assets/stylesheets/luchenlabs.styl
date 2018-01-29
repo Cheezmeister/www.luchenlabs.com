@@ -17,6 +17,7 @@ LightBlue = #4499ff
 DarkYellow = #66580b
 Yellow = #af8700
 LightYellow = #626262
+DarkBlue = rgb(50,60,100)
 
 body.article
   p img
@@ -109,14 +110,32 @@ body
       border 1px solid DarkestGrey
       border-radius  5px
       padding  2px
+      text-shadow 1px 1px black
+      margin 1em
+      text-transform capitalize
+
+      &.status
+        &.st-char
+          font-size 200%
+          vertical-align -0.25ex
+
+        &.st-wip
+          background-color DarkYellow
+        &.st-prototype
+          background-color LightGrey
+        &.st-hiatus
+          background-color DarkGrey
+        &.st-ongoing
+          background-color DarkBlue
+        &.st-finished
+          background-color DarkerGreen
+
+    .status img
+      vertical-align baseline
 
     .postlist
       h2, .posttags
         display inline-block
-      .posttags span
-        text-shadow 1px 1px black
-        margin 1em
-        text-transform capitalize
       span.tag-creative
         background Violet
       span.tag-technical
@@ -179,7 +198,9 @@ body
     text-align: center
 
 p.shebang
-  font-family 'Courier', monospace
+  font-family 'Hack', 'Courier', monospace
+  border 1px solid lime
+  background black
 
 
 
@@ -228,7 +249,7 @@ div.logo
 
 
 .screenshot img
-  border  2px solid rgb(50,70,70)
+  border  2px solid LighterGreen
 
 .dlsection
   ul
@@ -242,42 +263,14 @@ div.logo
     margin 2px
     border  1px solid rgb(30,30,30)
     border-radius  3px
-    &:hover
-      background-color lightgreen
     &.supported
       opacity 1.0
+    &.supported:hover
+      background-color lightgreen
     &.unsupported, &.unsupported:hover
       opacity 0.2
-      background-color gray
+      cursor default
 
-
-.status
-  border  1px outset black
-  border-radius  5px
-  padding  4px
-
-.st-char
-  font-size 200%
-  vertical-align -0.25ex
-
-.st-wip
-  background-color rgb(120,90,0)
-
-.st-prototype
-  background-color rgb(120,120,120)
-
-.st-hiatus
-  background-color rgb(40,40,40)
-
-.st-ongoing
-  background-color rgb(50,60,100)
-
-.st-finished
-  background-color rgb(40,120,40)
-
-
-.status img
-  vertical-align baseline
 
 
 img.windows
@@ -291,10 +284,6 @@ img.nix
 
 img.sauce
   background-color black
-
-
-a.unsupported, a.unsupported:hover
-  cursor default
 
 
 .footer a
