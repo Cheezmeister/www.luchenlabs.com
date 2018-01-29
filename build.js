@@ -122,10 +122,8 @@ async function index(template, srcDir, files, destDir) {
 const makeHighlighter = (extension) => {
   const r = new Npm.marked.Renderer()
   r.paragraph = (para, wat) => {
-    if (para.match(/^#!/)) {
-      return `<span class="shebang">${para}</span>`
-    }
-    return para
+    const cls = (para.match(/^#!/)) ? 'class="shebang"' : ''
+    return `<p ${cls}>${para}</p>`
   }
   r.code = (code, language) => {
     const lang = extension || language;
@@ -176,7 +174,7 @@ const games = renderPages('project')
 const home = renderPages('homepage')
 const other = renderPages('page')
 const words = renderPages('page')
-const lprog = renderPages('page', highlightLiterate)
+const lprog = renderPages('literate', highlightLiterate)
 const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) => {
   Npm.stylus.render(text, {}, (err, css) => {
     if (err) reject(err)
