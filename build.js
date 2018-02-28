@@ -30,6 +30,7 @@ const Dir = {
 const promisify = Node.util.promisify
 const identityFn = (a) => a
 const invert = (f) => (args) => !f(args)
+const isIndex = (a) => a.endsWith('index.md')
 const wtf = (e) => console.log("WTF: " + red(e))
 const readFile = promisify(Node.fs.readFile)
 const writeFile = promisify(Node.fs.writeFile)
@@ -94,7 +95,6 @@ function makeBulkTask(transformer) {
 }
 
 async function index(template, srcDir, files, destDir) {
-  const isIndex = (a) => a.endsWith('index.md')
   const filenames = await glob(srcDir, files)
 
   let indexContent = {}
@@ -119,34 +119,27 @@ async function index(template, srcDir, files, destDir) {
   return await writeFile(destfile, html)
 }
 
-const makeHighlighter = (extension) => {
-  const r = new Npm.marked.Renderer()
-  r.paragraph = (para, wat) => {
-    const cls = (para.match(/^#!/)) ? 'class="shebang"' : ''
-    return `<p ${cls}>${para}</p>`
-  }
-  r.code = (code, language) => {
-    const lang = extension || language;
-    const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
-    return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
-  }
-  return r;
-}
-
-const prepContent = (text, markedOptions = {}) => {
-  const page = Npm.matter(text)
-  const content = Npm.marked(page.content, Object.assign(markedOptions, {
+const prepContent = (text, options = {}) => {
+  const markedDefaults = {
     breaks: false,
     smartypants: true,
-  }))
-  return Object.assign({content: content}, page.data)
+  }
+  const markedOptions = Object.assign(markedDefaults, options.marked)
+
+  const page = Npm.matter(text)
+  const content = Npm.marked(page.content, markedOptions)
+  return Object.assign(
+    {content: content},
+    page.data || {},
+    options.data || {}
+  )
 }
 
 const precompilePug = (template, optionsCallback) => {
   const pugFunc = Npm.pug.compileFile(template)
   return makeBulkTask((text, filename) => {
-    const extras = optionsCallback ? optionsCallback(text, filename) : {};
-    const data = prepContent(text, extras)
+    const options = optionsCallback ? optionsCallback(text, filename) : {};
+    const data = prepContent(text, options)
     return pugFunc(data)
   })
 }
@@ -166,7 +159,34 @@ const renderPages = (template, optionsCallback) => precompilePug(`${Dir.layout}/
 
 // e.g. 'README.coffee.md' => 'coffee', 'aoc.pl.md' => 'pl'
 const highlightLiterate = (_, filename) => {
-  return { renderer: makeHighlighter(getExtension(chopExtension(filename))) }
+  const makeHighlighter = (extension) => {
+    // We can augment Marked if we get our hands a little dirty.
+    // https://github.com/markedjs/marked/blob/master/lib/marked.js
+    const r = new Npm.marked.Renderer()
+    r.paragraph = (para, wat) => {
+      const cls = (para.match(/^#!/)) ? 'class="shebang"' :
+                  (para.match(/^TODO/)) ? 'class="captag todo"' :
+                  (para.match(/^FIXME/)) ? 'class="captag fixme"' :
+                  (para.match(/^HACK/)) ? 'class="captag hack"' :
+                  ''
+      return `<p ${cls}>${para}</p>`
+    }
+    r.code = (code, language) => {
+      const lang = extension || language;
+      const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
+      return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
+    }
+    return r;
+  }
+
+  return {
+    data: {
+      title: Node.path.basename(filename)
+    },
+    marked: {
+      renderer: makeHighlighter(getExtension(chopExtension(filename))) 
+    }
+  }
 }
 
 const tunes = renderPages('tunes')
@@ -189,12 +209,13 @@ try {
   renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML)
   home(Dir.content, 'index.md', Dir.deploy, extHTML)
   lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL))
-  other(Dir.content, '{bio,resume}.md', Dir.deploy, toPrettyURL)
+  other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL)
   tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL)
   games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL)
   words(Dir.content, 'words/*.md', Dir.deploy, toPrettyURL)
   index(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy)
   index(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy)
+  // TODO index(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy)
   stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { })
   assets(Dir.media, '{images,icons}/**/*.*', `${Dir.deploy}/assets`)
 } catch  (err) {

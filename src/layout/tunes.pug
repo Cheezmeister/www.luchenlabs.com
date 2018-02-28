@@ -9,9 +9,9 @@ block innercontent
     each t in tracks
       tr
         td(id='#{t.title}')
-          h3: a(href='#{t.path}') #{t.title}
+          h3: a(href=t.path) #{t.title}
           p #{t.description}
         td
-          audio(src='#{t.path}' controls) Looks like your browser can't play HTML5 audio.
+          audio(src=t.path controls) Your browser can't play HTML5 audio.
 
 

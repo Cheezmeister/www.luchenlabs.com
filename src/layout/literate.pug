@@ -2,7 +2,7 @@ extends ./page.pug
 
 block innercontent
 
-  p.lp-notice
-    | You're reading a literate source file.
-
-  != content
+  p.foreword
+    != data
+  article.literate-program
+    != content

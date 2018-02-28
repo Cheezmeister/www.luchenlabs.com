@@ -8,21 +8,23 @@ have an $80,000 piece of paper from [RIT](http://www.rit.edu) that says
 "Bachelor of Science" in large ornate letters, and though I 
 can't help growing older, I still haven't gotten around to growing up. 
 
-### I Am ###
-A [gamer](http://backloggery.com); 
-a [hac](http://en.wikipedia.org/wiki/Footbag)[ker](http://en.wikipedia.org/wiki/Computer_Programming); 
-a [reader](http://www.multivax.com/last_question.html);
-a [writer](/words/arrgh.md);
-an [addict](http://en.wikipedia.org/wiki/Mountain_Dew); 
-a [lyricist](http://www.amiright.com/parody/80s/bryanadams25.shtml); 
-a [hippie](http://www.ecogeek.org/);
-a skier; a skater;
-a teacher, and a learner. 
+### I Am A ###
 
-* Professional Polymath
-* Electronic Artist
-* Amateur Everything
 * Semicolon Slinger
+* Electronic Artist
+* Professional Polymath
+* Amateur Everything
+* [Gamer](http://backloggery.com) 
+* [Hac](http://en.wikipedia.org/wiki/Footbag)[ker](http://en.wikipedia.org/wiki/Computer_Programming) 
+* [Reader](http://www.multivax.com/last_question.html)
+* [Writer](/words/arrgh.md)
+* [Addict](http://en.wikipedia.org/wiki/Mountain_Dew) 
+* [Lyricist](http://www.amiright.com/parody/80s/bryanadams25.shtml) 
+* [Hippie](http://www.ecogeek.org/)
+* Skier
+* Skater
+* Teacher
+* Learner. 
 
 I sincerly enjoy learning in all its forms; whenever 
 I find something cool or useful, I can't resist playing with it. This 
