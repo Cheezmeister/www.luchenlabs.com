@@ -4,7 +4,9 @@ mixin contact(name, link, icon)
     td: a(href=link)= name
 
 #sidebar
-  p Drop me a line at [my first name] @ [this domain]. I'm also on:
+  p Drop me a line any time.
+  img(src='/assets/images/email.png', height='16px')
+  p Or on social:
   table.contact
     +contact('Twitter', 'http://twitter.com/chzmstr', '/assets/icons/twitter.ico')
     +contact('Reddit', 'http://www.reddit.com/u/Cheezmeister', 'https://www.reddit.com/favicon.ico')
