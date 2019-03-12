@@ -3,6 +3,12 @@ Turn Back Now
 
 This is my own little corner of the tubes. Proceed at your own risk.
 
+    require './build'
+
+Please ignore everything below. Or don't. I don't use it anymore in favor of [a ridiculous over-the-top masochistic bespoke build](blob/master/build.js), but I'm keeping it around for historical reference. And the lulz.
+
+![Long live Grunt](https://imgflip.com/i/2vsugr)
+
 All Systems Go
 --------------
 
