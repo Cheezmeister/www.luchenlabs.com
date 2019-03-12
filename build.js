@@ -9,7 +9,6 @@ const Npm = {
   // coffee  : require('coffee'),
   marked  : require('marked'),
   matter  : require('gray-matter'),
-  handle  : require('handlebars'),
   pandoc  : require('pdc'),
   yaml    : require('js-yaml'),
   pug     : require('pug'),
