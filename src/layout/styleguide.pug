@@ -13,8 +13,9 @@ block innercontent
   h6 Six
   p Teeny tiny.
 
-  h1 Text
-  != content
+  h1 Text with Markdown
+  div.markdown(style='border: 1px solid white')
+    != content
 
   h2 Badges
   p We got tags for posts
