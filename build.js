@@ -109,10 +109,9 @@ async function index(template, srcDir, files, destDir) {
     .map(Npm.matter)
     .map(select('data'))
 
-  const html = Npm.pug.renderFile(template, {
-    ...indexContent,
+  const html = Npm.pug.renderFile(template, Object.assign(indexContent, {
     index: metadata,
-  })
+  }))
   const destfile = `${destDir}/${Node.path.dirname(files)}/index.html`
   console.log(`Index ${yellow(files)} (${srcDir}) => ${green(destfile)}`)
   await mkdirp(Node.path.dirname(destfile))
@@ -124,24 +123,21 @@ const prepContent = (text, options = {}) => {
     breaks: false,
     smartypants: true,
   }
-  const markedOptions = {
-    ...markedDefaults,
-    ...options.marked
-  }
+  const markedOptions = Object.assign(markedDefaults, options.marked)
 
   const page = Npm.matter(text)
   const content = Npm.marked(page.content, markedOptions)
-  return {
-    ...content,
-    ...page.data,
-    ...options.data,
-  }
+  return Object.assign(
+    {content: content},
+    page.data || {},
+    options.data || {}
+  )
 }
 
 const precompilePug = (template, optionsCallback) => {
   const pugFunc = Npm.pug.compileFile(template)
   return makeBulkTask((text, filename) => {
-    const options = optionsCallback ? optionsCallback(text, filename) : {}
+    const options = optionsCallback ? optionsCallback(text, filename) : {};
     const data = prepContent(text, options)
     return pugFunc(data)
   })
@@ -175,11 +171,11 @@ const highlightLiterate = (_, filename) => {
       return `<p ${cls}>${para}</p>`
     }
     r.code = (code, language) => {
-      const lang = extension || language
+      const lang = extension || language;
       const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
       return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
     }
-    return r
+    return r;
   }
 
   return {
