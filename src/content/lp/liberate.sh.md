@@ -1,4 +1,5 @@
-#!/usr/bin/env liberate sh # [Huh?](https://en.wikipedia.org/wiki/Shebang)
+#! liberate sh
+# [Huh?](https://en.wikipedia.org/wiki/Shebang)
 
     #!/bin/sh
 
@@ -22,9 +23,9 @@ An equivalent `.rb.md` file would instead start with
 #!/usr/local/bin/liberate /usr/local/bin/ruby
 ```
 
-Or, more succinctly using `env`
+Or, more succinctly
 ```sh
-#!/usr/bin/env liberate ruby
+#!liberate ruby
 ```
 
 Passing flags like `-w` to the interpreter via shebang may cause strange
@@ -40,12 +41,12 @@ and the target file (from the OS)...
 
 Then we can cut and grep our way to success. 
 
-    cat $file | grep '^    ' | cut -b 5- | $interpreter
+    output="/tmp/${file%.*}"
+    cat $file | grep '^    ' | cut -b 5- > $output
 
-Note that with this approach, you can't 
-pass command-line arguments. A better solution would probably involve a 
-temporary file and a more conventional invocation where the first arg is the 
-(liberated) script's filename and the rest are passed through to it. 
+Lastly, run the thing.
+
+    $interpreter $output $@
 
 Patches are always welcome, of course.
 
