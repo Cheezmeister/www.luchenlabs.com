@@ -1,5 +1,5 @@
 #! liberate sh
-# [Huh?](https://en.wikipedia.org/wiki/Shebang)
+[Huh?](https://en.wikipedia.org/wiki/Shebang)
 
     #!/bin/sh
 

@@ -1,4 +1,5 @@
-#!/usr/bin/env liberate perl # [Huh?](https://en.wikipedia.org/wiki/Shebang)
+#!liberate perl
+[Huh?](https://en.wikipedia.org/wiki/Shebang)
 
     #!/usr/bin/env perl
 
