@@ -1,4 +1,5 @@
 // Dependencies
+const requireStart = new Date()
 const Node = {
   fs: require('fs'),
   util: require('util'),
@@ -15,7 +16,9 @@ const Npm = {
   glob    : require('glob'),
   mkdirp  : require('mkdirp'),
   hljs    : require('highlight.js'),
+  chokidar: require('chokidar'),
 }
+const requireEnd = new Date()
 
 // Directories
 const Dir = {
@@ -29,7 +32,6 @@ const Dir = {
 const promisify = Node.util.promisify
 const identityFn = (a) => a
 const invert = (f) => (args) => !f(args)
-const isIndex = (a) => a.endsWith('index.md')
 const wtf = (e) => console.log("WTF: " + red(e))
 const readFile = promisify(Node.fs.readFile)
 const writeFile = promisify(Node.fs.writeFile)
@@ -78,14 +80,15 @@ const yellow = color('yellow')
 async function bulkProcess(srcDir, files, destDir, munge, transformer) {
   munge = munge || identityFn
   filenames = await glob(srcDir, files)
-  return Promise.all(filenames.map(async (f) => {
+  const processFile = async (f) => {
     const content = await readFile(Node.path.join(srcDir, f), 'utf8')
     const result = await transformer(content, f)
     const destfile = Node.path.join(destDir, munge(f))
     console.log(`${blue(f)} => ${green(destfile)}`)
     await mkdirp(Node.path.dirname(destfile))
     return await writeFile(destfile, result)
-  }))
+  }
+  return Promise.all(filenames.map(processFile))
 }
 
 function makeBulkTask(transformer) {
@@ -97,6 +100,7 @@ async function index(template, srcDir, files, destDir) {
   const filenames = await glob(srcDir, files)
 
   let indexContent = {}
+  const isIndex = (a) => a.endsWith('index.md')
   const indexFile = filenames.find(isIndex)
   if (indexFile) {
     const text = await readFile(`${srcDir}/${indexFile}`, 'utf8')
@@ -124,10 +128,7 @@ const prepContent = (text, options = {}) => {
     breaks: false,
     smartypants: true,
   }
-  const markedOptions = {
-    ...markedDefaults,
-    ...options.marked,
-  }
+  const markedOptions = Object.assign(markedDefaults, options.marked)
 
   const page = Npm.matter(text)
   const content = Npm.marked(page.content, markedOptions)
@@ -187,7 +188,7 @@ const highlightLiterate = (_, filename) => {
       title: Node.path.basename(filename)
     },
     marked: {
-      renderer: makeHighlighter(getExtension(chopExtension(filename)))
+      renderer: makeHighlighter(getExtension(chopExtension(filename))) 
     }
   }
 }
@@ -221,6 +222,8 @@ try {
   // TODO index(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy)
   stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { })
   assets(Dir.media, '{images,icons}/**/*.*', `${Dir.deploy}/assets`)
+  console.log(`Loaded dependencies in ${requireEnd - requireStart}ms`)
 } catch  (err) {
   console.log(`caught ${err}`)
 }
+

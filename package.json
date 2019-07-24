@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Turn Back Now =============",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
+    "chokidar": "^2.1.5",
     "coffee-script": "^1.12.7",
     "glob": "^7.1.2",
     "gray-matter": "^3.1.1",
