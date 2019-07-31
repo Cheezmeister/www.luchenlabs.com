@@ -52,7 +52,7 @@ I'll explain in detail below, but overall these results tell me that I'm general
 *  `111 r`: Builtin `zsh`ism for the previous command. *Mostly* equivalent to `!!`.
 *  ` 91 a`: When `s` isn't enough. This is `ls -alph`, a verbose file listing.
 *  ` 66 x`: Once stood for `tmux`, now aliased to `ecks.pl`. TLDR? List tmux sessions.
-*  ` 63 make && ./jam-1.0.0`: I was a bit surprised to see this so high. I spent most of an 18 hour train ride in March iterating on some [procgen boilerplate][jamboot], but unfortunately didn't accomplish much except learning I despise OpenGL viewports an apparently can't do algebra anymore.
+*  ` 63 make && ./jam-1.0.0`: I was a bit surprised to see this so high. I spent most of an 18 hour train ride in March iterating on some [procgen boilerplate][jamboot], but unfortunately didn't accomplish much except learning I despise OpenGL viewports and apparently can't do algebra anymore.
 *  ` 44 g d`: `git diff`. Naturally.
 *  ` 38 make && ./cheezus2-1.0.0`: Similar iteration on [Cheezus II][].
 *  ` 36 ls`: Apparently, I sometimes fall back into old habits.
