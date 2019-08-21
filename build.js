@@ -210,19 +210,29 @@ const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) =>
 
 
 try {
-  renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML)
-  home(Dir.content, 'index.md', Dir.deploy, extHTML)
-  lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL))
-  other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL)
-  tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL)
-  games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL)
-  words(Dir.content, 'words/*.md', Dir.deploy, toPrettyURL)
-  index(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy)
-  index(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy)
-  // TODO index(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy)
-  stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { })
-  assets(Dir.media, '{images,icons}/**/*.*', `${Dir.deploy}/assets`)
-  console.log(`Loaded dependencies in ${requireEnd - requireStart}ms`)
+  Promise.all([
+    renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML),
+    home(Dir.content, 'index.md', Dir.deploy, extHTML),
+    lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL)),
+    other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL),
+    tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL),
+    games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL),
+    words(Dir.content, 'words/*.md', Dir.deploy, toPrettyURL),
+    index(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy),
+    index(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy),
+    // TODO index(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy),
+    stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { }),
+    assets(Dir.media, '{images,icons}/**/*.*', `${Dir.deploy}/assets`)
+  ]).then(() => {
+    console.log(`Loaded dependencies in ${requireEnd - requireStart}ms`)
+    console.log(`  built in ${new Date() - requireStart}ms`)
+    // TODO watch & rebuild
+    // Npm.chokidar.
+    //   watch('src/content/words/*.md').
+    //   on('change', path => console.log(`File ${path} has been changed`))
+  }).catch((err) =>
+    console.log(`promise caught ${err}`)
+  )
 } catch  (err) {
   console.log(`caught ${err}`)
 }
