@@ -16,8 +16,10 @@ Violet = rgb(120, 90, 180)
 LightBlue = #4499ff
 DarkYellow = #66580b
 Yellow = #af8700
-LightYellow = #626262
+LightYellow = #bfb786
 DarkBlue = rgb(50,60,100)
+
+BorderRadius = 4px
 
 body.article
   p img
@@ -196,16 +198,31 @@ p.shebang
   background black
 
 p.captag
-  padding 3px
+  padding 3px 0
   border 1px solid Grey
-  border-radius 2px
+  border-radius BorderRadius
+  color white
+  font-style italic
+
+  .caps
+    padding 4px
+    border-right 1px solid Grey
+    font-weight bold
+    border-radius BorderRadius 0 0 BorderRadius
+    color DarkGrey
 
   &.todo
     background DarkBlue
+    .caps
+      background LightBlue
   &.fixme
     background DarkYellow
+    .caps
+      background LightYellow
   &.hack
     background DarkRed
+    .caps
+      background LightRed
 
 
 #omglookatme

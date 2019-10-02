@@ -173,7 +173,8 @@ const highlightLiterate = (_, filename) => {
                   (para.match(/^FIXME/)) ? 'class="captag fixme"' :
                   (para.match(/^HACK/)) ? 'class="captag hack"' :
                   ''
-      return `<p ${cls}>${para}</p>`
+      const p = para.replace(/^(TODO|FIXME|HACK)/, match => `<span class="caps">${match}</span>`)
+      return `<p ${cls}>${p}</p>`
     }
     r.code = (code, language) => {
       const lang = extension || language
