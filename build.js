@@ -159,7 +159,27 @@ const assets = async (srcDir, files, destDir) => {
   })).catch(wtf)
 }
 
-const renderPages = (template, optionsCallback) => precompilePug(`${Dir.layout}/${template}.pug`, optionsCallback)
+const pugPath = (template) => `${Dir.layout}/${template}.pug`
+const renderPages = (template, optionsCallback) => 
+  precompilePug(pugPath(template), optionsCallback)
+
+const watch = (glob, callback) =>
+  Npm.chokidar.
+    watch(glob).
+    on('change', path => {
+      console.log(`Changed ${cyan(path)}`)
+      callback(glob, path)
+    })
+
+// TODO: Maybe DRY up, I don't know
+const renderPagesAndWatch = (template, optionsCallback) => {
+  return (srcDir, files, destDir, munge) =>
+    renderPages(template, optionsCallback)(srcDir, files, destDir, munge).then(() =>
+      watch(`+(${Node.path.join(srcDir, files)}|${pugPath(template)})`, (glob, path) =>
+        renderPages(template, optionsCallback)(srcDir, files, destDir, munge)
+      )
+    )
+}
 
 // e.g. 'README.coffee.md' => 'coffee', 'aoc.pl.md' => 'pl'
 const highlightLiterate = (_, filename) => {
@@ -194,12 +214,12 @@ const highlightLiterate = (_, filename) => {
   }
 }
 
-const tunes = renderPages('tunes')
-const games = renderPages('project')
-const home = renderPages('homepage')
-const other = renderPages('page')
-const words = renderPages('page')
-const lprog = renderPages('literate', highlightLiterate)
+const tunes = renderPagesAndWatch('tunes')
+const games = renderPagesAndWatch('project')
+const home = renderPagesAndWatch('homepage')
+const other = renderPagesAndWatch('page')
+const words = renderPagesAndWatch('page')
+const lprog = renderPagesAndWatch('literate', highlightLiterate)
 const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) => {
   Npm.stylus.render(text, {}, (err, css) => {
     if (err) reject(err)
@@ -209,10 +229,9 @@ const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) =>
 
 
 
-
 try {
   Promise.all([
-    renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML),
+    renderPagesAndWatch('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML),
     home(Dir.content, 'index.md', Dir.deploy, extHTML),
     lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL)),
     other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL),
@@ -227,10 +246,6 @@ try {
   ]).then(() => {
     console.log(`Loaded dependencies in ${requireEnd - requireStart}ms`)
     console.log(`  built in ${new Date() - requireStart}ms`)
-    // TODO watch & rebuild
-    // Npm.chokidar.
-    //   watch('src/content/words/*.md').
-    //   on('change', path => console.log(`File ${path} has been changed`))
   }).catch((err) =>
     console.log(`promise caught ${err}`)
   )
