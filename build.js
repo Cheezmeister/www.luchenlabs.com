@@ -167,7 +167,7 @@ const watch = (glob, callback) =>
   Npm.chokidar.
     watch(glob).
     on('change', path => {
-      console.log(`Changed ${cyan(path)}`)
+      console.log(`Modified: ${magenta(path)}`)
       callback(glob, path)
     })
 
