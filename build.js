@@ -7,7 +7,6 @@ const Node = {
 }
 const Npm = {
   stylus  : require('stylus'),
-  // coffee  : require('coffee'),
   marked  : require('marked'),
   matter  : require('gray-matter'),
   pandoc  : require('pdc'),
@@ -96,7 +95,7 @@ function makeBulkTask(transformer) {
     bulkProcess(srcDir, files, destDir, munge, transformer)
 }
 
-async function index(template, srcDir, files, destDir) {
+async function renderIndex(template, srcDir, files, destDir) {
   const filenames = await glob(srcDir, files)
 
   let indexContent = {}
@@ -139,7 +138,7 @@ const prepContent = (text, options = {}) => {
   }
 }
 
-const precompilePug = (template, optionsCallback) => {
+const withPugTemplate = (template, optionsCallback) => {
   const pugFunc = Npm.pug.compileFile(template)
   return makeBulkTask((text, filename) => {
     const options = optionsCallback ? optionsCallback(text, filename) : {}
@@ -161,7 +160,7 @@ const assets = async (srcDir, files, destDir) => {
 
 const pugPath = (template) => `${Dir.layout}/${template}.pug`
 const renderPages = (template, optionsCallback) => 
-  precompilePug(pugPath(template), optionsCallback)
+  withPugTemplate(pugPath(template), optionsCallback)
 
 const watch = (glob, callback) =>
   Npm.chokidar.
@@ -219,7 +218,9 @@ const games = renderPagesAndWatch('project')
 const home = renderPagesAndWatch('homepage')
 const other = renderPagesAndWatch('page')
 const words = renderPagesAndWatch('page')
+const style = renderPagesAndWatch('styleguide', { munge: extHTML })
 const lprog = renderPagesAndWatch('literate', highlightLiterate)
+
 const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) => {
   Npm.stylus.render(text, {}, (err, css) => {
     if (err) reject(err)
@@ -238,9 +239,9 @@ try {
     tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL),
     games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL),
     words(Dir.content, 'words/*.md', Dir.deploy, toPrettyURL),
-    index(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy),
-    index(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy),
-    // TODO index(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy),
+    renderIndex(`${Dir.layout}/projectlist.pug`, Dir.content, 'projects/*.md', Dir.deploy),
+    renderIndex(`${Dir.layout}/postlist.pug`, Dir.content, 'words/*.md', Dir.deploy),
+    // TODO renderIndex(`${Dir.layout}/page.pug`, Dir.content, 'lp/*.md', Dir.deploy),
     stylus(Dir.media, '**/*.styl', Dir.deploy, extCSS, { }),
     assets(Dir.media, '{images,icons}/**/*.*', `${Dir.deploy}/assets`)
   ]).then(() => {
