@@ -1,6 +1,6 @@
 ---
 title: Aikido Weapons Kata
-shorttitle: jo-kata
+shorttitle: aiki-kata
 data: 2020-05-20
 tags: [aikido]
 ---
