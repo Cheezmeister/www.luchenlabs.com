@@ -7,6 +7,7 @@ I make lots of stuff, but I especially like making code. It's fun, hard, and som
 Sometimes I get particularly excited about some code I'm writing and stick it inside some prose so I can wax eloquent about it.
 
 * [ecks](ecks) (`ecks.pl.md`, a `tmux` wrapper)
+* [beep](beep) (`beep.c.md`, a senior prank for Windows)
 * [literati](literati) (`literati.coffee.md`, a LP "compiler" and literate frankenscript)
 * [liberate](liberate) (`liberate.sh.md`, a shebang-friendly to literati))
 * [aoc](aoc) (`aoc.coffee.md`, several of my 2016 Advent of Code solutions)
