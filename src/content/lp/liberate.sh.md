@@ -23,7 +23,7 @@ An equivalent `.rb.md` file would instead start with
 #!/usr/local/bin/liberate /usr/local/bin/ruby
 ```
 
-Or, more succinctly
+Or, on systems that allow it, more succinctly
 ```sh
 #!liberate ruby
 ```
