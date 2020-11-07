@@ -33,7 +33,9 @@ Why three separate tmux-related aliases where one could suffice?
 Plus he was tired of having to _think_; discerning between `x`, `xa` and `xn` was neural energy this particular monkey would rather spend on code.
 
 _But Brendan_, you may be thinking, _aliases and dotfiles aren't production code.
-It's totally acceptable for them to be a jumbled mess. Healthy, even! Good for the soul!_
+It's totally acceptable for them to be a jumbled mess. Healthy, even! [Good for the soul!][soul]_
+
+[soul]: https://64.media.tumblr.com/tumblr_lcxvrtDjcm1qfqcq7o1_400.jpg
 
 You might think that. And depending on who you ask, you're probably right.
 In fact, for many moons the three aliases stayed just like that.

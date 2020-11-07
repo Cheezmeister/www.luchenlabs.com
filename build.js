@@ -135,6 +135,7 @@ const prepContent = (text, options = {}) => {
     content,
     ...page.data,
     ...options.data,
+    ...options.hackedPageData,
   }
 }
 
@@ -182,6 +183,11 @@ const renderPagesAndWatch = (template, optionsCallback) => {
 
 // e.g. 'README.coffee.md' => 'coffee', 'aoc.pl.md' => 'pl'
 const highlightLiterate = (_, filename) => {
+  let retVal = {
+    data: {
+      title: Node.path.basename(filename)
+    }
+  }
   const makeHighlighter = (extension) => {
     // We can augment Marked if we get our hands a little dirty.
     // https://github.com/markedjs/marked/blob/master/lib/marked.js
@@ -200,17 +206,23 @@ const highlightLiterate = (_, filename) => {
       const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
       return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
     }
+    r.html = (html) => {
+      if (html.startsWith('<!---')) {
+        const start = 5 // html.indexOf("\n")
+        const end = html.indexOf('--->')
+        const yfmMetadata = html.slice(start, end)
+        retVal.hackedPageData = Npm.yaml.safeLoad(yfmMetadata);
+        return ''
+      }
+      return html
+    }
     return r
   }
 
-  return {
-    data: {
-      title: Node.path.basename(filename)
-    },
-    marked: {
-      renderer: makeHighlighter(getExtension(chopExtension(filename))) 
-    }
+  retVal.marked = {
+    renderer: makeHighlighter(getExtension(chopExtension(filename)))
   }
+  return retVal
 }
 
 const tunes = renderPagesAndWatch('tunes')
