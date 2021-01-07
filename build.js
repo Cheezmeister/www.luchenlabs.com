@@ -66,6 +66,7 @@ const getExtension = (filename) => filename.split('.').reverse()[0]
 const changeExtension = (ext) => (filename) => `${chopExtension(filename)}.${ext}`
 const toPrettyURL = (filename) => `${chopExtension(filename)}/index.html`
 
+// Slightly less general helpers
 const extHTML = changeExtension('html')
 const extCSS = changeExtension('css')
 
@@ -227,6 +228,7 @@ try {
     renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML),
     home(Dir.content, 'index.md', Dir.deploy, extHTML),
     lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL)),
+    assets(Dir.content, 'lp/*.md', Dir.deploy),
     other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL),
     tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL),
     games(Dir.content, 'projects/*.md', Dir.deploy, toPrettyURL),

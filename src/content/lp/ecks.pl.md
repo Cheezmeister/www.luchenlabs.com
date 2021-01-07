@@ -57,6 +57,12 @@ To create a session named "hackery", or attach to it if it already exists (`tmux
 $ x hackery
 ```
 
+To create or attach a remote session using ssh:
+
+```sh
+$ x recon@mordor
+```
+
 That's about it. Happy fingers!
 
 ## Chapter 2: Implementation
@@ -78,13 +84,23 @@ By default, just print current running sessions and early-out.
 
 Fun fact: this line gave me plenty of grief. It started with a `&&` instead, after shell conventions, but *it turns out* that shell conventions are stupid, treating the success return value of 0 as "true" and nonzero as "false". This makes for intuitive scripts but defies logic (literally); Perl (like C) *does the exact opposite*. 
 
-Anyway, if we did get a session name, attach or create as necessary and move on with our life.
+Anyway, if we did get a session name, read it, then attach or create as necessary.
 
     $sessname =~ /(\w+)(@(\w+))?/;
     my $cmd =  "$tmux_command attach -t $1 || $tmux_command new-session -s $1";
+
+We can target remote sessions by by adding `@some-other-host`.
+
     if ($3) {
       system ("ssh $3 -t '$cmd'");
-    } else {
+    } 
+
+We can also load pre-baked named sessions with [`tmuxp`](https://tmuxp.git-pull.com/).
+
+    else {
+      if (-e "$1.tmux.yml") {
+        system("which tmuxp && tmuxp load $1.tmux.yml") ;
+      }
       system($cmd);
     }
 
