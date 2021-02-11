@@ -1,4 +1,4 @@
-Turn Back Now
+Turn Back Now [![Total alerts](https://img.shields.io/lgtm/alerts/g/Cheezmeister/luchenlabs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Cheezmeister/luchenlabs/alerts/)
 =============
 
 This is my own little corner of the tubes. Proceed at your own risk.
