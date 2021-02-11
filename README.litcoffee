@@ -1,4 +1,4 @@
-Turn Back Now [![Total alerts](https://img.shields.io/lgtm/alerts/g/Cheezmeister/luchenlabs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Cheezmeister/luchenlabs/alerts/)
+Turn Back Now [![Total alerts](https://img.shields.io/lgtm/alerts/g/Cheezmeister/luchenlabs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Cheezmeister/luchenlabs/alerts/) [![Build Status](https://www.travis-ci.org/Cheezmeister/luchenlabs.svg?branch=master)](https://www.travis-ci.org/Cheezmeister/luchenlabs)
 =============
 
 This is my own little corner of the tubes. Proceed at your own risk.
