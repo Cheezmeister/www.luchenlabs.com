@@ -84,7 +84,7 @@ By default, just print current running sessions and early-out.
 
 Fun fact: this line gave me plenty of grief. It started with a `&&` instead, after shell conventions, but *it turns out* that shell conventions are stupid, treating the success return value of 0 as "true" and nonzero as "false". This makes for intuitive scripts but defies logic (literally); Perl (like C) *does the exact opposite*. 
 
-Anyway, if we did get a session name, read it, then attach or create as necessary.
+Anyway, if we did get a session name, read it and look for an `@`.
 
     $sessname =~ /(\w+)(@(\w+))?/;
     my $cmd =  "$tmux_command attach -t $1 || $tmux_command new-session -s $1";
@@ -93,14 +93,17 @@ We can target remote sessions by by adding `@some-other-host`.
 
     if ($3) {
       system ("ssh $3 -t '$cmd'");
-    } 
+    }
 
 We can also load pre-baked named sessions with [`tmuxp`](https://tmuxp.git-pull.com/).
 
+    elsif (-e "$1.tmux.yml") {
+      system("which tmuxp && tmuxp load $1.tmux.yml") ;
+    }
+
+Otherwise, attach or create as necessary.
+
     else {
-      if (-e "$1.tmux.yml") {
-        system("which tmuxp && tmuxp load $1.tmux.yml") ;
-      }
       system($cmd);
     }
 
@@ -108,7 +111,7 @@ We can also load pre-baked named sessions with [`tmuxp`](https://tmuxp.git-pull.
 
 You have roughly four options.
 
-1. `curl http://luchenlabs.com/lp/ecks.pl -o /usr/local/bin/ecks.pl`
+1. `curl http://luchenlabs.com/lp/ecks/ecks.pl -o /usr/local/bin/ecks.pl`
 2. [Download](ecks.pl.md) the source code in its raw form and "compile" it with [Literati](literati.html)
 3. Download the raw source and run it ad-hoc with [Liberate](liberate.html)
 4. Download the raw source and use Notepad to fish out the indented bits. (Not recommended. For legacy purposes only.)

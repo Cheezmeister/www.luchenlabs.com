@@ -390,6 +390,8 @@ Yeah, it's tempting to go hack on that sweet particle system, but maybe you shou
 ### Judgment
 
 > With great power comes great responsibility.
+>
+> -[Spider Man, I guess](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
 
 Judgment is hard. Some of it comes from the school of hard knocks, some from the spidey-sense that certain people just have a knack for. Either way, making the right decision, the first time, without succumbing to analysis paralysis, will save you hours, money, and heartache.
 
