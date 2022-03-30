@@ -459,7 +459,7 @@ I think that's pretty freaking cool.
 
 <b id="f2">[2](#f2)</b>   I would never recommend JS to a beginner. The language is laden with more traps than a Mayan temple and it trips up seasoned professionals on a daily basis. [↩](#a2)
 
-<b id="f3">[3](#f3)</b> I use AIM a lot, still. Nobody else does. I think the reason rhymes with "schmasebook". [↩](#a3)
+<b id="f3">[3](#f3)</b> Since the time of writing, chat protocols like OSCAR, XMPP, and IRC have fallen out of favor. In 2022, such services as Signal, Slack, and Discord are more popular and less friendly to alternate clients. This is unfortunate. But hey at least we have [giphy](https://en.wikipedia.org/wiki/Giphy). [↩](#a3)
 
 <b id="f4">[4](#f4)</b> This is a poor analogy but it's the best I could come up with. I bet you can think of a better one. [↩](#a4)
 
