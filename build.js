@@ -132,7 +132,7 @@ const prepContent = (text, options = {}) => {
   const markedOptions = Object.assign(markedDefaults, options.marked)
 
   const page = Npm.matter(text)
-  const content = Npm.marked(page.content, markedOptions)
+  const content = Npm.marked.parse(page.content, markedOptions)
   return {
     content,
     ...page.data,
