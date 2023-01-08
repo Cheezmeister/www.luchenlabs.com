@@ -2,9 +2,18 @@ extends ./default.pug
 
 block content
   include ./partials/header.pug
-  include ./partials/sidebar.pug
-  #content.main
-    block innercontent
-      !=content
+  main
+    include ./partials/sidebar.pug
+    nav.navigation
+      a(href="/") Home
+
+      a(href="/lp") Code
+      a(href="/projects") Games
+      a(href="/words") Words
+      a(href="/tunes") Tunes
+      a(href="/bio") Bio
+    #content.main
+      block innercontent
+        !=content
   include ./partials/footer.pug
 

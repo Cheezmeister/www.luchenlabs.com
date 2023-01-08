@@ -13,6 +13,7 @@ DarkerGreen = #147d33
 LightRed = rgb(240,150,150)
 DarkRed = #863030
 Violet = rgb(120, 90, 180)
+DarkViolet = rgb(120, 90, 90)
 LightBlue = #4499ff
 DarkYellow = #66580b
 Yellow = #af8700
@@ -27,7 +28,7 @@ body.article
     padding 8px
 
 body
-  background-color DarkGrey
+  background-color DarkViolet
   font-family "Arial", helvetica, sans-serif
   font-size 1em
   color LightGreen
@@ -58,6 +59,9 @@ body
       color LightestGrey
 
   .navigation
+    width 12%
+    float left
+    display grid
     min-height 48px
     text-align center
     font-size 18px
@@ -67,6 +71,7 @@ body
     padding-top 16px
     // background-image  linear-gradient(to bottom, LightGrey, DarkGrey)
     background DarkGreen
+
 
     a
       color LightGreen
@@ -191,6 +196,8 @@ body
     text-rendering: optimizelegibility
     font-size: 180%
     text-align: center
+
+# # #
 
 p.shebang
   font-family 'Hack', 'Courier', monospace
