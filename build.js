@@ -174,6 +174,8 @@ const highlightLiterate = (_, filename) => {
     // We can augment Marked if we get our hands a little dirty.
     // https://github.com/markedjs/marked/blob/master/lib/marked.js
     const r = new Npm.marked.Renderer()
+
+    // Allow shebangs and "captags"&trade; to be specially formatted
     r.paragraph = (para, wat) => {
       const cls = (para.match(/^#!/)) ? 'class="shebang"' :
                   (para.match(/^TODO/)) ? 'class="captag todo"' :
@@ -183,11 +185,17 @@ const highlightLiterate = (_, filename) => {
       const p = para.replace(/^(TODO|FIXME|HACK)/, match => `<span class="caps">${match}</span>`)
       return `<p ${cls}>${p}</p>`
     }
+
+    // Highlight code blocks
     r.code = (code, language) => {
       const lang = extension || language
-      const hl = Npm.hljs.highlightAuto(code, !!lang ? [lang] : undefined)
+
+      const hl = Npm.hljs.highlight(lang, code)
       return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
     }
+
+    // Allow explicit Yaml front matter. This is useful for scripts like
+    // aoc2017.pl.md which want to be executable and _also_ have metadata.
     r.html = (html) => {
       if (html.startsWith('<!---')) {
         const start = 5 // html.indexOf("\n")
@@ -207,12 +215,13 @@ const highlightLiterate = (_, filename) => {
   return retVal
 }
 
+// This is the actual build process that is germane to my site, LuchenLabs.com
 const tunes = renderPages('tunes')
 const games = renderPages('project')
 const home = renderPages('homepage')
 const other = renderPages('page')
 const words = renderPages('page')
-const lprog = renderPages('literate', highlightLiterate)
+const literatePrograms = renderPages('literate', highlightLiterate)
 const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) => {
   Npm.stylus.render(text, {}, (err, css) => {
     if (err) reject(err)
@@ -220,14 +229,11 @@ const stylus = makeBulkTask((text, filename) => new Promise((resolve, reject) =>
   })
 }))
 
-
-
-
 try {
   Promise.all([
     renderPages('styleguide')(Dir.content, 'styleguide.md', Dir.deploy, extHTML),
     home(Dir.content, 'index.md', Dir.deploy, extHTML),
-    lprog(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL)),
+    literatePrograms(Dir.content, 'lp/*.md', Dir.deploy, compose(chopExtension, toPrettyURL)),
     assets(Dir.content, 'lp/*.md', Dir.deploy),
     other(Dir.content, '{lp,bio,resume}.md', Dir.deploy, toPrettyURL),
     tunes(Dir.content, 'tunes.md', Dir.deploy, toPrettyURL),
@@ -241,14 +247,14 @@ try {
   ]).then(() => {
     console.log(`Loaded dependencies in ${requireEnd - requireStart}ms`)
     console.log(`  built in ${new Date() - requireStart}ms`)
-    // TODO watch & rebuild
+    // TODO: watch & rebuild
     // Npm.chokidar.
     //   watch('src/content/words/*.md').
     //   on('change', path => console.log(`File ${path} has been changed`))
   }).catch((err) =>
     console.log(`promise caught ${err}`)
   )
-} catch  (err) {
+} catch (err) {
   console.log(`caught ${err}`)
 }
 
