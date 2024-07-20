@@ -1,11 +1,15 @@
 Turn Back Now [![Total alerts](https://img.shields.io/lgtm/alerts/g/Cheezmeister/luchenlabs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Cheezmeister/luchenlabs/alerts/) [![Build Status](https://www.travis-ci.org/Cheezmeister/luchenlabs.svg?branch=master)](https://www.travis-ci.org/Cheezmeister/luchenlabs)
 =============
 
-This is my own little corner of the tubes. Proceed at your own risk.
+This is my own little corner of the internet. It's where I share things about myself that I think others might care about, today, a week, a decade from now.
+
+The remainder of this README is a Gruntfile in Literate CoffeeScript (one of my personal favorite programming languages which, as a pragmatic programmer, I would _never_ use in production). It was last used in 2017 or so, at a time when [Pug.js](https://github.com/pugjs/pug) was still called Jade, when I decided to stop switching static-site generators and simply write one [large but simple build script](./build.js) that can do anything I might want it to do, without any upstream dependencies. At the time, I called the custom script a `ridiculous over-the-top masochistic bespoke build`, but as the years wear on, I believe it was in fact a sound choice. I rarely need to touch it or worry about it. Reading it makes more sense (to me at least) than any `webpack.config.js` ever has.
+
+I keep the old gruntfile around as a historical artifact of my journey as a developer. It comes with no warranty, express or implied.
+
+Proceed at your own risk.
 
     require './build'
-
-Please ignore everything below. Or don't. I don't use it anymore in favor of [a ridiculous over-the-top masochistic bespoke build](build.js), but I'm keeping it around for historical reference. And the lulz.
 
 ![Long live Grunt](https://i.imgflip.com/2vsugr.jpg)
 
