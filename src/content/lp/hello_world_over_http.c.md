@@ -6,11 +6,11 @@
 
 For most of 2023 and 2024 I have been gainfully under-employed. That is, despite running a small business that nets around a thousand bucks a month, while also working on a small team, offering generous equity (but no funding), I continue to seek a _third_ gig where I have the privilege of contributing to society while earning a modest living.
 
-One interesting fellow, presumably named Frank Stanley, put out this tempting call for [proposals][1] that included, in the application process, `a hello world program that doesn't use printf or iostreams`. I thought that was a pretty neat filter criterion, and a good exercise for me on its own merits. Yeah, that surprised me, too.
+One interesting fellow, presumably named Frank Stanley, put out this tempting call for [proposals][1] that included, in the application process, `a hello world program that doesn't use printf or iostreams`. I thought that was a pretty neat filter criterion, and a good exercise for me on its own merits.
 
 [1]: https://news.ycombinator.com/item?id=40846857
 
-I first asked the internet, [here](https://www.perplexity.ai/search/write-a-basic-http-webserver-i-99XdilJ9S5WtmLxIFlDeCQ#0). I could have stopped there, because what it emitted worked just as intended with no modifications.
+I first asked the internet, [here](https://www.perplexity.ai/search/write-a-basic-http-webserver-i-99XdilJ9S5WtmLxIFlDeCQ#0). I could have stopped there, because what it emitted worked just as intended with no modifications. (Yeah, that surprised me, too.)
 
 Instead, to prove I'm not an impostor, and in the hopes of supporting the next generation of low-level programmers, as [the old guard retires][2], I explain it in excruciating detail.
 
