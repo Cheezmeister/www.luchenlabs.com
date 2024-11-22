@@ -2,7 +2,7 @@
 title: A Candidate's Lament
 shorttitle: rlci
 date: 2024-05-02
-tags: [Creative, Technical, AI]
+tags: [creative, technical, AI]
 ---
 
 Ah, the dreaded remote live coding interview,

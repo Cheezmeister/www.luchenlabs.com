@@ -7,7 +7,6 @@ const Node = {
 }
 const Npm = {
   stylus  : require('stylus'),
-  // coffee  : require('coffee'),
   marked  : require('marked'),
   matter  : require('gray-matter'),
   pandoc  : require('pdc'),

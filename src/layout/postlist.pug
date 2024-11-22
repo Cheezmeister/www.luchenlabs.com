@@ -14,4 +14,4 @@ block innercontent
           a(href=post.shorttitle) #{post.title}
         small.posttags
           each tag in (post.tags || [])
-            span.badge(class=`tag-${tag}`) #{tag}
+            span.badge(class=`tag-${tag.toLowerCase()}`) #{tag}
