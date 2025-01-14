@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Turn Back Now =============",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "chokidar": "^2.1.5",
     "coffee-script": "^1.12.7",
