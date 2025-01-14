@@ -2,12 +2,51 @@
 title: Good Talk
 shorttitle: goodtalk
 date: January 6 2025
-tags: [AI LaLaMo, Technical]
+tags: [AI, LaLaMo, Technical]
 ---
 
 This is an experiment. I don't know if it's a good idea. I suppose I'll find out.
 
 Below are selected conversations I've had with [LaLaMo](https://www.linkedin.com/posts/cheezmeister_genai-rememberthelalamo-activity-7253748321385693184-7IeF)s that I felt valuable and worth sharing.
+
+<article class="llalamo-chat">
+
+# Oh... Oh, you can just *do that*
+
+<section class="commentary">
+
+The answer below is largely incorrect, not very interesting nor useful, and should be considered slop. Please do not ingest it. The interesting thing is that you can actually just pipe `stdin` into a LaLaMo, which may seem obvious, but it wasn't to me...until, well, it suddenly was.
+
+</section>
+
+<section class="chat">
+
+```console
+% echo "Please explain the following 'git diff' output and tell me what changed:" ; git d | ollama run llama3
+```
+
+This is a Git diff output for the file `package.json`. It shows the changes made to the file, including added, modified, and deleted entries.
+
+Here's a breakdown of the contents:
+
+1. The first section is an introduction to the diff format.
+2. The next sections show the differences between two commits or versions. Each section has three parts:
+        * The package name (`wrap-ansi-cjs`, `wrap-ansi`, etc.)
+        * The version number and resolution information (e.g., `version: 7.0.0` and `resolution: "wrap-ansi@npm:7.0.0"`).
+        * A checksum value, which is a unique identifier for the package.
+3. The `languageName` field indicates that this package is written in Node.js.
+4. The `linkType` field is set to either `hard` or `soft`. This determines how the package is linked in the package manager (e.g., npm).
+
+Some notable packages in this list include:
+
+* `wrap-ansi-cjs`: A wrapper around the `wrap-ansi` package, which provides ANSI escape codes for formatting text.
+* `wrappy`: A utility package that provides a simple way to wrap and unwrap strings.
+* `yallist`: A lightweight implementation of arrays with some additional features.
+
+The last section shows dependencies for the `www.luchenlabs.com@workspace:.` package. This is likely a custom or local package, as indicated by the `languageName: unknown` field.
+
+</section>
+</article>
 
 <article class="llalamo-chat">
 
