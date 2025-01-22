@@ -11,6 +11,58 @@ Below are selected conversations I've had with [LaLaMo](https://www.linkedin.com
 
 <article class="llalamo-chat">
 
+# Factor Me, Baby, 2^18 Times...
+
+<section class="commentary">
+After formal training in CompSci and 15 years in the field, I had still never heard the name Tom Kilburn.
+</section>
+
+Tom Kilburn played a pivotal role in the early development of computers, particularly in the creation of the first stored-program computer. In 1948, Kilburn led the development of the Small-Scale Experimental Machine (SSEM), nicknamed "Baby," at the University of Manchester[1][5]. This machine was the first to successfully run a stored program on June 21, 1948[1][12].
+
+    The program Kilburn wrote to test the SSEM was designed to find the highest factor of a number. Initially, they used a small number, but within days, they were able to run the program on 2^18. This computation took 52 minutes and involved about 2.1 million instructions with approximately 3.5 million store accesses[1].
+
+    ## Early Mainframe Computers
+
+    The success of the SSEM led to the development of more powerful and practical machines. The Manchester Mark I, commissioned by the government and also led by Kilburn, was completed by November 1948[1]. This marked the beginning of a new era in computing.
+
+    Mainframe computers, as mentioned, were indeed massive machines that filled entire rooms. The Harvard Mark 1, also known as the IBM Automatic Sequence Controlled Calculator (ASCC), is considered the first mainframe computer. It was over 50 feet wide and 8 feet tall[3].
+
+    ## Evolution of Computing Power
+
+    The progression from the SSEM to modern computers is remarkable:
+
+    1. The SSEM had a 32-bit word length and used Williams Tubes for memory[12].
+    2. By 1951, the first commercial mainframe, UNIVAC, was built by the Eckert-Mauchly Computer Corporation[7].
+    3. In 1953, IBM introduced its Model 701 Electronic Data Processing Machine, which was 25 to 50 times faster than its predecessors[7].
+    4. The IBM System/360, launched in 1964, became the industry standard within two years[7].
+
+    ## Managing Complex Systems
+
+    As computers grew more powerful, so did the complexity of software projects. The IBM System/370-165, used by Bosch in 1971, could run 15 programs simultaneously and had a storage capacity of 1 million bytes (1 MB)[13]. This increase in capability necessitated new approaches to software management and development.
+
+    The evolution from Kilburn's 17-instruction program to complex software systems running on mainframes highlights the rapid advancement in computing technology and the growing need for effective project management in software development.
+
+    Citations:
+    [1] http://scihi.org/tom-kilburn-stored-program-computer/
+    [2] https://aqueductpress.blogspot.com/2024/10/the-first-computer-program.html
+    [3] https://www.allaboutcircuits.com/news/the-evolution-of-the-mainframe-computer-to-ibms-latest-z16/
+    [4] https://www.mub.eps.manchester.ac.uk/science-engineering/2019/06/20/happy-birthday-baby-tom-kilburn-and-a-new-era-of-computing/
+    [5] https://computerhistory.org/profile/tom-kilburn/
+    [6] https://curation.cs.manchester.ac.uk/computer50/www.computer50.org/mark1/prog98/ssemref.html
+    [7] https://www.ibm.com/think/topics/mainframe
+    [8] https://cacm.acm.org/opinion/tom-kilburn/
+    [9] https://www.britannica.com/biography/Tom-Kilburn
+    [10] http://www.billp.org/baby.pdf
+    [11] https://www.computerhistory.org/revolution/mainframe-computers/7/166
+    [12] http://www.computer-timeline.com/timeline/frederic-williams-and-tom-kilburn/
+    [13] https://www.bosch.com/stories/ibm-mainframe-computer-history/
+    [14] https://www.scienceandindustrymuseum.org.uk/objects-and-stories/baby-and-modern-computing
+    [15] https://en.wikipedia.org/wiki/Manchester_Baby
+</article>
+
+
+<article class="llalamo-chat">
+
 # Oh... Oh, you can just *do that*
 
 <section class="commentary">

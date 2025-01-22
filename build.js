@@ -186,11 +186,11 @@ const highlightLiterate = (_, filename) => {
     }
 
     // Highlight code blocks
-    r.code = (code, language) => {
-      const lang = extension || language
+    r.code = (code, lang) => {
+      const language = extension || lang
 
-      const hl = Npm.hljs.highlight(lang, code)
-      return Npm.pug.render(`pre: code.hljs.${lang} !{code}`, {code: hl.value})
+      const hl = Npm.hljs.highlight(code, { language })
+      return Npm.pug.render(`pre: code.hljs.${language} !{code}`, {code: hl.value})
     }
 
     // Allow explicit Yaml front matter. This is useful for scripts like
