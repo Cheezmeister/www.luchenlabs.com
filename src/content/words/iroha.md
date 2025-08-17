@@ -5,7 +5,20 @@ date: 2020-05-23
 tags: [creative, japanese]
 ---
 
-The [Iroha][], in several forms. For my own study.
+The [Iroha][], in several forms. For my own study. And maybe yours.
+
+This ancient poem is a Japanese pangram. It contains every Japanese letter, exactly once. English natives may compare it to [The quick brown fox jumps over the lazy dog.][dog], or many such strings across languages:
+
+* Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich
+* Pa's wijze lynx bezag vroom het fikse aquaduct.
+* Benjamín pidió una bebida de kiwi y fresa. Noé, sin vergüenza, la más exquisita champaña del menú.
+* Pijamalı hasta yağız şoföre çabucak güvendi.
+* نص حكيم له سر قاطع وذو شأن عظيم مكتوب على ثوب أخضر ومغلف بجلد أزرق
+
+This happens to be especially useful in a language that does not have letters as such; but rather it has _morae_ that one can write with any of [_three alphabets_][three].
+
+[three]: https://theculturetrip.com/asia/japan/articles/heres-why-japan-has-3-writing-systems
+[dog]: https://en.wikipedia.org/wiki/The_quick_brown_fox_jumps_over_the_lazy_dog
 
 ## Kanji
 
@@ -44,6 +57,9 @@ Line | Hiragana       | Katakana       |               Romaji
  8.  | ゑひもせす     | ヱヒモセス     |       we hi mo se su
 
 ## Hiragana, Ink, Light, and Pixels
+
+In 2020 or so I tried my hand at a paper instantiation.
+Chisel-tip marker, colored pencil, and a soldering iron for some reason.
 
 <style>
   #iroha-ink-overlay {
