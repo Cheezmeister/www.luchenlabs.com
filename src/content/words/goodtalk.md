@@ -5,9 +5,276 @@ date: January 6 2025
 tags: [AI, LaLaMo, Technical]
 ---
 
+
 This is an experiment. I don't know if it's a good idea. I suppose I'll find out.
 
 Below are selected conversations I've had with [LaLaMo](https://www.linkedin.com/posts/cheezmeister_genai-rememberthelalamo-activity-7253748321385693184-7IeF)s that I felt valuable and worth sharing.
+
+<article class="llalamo-chat">
+
+# Just Reload
+
+<section class="commentary">
+https://ai.zambito.xyz/s/a7ff4e34-bd6b-4d36-88c2-987fd8a5e74a
+
+I don't know Rust. I guess maybe I should. But anyway now I have the thing that I wanted. That's neat.
+
+</section>
+
+<section class="chat">
+
+
+Below is a **complete, minimal Rust project** that
+
+* serves static files from a directory (e.g. `./public`)
+* watches that directory for any changes
+* pushes a `reload` message to every browser that is connected via a WebSocket
+* the browser simply reloads when it receives that message.
+
+It uses only a handful of crates and works on Linux, macOS and Windows.
+
+---
+
+## 1. Project structure
+
+```
+livereload/
+├─ Cargo.toml
+└─ src/
+   └─ main.rs
+└─ public/
+   └─ index.html          ← an example page
+```
+
+`Cargo.toml` and `src/main.rs` are shown below.  
+Place a static page (or a whole website) in `public/`.  
+The example `index.html` contains the small JavaScript snippet that opens the
+WebSocket and reloads the page when needed.
+
+---
+
+## 2. Cargo.toml
+
+```toml
+[package]
+name = "livereload"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+warp = "0.3"            # HTTP + WebSocket
+tokio = { version = "1", features = ["full"] }  # async runtime
+notify = "5.1"          # file‑watcher
+futures = "0.3"         # StreamExt, etc.
+```
+
+---
+
+## 3. src/main.rs
+
+```rust
+use std::convert::Infallible;
+use std::path::PathBuf;
+use std::sync::Arc;
+use std::time::Duration;
+
+use futures::StreamExt;
+use notify::{Event, RecommendedWatcher, RecursiveMode, Result as NotifyResult, Watcher};
+use tokio::sync::broadcast::{self, Receiver, Sender};
+use warp::Filter;
+
+#[tokio::main]
+async fn main() {
+    // ---- 1. Configuration ----------------------------------------------------
+    // Directory to serve.  Change this if you want something else.
+    let serve_dir = PathBuf::from("./public");
+
+    // Create a broadcast channel.  Every websocket client will subscribe to it.
+    let (tx, _) = broadcast::channel::<()>(16);
+    let tx = Arc::new(tx); // shared among the HTTP and watcher tasks
+
+    // ---- 2. File watcher ----------------------------------------------------
+    let watcher_tx = tx.clone();
+    // Spawn a blocking task that runs the file‑watcher.
+    tokio::task::spawn_blocking(move || {
+        // `RecommendedWatcher` chooses the best implementation for the OS.
+        let mut watcher: RecommendedWatcher = Watcher::new_immediate(move |res: NotifyResult<Event>| {
+            match res {
+                Ok(_event) => {
+                    // Broadcast a signal that a file changed.
+                    let _ = watcher_tx.send(());
+                }
+                Err(e) => eprintln!("watch error: {:?}", e),
+            }
+        })
+        .expect("Failed to create file watcher");
+
+        // Watch the directory recursively.
+        watcher
+            .watch(&serve_dir, RecursiveMode::Recursive)
+            .expect("Failed to watch directory");
+
+        // Keep the thread alive.
+        loop {
+            std::thread::park();
+        }
+    });
+
+    // ---- 3. HTTP + WebSocket server -----------------------------------------
+    // Static file handler.
+    let static_files = warp::fs::dir(serve_dir.clone()).map(
+        |reply: warp::reply::Response| {
+            // Disable caching so the browser always asks the server.
+            warp::reply::with::header(
+                reply,
+                "Cache-Control",
+                "no-store, no-cache, must-revalidate, proxy-revalidate",
+            )
+        },
+    );
+
+    // WebSocket handler.
+    let ws_route = warp::path("ws")
+        .and(warp::ws())
+        .and(with_tx(tx.clone()))
+        .map(|ws: warp::ws::Ws, tx: Sender<()>| {
+            ws.on_upgrade(move |socket| websocket_handler(socket, tx))
+        });
+
+    // Combine routes
+    let routes = static_files.or(ws_route);
+
+    // ----- 4. Start the server -----
+    let addr = ([127, 0, 0, 1], 3030).into();
+    println!("🚀 Live‑reload server running at http://{}/", addr);
+    println!("   Serving files from {:?}", serve_dir);
+    warp::serve(routes).run(addr).await;
+}
+
+/// Helper to inject the broadcast sender into a filter.
+fn with_tx(tx: Sender<()>) -> impl Filter<Extract = (Sender<()>,), Error = Infallible> + Clone {
+    warp::any().map(move || tx.clone())
+}
+
+/// Handle a single WebSocket connection.
+async fn websocket_handler(ws: warp::ws::WebSocket, tx: Sender<()>) {
+    // Split the socket into a sender and a receiver.
+    let (mut ws_tx, mut ws_rx) = ws.split();
+
+    // Subscribe to the broadcast channel.
+    let mut rx: Receiver<()> = tx.subscribe();
+
+    loop {
+        tokio::select! {
+            // Whenever the file watcher sends a signal, we forward it to the browser.
+            _ = rx.recv() => {
+                // Send a "reload" message.  If the client closed the socket we just stop.
+                if ws_tx.send(warp::ws::Message::text("reload")).await.is_err() {
+                    break;
+                }
+            }
+            // Handle any incoming messages from the client (e.g. keep‑alive pings).
+            msg = ws_rx.next() => {
+                if msg.is_none() {
+                    // Client disconnected
+                    break;
+                }
+            }
+        }
+    }
+}
+```
+
+### How it works
+
+1. **File watcher**  
+   `notify` watches `./public` recursively.  
+   On any change it emits a unit `()` via a Tokio broadcast channel.
+
+2. **WebSocket**  
+   Clients connect to `ws://<host>/ws`.  
+   Each connection subscribes to the same broadcast channel.  
+   When a message arrives, the server pushes `"reload"` to that socket.
+
+3. **Client‑side code**  
+   Every served page must open the WebSocket and reload the page on receipt.  
+   See the example `public/index.html` below.
+
+---
+
+## 4. Example `public/index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Live‑Reload Demo</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #0066cc; }
+  </style>
+</head>
+<body>
+  <h1>Live‑Reload is working!</h1>
+  <p>Edit this file and watch the page refresh automatically. For real.</p>
+
+  <script>
+    // Connect to the WebSocket endpoint.
+    const ws = new WebSocket(`ws://${location.host}/ws`);
+    ws.addEventListener('message', e => {
+      if (e.data === 'reload') {
+        console.log('Reload signal received.');
+        location.reload();
+      }
+    });
+    ws.addEventListener('open', () => console.log('Live‑Reload socket opened.'));
+    ws.addEventListener('close', () => console.log('Live‑Reload socket closed.'));
+  </script>
+</body>
+</html>
+```
+
+*Just open `http://127.0.0.1:3030/` in a browser, edit `index.html`, and the page will reload instantly.*
+
+---
+
+## 5. Run it
+
+```bash
+$ cargo run --release
+🚀 Live‑reload server running at http://127.0.0.1:3030/
+   Serving files from "./public"
+```
+
+Open the URL in a browser.  
+Any change to files under `./public` (or its sub‑directories) will trigger a reload in all connected browsers.
+
+---
+
+## 6. Customizations
+
+| Want to… | How to do it |
+|----------|--------------|
+| **Serve a different directory** | Change `serve_dir` in `main.rs`. |
+| **Change port** | Edit `addr` in `main.rs`. |
+| **Add HTTPS** | Use `warp::tls` or wrap the server with a reverse proxy like Nginx. |
+| **Add authentication** | Add a `warp::header::<String>("authorization")` filter before the WebSocket route. |
+| **Debounce rapid changes** | Wrap the `watcher_tx.send(())` call in a timer that only forwards after a quiet period. |
+
+---
+
+## 7. Why this is lightweight
+
+* Only **four** dependencies, all small and battle‑tested.  
+* The HTTP server is built on **warp**, which is just a thin wrapper over hyper and is ~1 MB binary.  
+* The file watcher is **notify**, a small crate that uses platform‑native APIs.  
+* No database, no template engine, no build step – just a few lines of code.
+
+Feel free to copy‑paste the above files into a new crate and start hacking. Happy coding!
+
+</section>
+</article>
 
 <article class="llalamo-chat">
 
